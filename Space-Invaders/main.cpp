@@ -46,8 +46,30 @@ int main()
         // draw square
         window.draw(square);
 
-        //draw triangle
+        // draw triangle
         window.draw(triangle);
+
+        // create and load texture
+        sf::Texture outscalLogo;
+        outscalLogo.loadFromFile("assets/textures/outscal_logo.png"); // load a texture image from the files
+        
+        // create sprite from texture
+        sf::Sprite outscalLogoSprite;
+        outscalLogoSprite.setTexture(outscalLogo); // setting texture for the sprite object
+        outscalLogoSprite.setPosition(200, 300); // setting up the position for the sprite
+        outscalLogoSprite.setScale(sf::Vector2f(0.5, 0.5)); // adjusted the scale for the sprite
+        outscalLogoSprite.setRotation(45); // rotate the image in 45 degrees
+        window.draw(outscalLogoSprite);
+
+        // create a font object
+        sf::Font font;
+        font.loadFromFile("assets/fonts/bubbleBobble.ttf"); // load a font from the files
+
+        // create a text object
+        sf::Text textObject = sf::Text("SFML is Awesome", font, 50); // create a text object using the font
+        textObject.setFillColor(sf::Color::White);  // update text color to white
+        textObject.setPosition(800,400);
+        window.draw(textObject); // draw the text
 
         // display whatever you draw
         window.display();
