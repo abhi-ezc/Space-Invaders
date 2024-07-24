@@ -8,18 +8,17 @@ class Player {
 	sf::Sprite sprite; // player sprite for rendering in the window
 	int playerScore; // player score
 	int health; // player health
-	int movementSpeed; // player movement speed
+	float movementSpeed; // player movement speed
 	sf::Vector2f position; // player position in the window
 
 	public:
 	Player() {
 		texture.loadFromFile("assets/textures/player_ship.png");
 		sprite.setTexture(texture);
-		health = 100;
+		health = 3;
 		playerScore = 0;
-		movementSpeed = 10;
+		movementSpeed = 5.0f;
 		position = sf::Vector2f(200.f, 100.f);
-		updatePlayerPosition();
 	}
 
 	sf::Sprite getSprite() {
@@ -33,29 +32,26 @@ class Player {
 	int getPlayerScore() {
 		return playerScore;
 	}
-	
-	void takeDamage() { 
-		
+
+	int getMovementSpeed() {
+		return movementSpeed;
+	}
+
+	void takeDamage() {
+
 	}
 
 	void updatePlayerPosition() {
 		sprite.setPosition(position);
 	}
 
-	void move(bool isRight) {
-		if( isRight )
-		{
-			position.x += movementSpeed;
-		}
-		else
-		{
-			position.x -= movementSpeed;
-		}
-		updatePlayerPosition();
+	void move(float offset) {
+		position.x += offset;
+
 	}
 
 	void shootBullets() {
-		
+
 	}
 };
 
@@ -78,15 +74,15 @@ int main() {
 					window.close(); // close the window
 					break;
 				case sf::Event::KeyPressed:
-					if(windowEvent.key.code == sf::Keyboard::A )
+					if( sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
 					{
-						player.move(false); // move player to left
+						player.move(player.getMovementSpeed()); // move player to left
 					}
-					else if( windowEvent.key.code== sf::Keyboard::D )
+					else if( sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
 					{
-						player.move(true); // move player to right
+						player.move(-1.f * player.getMovementSpeed()); // move player to right
 					}
-					else if( windowEvent.key.code == sf::Keyboard::Escape )
+					else if( sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) )
 					{
 						window.close(); // close the window
 					}
@@ -100,6 +96,9 @@ int main() {
 
 		// clear the window and filling it with blue color
 		window.clear(sf::Color::Black);
+
+		// update player location
+		player.updatePlayerPosition();
 
 		// drawing player sprite
 		window.draw(player.getSprite());
