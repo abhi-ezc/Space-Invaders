@@ -8,17 +8,21 @@ class Player {
 	sf::Sprite sprite; // player sprite for rendering in the window
 	int playerScore; // player score
 	int health; // player health
-	int movementSpeed; // player movement speed
+	float movementSpeed; // player movement speed
 	sf::Vector2f position; // player position in the window
 
 	public:
 	Player() {
 		texture.loadFromFile("assets/textures/player_ship.png");
 		sprite.setTexture(texture);
-		health = 100;
+		health = 3;
 		playerScore = 0;
-		movementSpeed = 10;
+		movementSpeed = 5.0f;
 		position = sf::Vector2f(200.f, 100.f);
+	}
+
+	sf::Sprite getSprite() {
+		return sprite;
 	}
 
 	int getHealth() {
@@ -28,17 +32,26 @@ class Player {
 	int getPlayerScore() {
 		return playerScore;
 	}
-	
-	void takeDamage() { 
-		
+
+	int getMovementSpeed() {
+		return movementSpeed;
 	}
 
-	void move() {
-		
+	void takeDamage() {
+
+	}
+
+	void updatePlayerPosition() {
+		sprite.setPosition(position);
+	}
+
+	void move(float offset) {
+		position.x += offset;
+
 	}
 
 	void shootBullets() {
-		
+
 	}
 };
 
@@ -53,17 +66,42 @@ int main() {
 		sf::Event windowEvent;
 		while( window.pollEvent(windowEvent) )
 		{
-			// checking for any events in the window like keyboard or mouse events
-			if( windowEvent.type == sf::Event::Closed )
+
+			switch( windowEvent.type )
 			{
-				// check if the closed event is triggered
-				window.close(); // closing the window
+				case sf::Event::Closed:
+					// check window close event
+					window.close(); // close the window
+					break;
+				case sf::Event::KeyPressed:
+					if( sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
+					{
+						player.move(player.getMovementSpeed()); // move player to left
+					}
+					else if( sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
+					{
+						player.move(-1.f * player.getMovementSpeed()); // move player to right
+					}
+					else if( sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) )
+					{
+						window.close(); // close the window
+					}
+					else
+					{
+						// handle if anything else
+					}
+					break;
 			}
 		}
 
-		std::cout << "Player Health : " << player.getHealth() << std::endl;
 		// clear the window and filling it with blue color
 		window.clear(sf::Color::Black);
+
+		// update player location
+		player.updatePlayerPosition();
+
+		// drawing player sprite
+		window.draw(player.getSprite());
 
 		// display whatever you draw
 		window.display();
