@@ -19,6 +19,11 @@ class Player {
 		playerScore = 0;
 		movementSpeed = 10;
 		position = sf::Vector2f(200.f, 100.f);
+		updatePlayerPosition();
+	}
+
+	sf::Sprite getSprite() {
+		return sprite;
 	}
 
 	int getHealth() {
@@ -33,8 +38,20 @@ class Player {
 		
 	}
 
-	void move() {
-		
+	void updatePlayerPosition() {
+		sprite.setPosition(position);
+	}
+
+	void move(bool isRight) {
+		if( isRight )
+		{
+			position.x += movementSpeed;
+		}
+		else
+		{
+			position.x -= movementSpeed;
+		}
+		updatePlayerPosition();
 	}
 
 	void shootBullets() {
@@ -53,17 +70,39 @@ int main() {
 		sf::Event windowEvent;
 		while( window.pollEvent(windowEvent) )
 		{
-			// checking for any events in the window like keyboard or mouse events
-			if( windowEvent.type == sf::Event::Closed )
+
+			switch( windowEvent.type )
 			{
-				// check if the closed event is triggered
-				window.close(); // closing the window
+				case sf::Event::Closed:
+					// check window close event
+					window.close(); // close the window
+					break;
+				case sf::Event::KeyPressed:
+					if(windowEvent.key.code == sf::Keyboard::A )
+					{
+						player.move(false); // move player to left
+					}
+					else if( windowEvent.key.code== sf::Keyboard::D )
+					{
+						player.move(true); // move player to right
+					}
+					else if( windowEvent.key.code == sf::Keyboard::Escape )
+					{
+						window.close(); // close the window
+					}
+					else
+					{
+						// handle if anything else
+					}
+					break;
 			}
 		}
 
-		std::cout << "Player Health : " << player.getHealth() << std::endl;
 		// clear the window and filling it with blue color
 		window.clear(sf::Color::Black);
+
+		// drawing player sprite
+		window.draw(player.getSprite());
 
 		// display whatever you draw
 		window.display();
