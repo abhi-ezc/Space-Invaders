@@ -61,6 +61,7 @@ class Player {
 };
 
 int main() {
+
 	/*
 	sf::VideoMode videoMode = sf::VideoMode(1280, 720); // creating window video mode
 	sf::RenderWindow window(videoMode, "SFML Window", sf::Style::Close); // creating window
