@@ -1,5 +1,6 @@
 #include<iostream>
 #include <SFML/Graphics.hpp>
+#include "./public/GameService.h"
 
 
 class Player {
@@ -60,6 +61,7 @@ class Player {
 };
 
 int main() {
+	/*
 	sf::VideoMode videoMode = sf::VideoMode(1280, 720); // creating window video mode
 	sf::RenderWindow window(videoMode, "SFML Window", sf::Style::Close); // creating window
 	window.setFramerateLimit(60); // setting window to use 60 fps
@@ -111,6 +113,12 @@ int main() {
 		window.display();
 
 	}
-
-	return 0;
+	*/
+	GameService gameService;
+	gameService.ignite();
+	while( gameService.isRunning() )
+	{
+		gameService.update();
+		gameService.render();
+	}
 }
