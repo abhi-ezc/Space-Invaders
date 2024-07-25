@@ -12,13 +12,17 @@ class Player {
 	sf::Vector2f position; // player position in the window
 
 	public:
-	Player() {
+	Player(int health, float movementSpeed) {
 		texture.loadFromFile("assets/textures/player_ship.png");
 		sprite.setTexture(texture);
-		health = 3;
+		this->health = health;
 		playerScore = 0;
-		movementSpeed = 5.0f;
+		this->movementSpeed = movementSpeed;
 		position = sf::Vector2f(200.f, 100.f);
+	}
+
+	~Player() {
+		std::cout << "destroyed";
 	}
 
 	sf::Sprite getSprite() {
@@ -59,7 +63,7 @@ int main() {
 	sf::VideoMode videoMode = sf::VideoMode(1280, 720); // creating window video mode
 	sf::RenderWindow window(videoMode, "SFML Window", sf::Style::Close); // creating window
 	window.setFramerateLimit(60); // setting window to use 60 fps
-	Player player;
+	Player player(100, 5);
 	while( window.isOpen() )
 	{
 		// check if window still open
@@ -76,11 +80,11 @@ int main() {
 				case sf::Event::KeyPressed:
 					if( sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
 					{
-						player.move(player.getMovementSpeed()); // move player to left
+						player.move(-1.f * player.getMovementSpeed()); // move player to left
 					}
 					else if( sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
 					{
-						player.move(-1.f * player.getMovementSpeed()); // move player to right
+						player.move(player.getMovementSpeed()); // move player to right
 					}
 					else if( sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) )
 					{
@@ -107,5 +111,6 @@ int main() {
 		window.display();
 
 	}
+
 	return 0;
 }
