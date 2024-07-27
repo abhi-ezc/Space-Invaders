@@ -1,17 +1,11 @@
 #pragma once
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
-// include relevant headers files
+#include "./GraphicService.h"
 
 class ServiceLocator {
     private:
-    // Private Attributes:
-    // - event_service: Manages event-related functionalities.
-    // - graphic_service: Handles graphics-related tasks.
-    // ..........................
-    // ..........................
-
-    // Private Constructor and Destructor:
+    GraphicService* graphicService;
 
     // Constructor for initializing the ServiceLocator.
     ServiceLocator();
@@ -24,8 +18,10 @@ class ServiceLocator {
     void clearAllServices(); 		//	Deletes and deallocates memory for all services.
 
     public:
+
     // Public Methods:
     static ServiceLocator* getInstance();  // Provides a method to access the unique ServiceLocator instance (object). We will discuss this later.
+    static void deleteInstance(ServiceLocator* serviceLocator);
 
     void initialize(); 			//	Initializes the ServiceLocator.
     void update(); 				//	Updates all services.
@@ -33,6 +29,6 @@ class ServiceLocator {
 
     // Methods to Get Specific Services: 
     //EventService* getEventService();   // Retrieve the EventService instance
-    //GraphicService* getGraphicService();   // Retrieve the GraphicService instance
+    GraphicService* getGraphicService();   // Retrieve the GraphicService instance
 
 };
