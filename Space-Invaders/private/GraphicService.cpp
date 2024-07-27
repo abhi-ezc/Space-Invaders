@@ -51,6 +51,10 @@ sf::RenderWindow* GraphicService::getGameWindow() {
 	return gameWindow;
 }
 
+void GraphicService::closeGameWindow() {
+	gameWindow->close();
+}
+
 bool GraphicService::isGameWindowOpen() {
 	return gameWindow->isOpen(); // return true if the game window is still open
 }

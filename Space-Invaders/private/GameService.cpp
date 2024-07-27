@@ -40,7 +40,6 @@ void GameService::render() {
 
 #pragma region Operations
 void GameService::destroy() {
-	ServiceLocator::deleteInstance(serviceLocator);
 }
 #pragma endregion
 
