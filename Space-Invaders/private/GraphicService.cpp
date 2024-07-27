@@ -1,3 +1,4 @@
+#pragma once
 #include "./../public/GraphicService.h"
 
 #pragma region Life Cycle Functions
@@ -36,11 +37,16 @@ void GraphicService::setVideoMode() {
 void GraphicService::createGameWindow() {
 	setVideoMode();
 	gameWindow = new sf::RenderWindow(*videoMode, windowTitle,sf::Style::Close); // create a RenderWindow Object and assigns the address to gameWindow ptr
+	gameWindow->setFramerateLimit(frameLimit);
 }
 
 void GraphicService::onDestroy() {
 	delete videoMode; // freeing memory assigned to videoMode ptr
 	delete gameWindow; // freeing memory assigned to gameWindow ptr
+}
+
+void GraphicService::draw(sf::Drawable &drawable) {
+	gameWindow->draw(drawable);
 }
 
 #pragma endregion
