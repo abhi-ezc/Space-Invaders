@@ -115,11 +115,13 @@ int main() {
 
 	}
 	*/
-	GameService gameService;
-	gameService.ignite();
-	while( gameService.isRunning() )
+
+	GameService* gameService = new GameService();
+	gameService->ignite();
+	while( gameService->isRunning() )
 	{
-		gameService.update();
-		gameService.render();
+		gameService->update();
+		gameService->render();
 	}
+	delete gameService; // freeing up the GameService ptr
 }
