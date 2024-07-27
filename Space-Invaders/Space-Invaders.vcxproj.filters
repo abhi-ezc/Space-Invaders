@@ -27,6 +27,9 @@
     <ClCompile Include="private\GraphicService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="private\EventService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\GameService.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="public\GraphicService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\EventService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

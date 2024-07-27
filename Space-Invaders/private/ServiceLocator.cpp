@@ -11,11 +11,13 @@ ServiceLocator::ServiceLocator() {
 void ServiceLocator::initialize() {
 	// initialize service locator
 	graphicService->initialize();
+	eventService->initialize();
 }
 
 void ServiceLocator::update() {
 	// update all the services
 	graphicService->update();
+	eventService->update();
 }
 
 void ServiceLocator::render() {
@@ -35,11 +37,13 @@ ServiceLocator::~ServiceLocator() {
 void ServiceLocator::createServices() {
 	// creating services required for the game
 	graphicService = new GraphicService();
+	eventService = new EventService();
 }
 
 void ServiceLocator::clearAllServices() {
 	// deallocate all the services and cleanup resources used by the services
 	delete graphicService;
+	delete eventService;
 }
 #pragma endregion
 
@@ -47,16 +51,15 @@ void ServiceLocator::clearAllServices() {
 
 // returning the new instance of ServiceLocator 
 ServiceLocator* ServiceLocator::getInstance() {
-	return new ServiceLocator();
-}
-
-// for deleting an instance of the ServiceLocator
-void ServiceLocator::deleteInstance(ServiceLocator* serviceLocator) {
-	delete serviceLocator;
+	static ServiceLocator instance;
+	return &instance;
 }
 
 // return GraphicService ptr
 GraphicService* ServiceLocator::getGraphicService() {
 	return graphicService;
+}
+EventService* ServiceLocator::getEventService() {
+	return eventService;
 }
 #pragma endregion

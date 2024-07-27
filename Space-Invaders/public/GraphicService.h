@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include "SFML/Graphics/RenderWindow.hpp"
 class GraphicService {
 
 	private:
@@ -25,5 +25,6 @@ class GraphicService {
 	void render(); // render: render the latest drawn images to the frame
 	bool isGameWindowOpen(); // return true if the game window is open
 	sf::RenderWindow* getGameWindow(); // return game window
+	void closeGameWindow();
 
 };

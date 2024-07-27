@@ -2,10 +2,12 @@
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 #include "./GraphicService.h"
+#include "./EventService.h"
 
 class ServiceLocator {
     private:
     GraphicService* graphicService;
+    EventService* eventService;
 
     // Constructor for initializing the ServiceLocator.
     ServiceLocator();
@@ -21,14 +23,13 @@ class ServiceLocator {
 
     // Public Methods:
     static ServiceLocator* getInstance();  // Provides a method to access the unique ServiceLocator instance (object). We will discuss this later.
-    static void deleteInstance(ServiceLocator* serviceLocator);
 
     void initialize(); 			//	Initializes the ServiceLocator.
     void update(); 				//	Updates all services.
     void render(); 				//	Renders using the services.
 
     // Methods to Get Specific Services: 
-    //EventService* getEventService();   // Retrieve the EventService instance
+    EventService* getEventService();   // Retrieve the EventService instance
     GraphicService* getGraphicService();   // Retrieve the GraphicService instance
 
 };

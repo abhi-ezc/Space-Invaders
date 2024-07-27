@@ -132,12 +132,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="private\EventService.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="private\GameService.cpp" />
     <ClCompile Include="private\GraphicService.cpp" />
     <ClCompile Include="private\ServiceLocator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="public\EventService.h" />
     <ClInclude Include="public\GraphicService.h" />
     <ClInclude Include="public\ServiceLocator.h" />
     <ClInclude Include="public\GameService.h" />
