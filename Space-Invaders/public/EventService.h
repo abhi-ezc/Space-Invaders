@@ -1,6 +1,7 @@
 #pragma once
 #include "SFML/Window/Event.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
+#include <iostream>
 class EventService {
 	private:
 	sf::Event gameEvent; // for polling game events
@@ -19,6 +20,7 @@ class EventService {
 	void processEvents();
 	bool pressedEscapeKey();
 	bool isKeyboardEvent();
-	
+	bool isLeftKeyPressed();
+	bool isRightKeyPressed();
 };
 

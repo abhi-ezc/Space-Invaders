@@ -38,6 +38,14 @@ bool EventService::isKeyboardEvent() {
     return gameEvent.type == sf::Event::KeyPressed;
 }
 
+bool EventService::isLeftKeyPressed() {
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
+}
+
+bool EventService::isRightKeyPressed() {
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
+}
+
 bool EventService::isGameWindowOpen() {
     return gameWindow->isOpen();
 }

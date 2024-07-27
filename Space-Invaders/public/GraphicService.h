@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SFML/Graphics/RenderWindow.hpp"
+#include "SFML/Graphics/Drawable.hpp"
 class GraphicService {
 
 	private:
@@ -8,6 +9,7 @@ class GraphicService {
 	const int gameWindowWidth =800; // Game Window Width
 	const int gameWindowHeight = 640; // Game Window Height
 	const sf::Color windowColor = sf::Color::Blue; // Color to clear GameWindow with
+	const int frameLimit = 60;
 
 	sf::VideoMode* videoMode; // video mode pointer
 	sf::RenderWindow* gameWindow; // game window pointer
@@ -26,5 +28,6 @@ class GraphicService {
 	bool isGameWindowOpen(); // return true if the game window is open
 	sf::RenderWindow* getGameWindow(); // return game window
 	void closeGameWindow();
+	void draw(sf::Drawable &drawable);
 
 };
