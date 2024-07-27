@@ -4,78 +4,71 @@
 
 #pragma region Life Cycle Functions
 
-PlayerService::PlayerService() {
-	gameWindow = nullptr;
-	health = 100;
-	playerScore = 0;
-	movementSpeed = 5;
-	position = sf::Vector2f(200.f, 100.f);
+PlayerService::PlayerService()
+{
+    gameWindow = nullptr;
+    health = 100;
+    playerScore = 0;
+    movementSpeed = 320.f;
+    position = sf::Vector2f(200.f, 100.f);
 }
 
 PlayerService::~PlayerService() = default;
 
-void PlayerService::initialize() {
-	initializePlayerSprite();
-	gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+void PlayerService::initialize()
+{
+    initializePlayerSprite();
+    gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 }
 
 
-void PlayerService::update() {
-	processPlayerInput();
-	updatePlayerPosition();
+void PlayerService::update()
+{
+    processPlayerInput();
+    updatePlayerPosition();
 }
 
-void PlayerService::render() {
-	ServiceLocator::getInstance()->getGraphicService()->getGameWindow()->draw(sprite);
-}
+void PlayerService::render() { ServiceLocator::getInstance()->getGraphicService()->getGameWindow()->draw(sprite); }
 
 #pragma endregion
 
 #pragma region Operations
 
-void PlayerService::initializePlayerSprite() {
-	texture.loadFromFile(texturePath);
-	sprite.setTexture(texture);
+void PlayerService::initializePlayerSprite()
+{
+    texture.loadFromFile(texturePath);
+    sprite.setTexture(texture);
 }
 
-void PlayerService::updatePlayerPosition() {
-	sprite.setPosition(position);
+void PlayerService::updatePlayerPosition() { sprite.setPosition(position); }
+
+void PlayerService::processPlayerInput()
+{
+    EventService* eventService = ServiceLocator::getInstance()->getEventService();
+    if (eventService->isLeftKeyPressed()) { moveLeft(); }
+    else if (eventService->isRightKeyPressed()) { moveRight(); }
+    else
+    {
+        // do nothing
+    }
 }
 
-void PlayerService::processPlayerInput() {
-	EventService* eventService = ServiceLocator::getInstance()->getEventService();
-		if( eventService->isLeftKeyPressed() )
-		{
-			move(movementSpeed * -1.f);
-		}
-		else if( eventService->isRightKeyPressed() )
-		{
-			move(movementSpeed);
-		}
-		else
-		{
-			// do nothing
-		}
+void PlayerService::moveLeft()
+{
+    position.x -= (movementSpeed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime());
 }
 
-void PlayerService::move(float offset) {
-	position.x += offset;
-
+void PlayerService::moveRight()
+{
+    position.x += (movementSpeed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime());
 }
 
-void PlayerService::shootBullets() {
+void PlayerService::shootBullets() {}
 
-}
-
-void PlayerService::takeDamage() {
-
-}
+void PlayerService::takeDamage() {}
 
 #pragma endregion
 
 #pragma region Getter Functions
 
 #pragma endregion
-
-
-
