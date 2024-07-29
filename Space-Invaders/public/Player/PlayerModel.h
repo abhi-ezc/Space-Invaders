@@ -19,6 +19,8 @@ class PlayerModel {
 
 	public:
 	const float movementSpeed = 350.0f;
+	const float leftMostPosition = 50.f;
+	const float rightMostPosition = 800.f;
 
 	// constructor & destructor
 	PlayerModel();
@@ -41,4 +43,5 @@ class PlayerModel {
 	// setters
 	void setPlayerState(PlayerState newPlayerState);
 	void setPlayerScore(int score);
+	void setPlayerPosition(sf::Vector2f position);
 };
