@@ -1,12 +1,10 @@
-#include "./../../public/Player/PlayerModel.h"
+#include "./../../public/player/PlayerModel.h"
 
 PlayerModel::PlayerModel() {
 
 }
 
-PlayerModel::~PlayerModel() {
-
-}
+PlayerModel::~PlayerModel() = default;
 
 void PlayerModel::initialize() {
 	reset(); // setting up initial variables
@@ -46,4 +44,8 @@ void PlayerModel::setPlayerState(PlayerState newPlayerState) {
 
 void PlayerModel::setPlayerScore(int score) {
 	playerScore = score;
+}
+
+void PlayerModel::setPlayerPosition(sf::Vector2f position) { 
+	currentPlayerPosition = position;
 }
