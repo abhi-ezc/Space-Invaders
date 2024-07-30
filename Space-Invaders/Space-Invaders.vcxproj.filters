@@ -18,19 +18,19 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="private\GameService.cpp">
+    <ClCompile Include="private\main\GameService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="private\ServiceLocator.cpp">
+    <ClCompile Include="private\global\ServiceLocator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="private\GraphicService.cpp">
+    <ClCompile Include="private\graphic\GraphicService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="private\EventService.cpp">
+    <ClCompile Include="private\event\EventService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="private\PlayerService.cpp">
+    <ClCompile Include="private\player\PlayerService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="private\player\PlayerController.cpp">
@@ -42,24 +42,24 @@
     <ClCompile Include="private\player\PlayerView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="private\TimeService.cpp">
+    <ClCompile Include="private\time\TimeService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="public\GameService.h">
+    <ClInclude Include="public\main\GameService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="public\ServiceLocator.h">
+    <ClInclude Include="public\global\ServiceLocator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="public\GraphicService.h">
+    <ClInclude Include="public\graphic\GraphicService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="public\EventService.h">
+    <ClInclude Include="public\event\EventService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="public\PlayerService.h">
+    <ClInclude Include="public\player\PlayerService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="public\player\PlayerController.h">
@@ -71,7 +71,7 @@
     <ClInclude Include="public\player\PlayerView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="public\TimeService.h">
+    <ClInclude Include="public\time\TimeService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

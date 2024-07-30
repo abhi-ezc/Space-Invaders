@@ -1,5 +1,5 @@
 #pragma once
-#include "./player/PlayerController.h"
+class PlayerController;
 
 class PlayerService
 {

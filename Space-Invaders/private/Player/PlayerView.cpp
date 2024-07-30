@@ -1,5 +1,7 @@
 #include "./../../public/player/PlayerView.h"
-#include "./../../public/ServiceLocator.h"
+#include "./../../public/global/ServiceLocator.h"
+#include "./../../public/player/PlayerController.h"
+#include "./../../public/graphic/GraphicService.h"
 
 PlayerView::PlayerView() {
 	gameWindow = nullptr;
@@ -24,10 +26,10 @@ void PlayerView::render() {
 }
 
 void PlayerView::setPlayerScale() { 
-	float x = spriteWidth / sprite.getTexture()->getSize().x;
-	float y = spriteHeight / sprite.getTexture()->getSize().y;
+	float x = static_cast<float>( spriteWidth / sprite.getTexture()->getSize().x );
+	float y = static_cast<float>( spriteHeight / sprite.getTexture()->getSize().y );
 
-	sprite.setScale(x, y);
+	//sprite.setScale(x, y);
 }
 
 void PlayerView::createPlayerSprite() {

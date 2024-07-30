@@ -1,5 +1,5 @@
 #pragma once
-#include "./../public/GraphicService.h"
+#include "./../../public/graphic/GraphicService.h"
 
 #pragma region Life Cycle Functions
 

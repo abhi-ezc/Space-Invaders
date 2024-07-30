@@ -1,5 +1,9 @@
 #include "./../../public/player/PlayerController.h" 
-#include "./../../public/ServiceLocator.h"
+#include "./../../public/global/ServiceLocator.h"
+#include "./../../public/time/TimeService.h"
+#include "./../../public/player/PlayerView.h"
+#include "./../../public/player/PlayerModel.h"
+
 
 #pragma region Life Cycle methods
 PlayerController::PlayerController() {
@@ -14,7 +18,7 @@ PlayerController::~PlayerController() {
 
 void PlayerController::initialize() {
 	playerModel->initialize();
-	playerView->initialize();
+	playerView->initialize(this);
 }
 
 void PlayerController::update() {
@@ -55,9 +59,9 @@ void PlayerController::moveLeft() {
 
 void PlayerController::moveRight() {
 	sf::Vector2f currentPosition = playerModel->getPlayerPosition();
-	currentPosition.x+= playerModel->movementSpeed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+	currentPosition.x += playerModel->movementSpeed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
-	currentPosition.x = std::max(currentPosition.x, playerModel->rightMostPosition);
+	currentPosition.x = std::min(currentPosition.x, playerModel->rightMostPosition);
 	playerModel->setPlayerPosition(currentPosition);
 }
 #pragma endregion
