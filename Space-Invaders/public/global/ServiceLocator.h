@@ -1,10 +1,11 @@
 #pragma once
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
-#include "./GraphicService.h"
-#include "./EventService.h"
-#include "./PlayerService.h"
-#include "./TimeService.h"
+class GraphicService;
+class EventService;
+class PlayerService;
+class TimeService;
+
 
 class ServiceLocator
 {

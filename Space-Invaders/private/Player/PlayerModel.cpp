@@ -1,7 +1,8 @@
 #include "./../../public/player/PlayerModel.h"
 
 PlayerModel::PlayerModel() {
-
+	playerScore = 0;
+	playerState = PlayerState::LIMBO;
 }
 
 PlayerModel::~PlayerModel() = default;

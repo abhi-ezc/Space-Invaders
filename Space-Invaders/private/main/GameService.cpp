@@ -1,4 +1,7 @@
-#include "../public/GameService.h"
+#include "../../public/main/GameService.h"
+#include "../../public/global/ServiceLocator.h"
+#include "../../public/graphic/GraphicService.h"
+
 
 #pragma region Life Cycle Functions
 

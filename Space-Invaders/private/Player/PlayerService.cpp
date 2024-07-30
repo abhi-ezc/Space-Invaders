@@ -1,5 +1,6 @@
 #pragma once
-#include "./../public/PlayerService.h"
+#include "./../../public/player/PlayerController.h"
+#include "./../../public/player/PlayerService.h"
 
 #pragma region Life Cycle Functions
 

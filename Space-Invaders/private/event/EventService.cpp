@@ -1,6 +1,6 @@
-#include "../public/EventService.h"
-#include "../public/ServiceLocator.h"
-
+#include "../../public/event/EventService.h"
+#include "../../public/global/ServiceLocator.h"
+#include "../../public/graphic/GraphicService.h"
 
 // constructor
 EventService::EventService() { 

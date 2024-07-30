@@ -1,6 +1,8 @@
 #pragma once
-#include "./PlayerModel.h"
-#include "./PlayerView.h"
+#include "SFML/System/Vector2.hpp"
+
+class PlayerModel;
+class PlayerView;
 
 class PlayerController {
 	private:

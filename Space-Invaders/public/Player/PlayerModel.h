@@ -1,7 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 
-
 // player state enum
 enum class PlayerState {
 	ALIVE,
@@ -20,7 +19,7 @@ class PlayerModel {
 	public:
 	const float movementSpeed = 350.0f;
 	const float leftMostPosition = 50.f;
-	const float rightMostPosition = 800.f;
+	const float rightMostPosition = 650.f;
 
 	// constructor & destructor
 	PlayerModel();

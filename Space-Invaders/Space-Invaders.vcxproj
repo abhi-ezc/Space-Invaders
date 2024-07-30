@@ -132,16 +132,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="private\EventService.cpp" />
+    <ClCompile Include="private\event\EventService.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="private\GameService.cpp" />
-    <ClCompile Include="private\GraphicService.cpp" />
-    <ClCompile Include="private\PlayerService.cpp" />
+    <ClCompile Include="private\main\GameService.cpp" />
+    <ClCompile Include="private\graphic\GraphicService.cpp" />
+    <ClCompile Include="private\player\PlayerService.cpp" />
     <ClCompile Include="private\player\PlayerController.cpp" />
     <ClCompile Include="private\player\PlayerModel.cpp" />
     <ClCompile Include="private\player\PlayerView.cpp" />
-    <ClCompile Include="private\ServiceLocator.cpp" />
-    <ClCompile Include="private\TimeService.cpp">
+    <ClCompile Include="private\global\ServiceLocator.cpp" />
+    <ClCompile Include="private\time\TimeService.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -218,15 +218,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="public\EventService.h" />
-    <ClInclude Include="public\GraphicService.h" />
-    <ClInclude Include="public\PlayerService.h" />
+    <ClInclude Include="public\event\EventService.h" />
+    <ClInclude Include="public\graphic\GraphicService.h" />
+    <ClInclude Include="public\player\PlayerService.h" />
     <ClInclude Include="public\player\PlayerController.h" />
     <ClInclude Include="public\player\PlayerModel.h" />
     <ClInclude Include="public\player\PlayerView.h" />
-    <ClInclude Include="public\ServiceLocator.h" />
-    <ClInclude Include="public\GameService.h" />
-    <ClInclude Include="public\TimeService.h" />
+    <ClInclude Include="public\global\ServiceLocator.h" />
+    <ClInclude Include="public\main\GameService.h" />
+    <ClInclude Include="public\time\TimeService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
