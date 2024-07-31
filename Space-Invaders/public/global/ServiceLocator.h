@@ -1,19 +1,32 @@
 #pragma once
 
-// ServiceLocator Class Summary: This class manages access to various services in the application.
-class GraphicService;
-class EventService;
-class PlayerService;
-class TimeService;
-
-
-class ServiceLocator
+namespace Graphic
 {
-    private:
-        GraphicService* graphicService;
-        EventService* eventService;
-        PlayerService* playerService;
-        TimeService* timeService;
+    class GraphicService;
+}
+namespace Event
+{
+    class EventService;
+}
+namespace Player
+{
+    class PlayerService;
+}
+namespace Time
+{
+    class TimeService;
+}
+
+namespace Global
+{
+
+    // ServiceLocator Class Summary: This class manages access to various services in the application.
+    class ServiceLocator {
+        private:
+        Graphic::GraphicService* graphicService;
+        Event::EventService* eventService;
+        Player::PlayerService* playerService;
+        Time::TimeService* timeService;
 
         // Constructor for initializing the ServiceLocator.
         ServiceLocator();
@@ -25,7 +38,7 @@ class ServiceLocator
         void createServices(); // Creates instances of all services.
         void clearAllServices(); //	Deletes and deallocates memory for all services.
 
-    public:
+        public:
         // Public Methods:
         static ServiceLocator* getInstance();
         // Provides a method to access the unique ServiceLocator instance (object). We will discuss this later.
@@ -35,8 +48,11 @@ class ServiceLocator
         void render(); // Renders using the services.
 
         // Methods to Get Specific Services: 
-        EventService* getEventService(); // Retrieve the EventService instance
-        GraphicService* getGraphicService(); // Retrieve the GraphicService instance
-        PlayerService* getPlayerService(); // Retrieve the PlayerService instance
-        TimeService* getTimeService();
-};
+        Event::EventService* getEventService(); // Retrieve the EventService instance
+        Graphic::GraphicService* getGraphicService(); // Retrieve the GraphicService instance
+        Player::PlayerService* getPlayerService(); // Retrieve the PlayerService instance
+        Time::TimeService* getTimeService();
+    };
+}
+
+

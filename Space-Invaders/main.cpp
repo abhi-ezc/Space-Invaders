@@ -1,6 +1,7 @@
 #include<iostream>
 #include "./public/main/GameService.h"
 
+using namespace Main;
 int main() {
 	GameService* gameService = new GameService();
 	gameService->ignite();
