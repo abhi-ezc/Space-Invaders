@@ -16,6 +16,10 @@ namespace Time
 {
     class TimeService;
 }
+namespace UI
+{
+    class UIService;
+}
 
 namespace Global
 {
@@ -27,6 +31,7 @@ namespace Global
         Event::EventService* eventService;
         Player::PlayerService* playerService;
         Time::TimeService* timeService;
+        UI::UIService* uiService;
 
         // Constructor for initializing the ServiceLocator.
         ServiceLocator();
@@ -52,6 +57,7 @@ namespace Global
         Graphic::GraphicService* getGraphicService(); // Retrieve the GraphicService instance
         Player::PlayerService* getPlayerService(); // Retrieve the PlayerService instance
         Time::TimeService* getTimeService();
+        UI::UIService* getUIService();
     };
 }
 
