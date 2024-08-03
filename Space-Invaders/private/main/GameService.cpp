@@ -6,6 +6,8 @@ namespace Main
 {
 	using namespace Global;
 
+	GameState GameService::gameState = GameState::BOOT;
+
 #pragma region Life Cycle Functions
 
 	// constructors initializing pointers
@@ -46,6 +48,9 @@ namespace Main
 
 #pragma region Operations
 	void GameService::destroy() { }
+	void GameService::setGameState(GameState state) { 
+		gameState = state;
+	}
 #pragma endregion
 
 
@@ -56,6 +61,9 @@ namespace Main
 			return gameWindow->isOpen();
 		}
 		return false;
+	}
+	GameState GameService::getGameState() {
+		return gameState;
 	}
 #pragma endregion
 
