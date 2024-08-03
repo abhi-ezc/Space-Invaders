@@ -3,6 +3,7 @@
 #include "../../public/graphic/GraphicService.h"
 #include "../../public/player/PlayerService.h"
 #include "../../public/time/TimeService.h"
+#include "../../public/ui/UIService.h";
 
 namespace Global
 {
@@ -10,6 +11,7 @@ namespace Global
     using namespace Event;
     using namespace Player;
     using namespace Time;
+    using namespace UI;
 
     #pragma region Life Cycle Functions
 
@@ -27,6 +29,7 @@ namespace Global
         eventService->initialize();
         playerService->initialize();
         timeService->initialize();
+        uiService->initialize();
     }
 
     void ServiceLocator::update()
@@ -36,6 +39,7 @@ namespace Global
         eventService->update();
         playerService->update();
         timeService->update();
+        uiService->update();
     }
 
     void ServiceLocator::render()
@@ -43,6 +47,7 @@ namespace Global
         // render using the services
         playerService->render();
         graphicService->render();
+        uiService->render();
     }
 
     // destructor
@@ -62,6 +67,7 @@ namespace Global
         eventService = new EventService();
         playerService = new PlayerService();
         timeService = new TimeService();
+        uiService = new UIService();
     }
 
     void ServiceLocator::clearAllServices()
@@ -71,6 +77,7 @@ namespace Global
         delete eventService;
         delete playerService;
         delete timeService;
+        delete uiService;
     }
     #pragma endregion
 
@@ -85,9 +92,16 @@ namespace Global
 
     // return GraphicService ptr
     GraphicService* ServiceLocator::getGraphicService() { return graphicService; }
+    
     EventService* ServiceLocator::getEventService() { return eventService; }
+    
     PlayerService* ServiceLocator::getPlayerService() { return playerService; }
+
     TimeService* ServiceLocator::getTimeService() { return timeService; }
+
+    UIService* ServiceLocator::getUIService() {
+        return uiService;
+    }
 
     #pragma endregion
 
