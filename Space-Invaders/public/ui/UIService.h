@@ -8,7 +8,7 @@ namespace UI
 
 	class UIService {
 		private:
-		MainmenuUIController* mainmenuUIController;
+		MainMenu::MainmenuUIController* mainmenuUIController;
 
 		void createContollers();
 		void cleanUpControllers();
@@ -21,7 +21,7 @@ namespace UI
 		void update();
 		void render();
 
-		MainmenuUIController* getMainmenuController();
+		MainMenu::MainmenuUIController* getMainmenuController();
 		
 	};
 }

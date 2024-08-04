@@ -8,9 +8,9 @@ namespace Graphic
 
 		private:
 		sf::String windowTitle = "Space Invaders"; // window title
-		const int gameWindowWidth = 800; // Game Window Width
-		const int gameWindowHeight = 640; // Game Window Height
-		const sf::Color windowColor = sf::Color::Blue; // Color to clear GameWindow with
+		const int gameWindowWidth = 1920; // Game Window Width
+		const int gameWindowHeight = 1080; // Game Window Height
+		const sf::Color windowColor = sf::Color::Black; // Color to clear GameWindow with
 		const int frameLimit = 60;
 
 		sf::VideoMode* videoMode; // video mode pointer

@@ -216,6 +216,8 @@
       <AdditionalIncludeDirectories>E:\SFML Projects\Outscal\Space-Invaders\Space-Invaders\sfml\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="private\ui\MainmenuUIController\MainmenuUIController.cpp" />
+    <ClCompile Include="private\ui\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\event\EventService.h" />
@@ -227,6 +229,8 @@
     <ClInclude Include="public\global\ServiceLocator.h" />
     <ClInclude Include="public\main\GameService.h" />
     <ClInclude Include="public\time\TimeService.h" />
+    <ClInclude Include="public\ui\MainmenuUIController\MainmenuUIController.h" />
+    <ClInclude Include="public\ui\UIService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -46,8 +46,8 @@ namespace Global
     {
         // render using the services
         playerService->render();
-        graphicService->render();
         uiService->render();
+        graphicService->render();
     }
 
     // destructor

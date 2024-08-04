@@ -45,6 +45,12 @@
     <ClCompile Include="private\time\TimeService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="private\ui\UIService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\ui\MainmenuUIController\MainmenuUIController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\main\GameService.h">
@@ -72,6 +78,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="public\time\TimeService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\ui\UIService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\ui\MainmenuUIController\MainmenuUIController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,7 +13,7 @@ namespace Player
 	// player model class
 	class PlayerModel {
 		private:
-		const sf::Vector2f initialPlayerPosition = sf::Vector2f(500.f, 500.f);
+		const sf::Vector2f initialPlayerPosition = sf::Vector2f(950.f, 950.f);
 		sf::Vector2f currentPlayerPosition;
 		PlayerState playerState;
 		int playerScore;
@@ -21,7 +21,7 @@ namespace Player
 		public:
 		const float movementSpeed = 350.0f;
 		const float leftMostPosition = 50.f;
-		const float rightMostPosition = 650.f;
+		const float rightMostPosition = 1800.f;
 
 		// constructor & destructor
 		PlayerModel();

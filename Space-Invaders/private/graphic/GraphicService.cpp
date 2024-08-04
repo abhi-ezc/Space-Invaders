@@ -40,7 +40,7 @@ namespace Graphic
         setVideoMode();
 
         // create a RenderWindow Object and assigns the address to gameWindow ptr
-        gameWindow = new sf::RenderWindow(*videoMode, windowTitle, sf::Style::Close);
+        gameWindow = new sf::RenderWindow(*videoMode, windowTitle, sf::Style::Fullscreen);
 
         // setting up frame limit for the window
         gameWindow->setFramerateLimit(frameLimit);
