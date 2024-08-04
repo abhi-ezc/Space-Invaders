@@ -3,10 +3,13 @@
 #include "./../../public/time/TimeService.h"
 #include "./../../public/player/PlayerView.h"
 #include "./../../public/player/PlayerModel.h"
+#include "./../../public/event/EventService.h"
 
 namespace Player
 {
 	using namespace Global;
+	using namespace Event;
+
 #pragma region Life Cycle methods
 	PlayerController::PlayerController() {
 		playerModel = new PlayerModel();
@@ -38,11 +41,14 @@ namespace Player
 
 #pragma region Operations
 	void PlayerController::processPlayerInputs() {
-		if( sf::Keyboard::isKeyPressed(sf::Keyboard::Left) )
+
+		EventService* eventService = ServiceLocator::getInstance()->getEventService();
+
+		if( eventService->isLeftKeyPressed() || eventService->isAKeyPressed() )
 		{
 			moveLeft();
 		}
-		else if( sf::Keyboard::isKeyPressed(sf::Keyboard::Right) )
+		else if( eventService->isRightKeyPressed() || eventService->isDKeyPressed() )
 		{
 			moveRight();
 		}
