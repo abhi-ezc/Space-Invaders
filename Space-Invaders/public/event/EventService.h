@@ -24,6 +24,8 @@ namespace Event
 		bool isKeyboardEvent();
 		bool isLeftKeyPressed();
 		bool isRightKeyPressed();
+		bool isLeftMouseButtonPressed();
+		bool isRightMouseButtonPressed();
 	};
 }
 

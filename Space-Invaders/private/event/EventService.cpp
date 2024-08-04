@@ -49,6 +49,14 @@ namespace Event
         return sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
     }
 
+    bool EventService::isLeftMouseButtonPressed() {
+        return  gameEvent.type == sf::Event::MouseButtonPressed && gameEvent.mouseButton.button == sf::Mouse::Left;
+    }
+
+    bool EventService::isRightMouseButtonPressed() {
+        return  gameEvent.type == sf::Event::MouseButtonPressed && gameEvent.mouseButton.button == sf::Mouse::Right;
+    }
+
     bool EventService::isGameWindowOpen() {
         return gameWindow->isOpen();
     }

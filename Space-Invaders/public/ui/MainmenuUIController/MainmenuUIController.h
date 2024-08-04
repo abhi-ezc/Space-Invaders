@@ -47,6 +47,12 @@ namespace UI
 			void initialize();
 			void update();
 			void render();
+
+			void processButtonInteractions();
+			bool isButtonClick(sf::Sprite* spr_button,sf::Vector2i mousePosition);
+			void onPlayButtonClick();
+			void onInstructionButtonClick();
+			void onQuitButtonClick();
 		};
 	}
 }

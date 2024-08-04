@@ -18,11 +18,7 @@ namespace Time
     void TimeService::updateDeltaTime() {
         deltaTime = calculateDeltaTime();
         updatePreviousTime();
-
-        std::cout << "\nclock elapsed : " << clock.getElapsedTime().asSeconds() << std::endl;
         clock.restart();
-        std::cout << "\nchrono elapsed : " << deltaTime;
-        std::cout << "\n----------------------------\n";
     }
 
     float TimeService::calculateDeltaTime() {

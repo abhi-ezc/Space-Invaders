@@ -1,8 +1,10 @@
 #include "./../../public/ui/UIService.h"
 #include "./../../public/ui/MainmenuUIController/MainmenuUIController.h"
+#include "./../../public/main/GameService.h"
 
 using namespace UI;
 using namespace MainMenu;
+using namespace Main;
 
 UIService::UIService() {
 	createContollers();
@@ -17,11 +19,17 @@ void UIService::initialize() {
 }
 
 void UIService::update() {
-	mainmenuUIController->update();
+	if( GameService::getGameState() == GameState::MAIN_MENU )
+	{
+		mainmenuUIController->update();
+	}
 }
 
 void UIService::render() {
-	mainmenuUIController->render();
+	if( GameService::getGameState() == GameState::MAIN_MENU )
+	{
+		mainmenuUIController->render();
+	}
 }
 
 void UI::UIService::createContollers() {
