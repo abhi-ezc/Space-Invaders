@@ -91,7 +91,7 @@ namespace UI
 		}
 
 		void MainmenuUIController::update() {
-			onButtonClick();
+			processButtonInteractions();
 		}
 
 		void MainmenuUIController::render() {

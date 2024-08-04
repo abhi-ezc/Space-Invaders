@@ -4,14 +4,28 @@
 
 namespace Event
 {
+	enum class ButtonState {
+		PRESSED,
+		HELD,
+		RELEASED
+	};
+
 	class EventService {
 		private:
 		sf::Event gameEvent; // for polling game events
 		sf::RenderWindow* gameWindow; // accessing game window
+		ButtonState button_state_left_mouse_button;
+		ButtonState button_state_right_mouse_button;
+		ButtonState button_state_left_arrow_key;
+		ButtonState button_state_right_arrow_key;
+		ButtonState button_state_A_key;
+		ButtonState button_state_D_key;
 
 		bool isGameWindowOpen();
 		bool gameWindowWasClosed(); //for the condition we already had - the title bar cross.
 		bool hasQuitGame(); //for our new 'ESC' condition
+		void updateButtonState(ButtonState& buttonState, sf::Mouse::Button mouseButton);
+		void updateButtonState(ButtonState& buttonState, sf::Keyboard::Key keyboardButton);
 
 		public:
 		EventService();
@@ -24,6 +38,8 @@ namespace Event
 		bool isKeyboardEvent();
 		bool isLeftKeyPressed();
 		bool isRightKeyPressed();
+		bool isAKeyPressed();
+		bool isDKeyPressed();
 		bool isLeftMouseButtonPressed();
 		bool isRightMouseButtonPressed();
 	};
