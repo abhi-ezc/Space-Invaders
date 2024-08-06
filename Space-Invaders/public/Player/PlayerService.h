@@ -4,18 +4,17 @@ namespace Player
 {
     class PlayerController;
 
-    class PlayerService {
+    class PlayerService
+    {
         private:
-
-        PlayerController* playerController;
+            PlayerController* m_player_controller;
 
         public:
-        PlayerService();
-        ~PlayerService();
+            PlayerService();
+            ~PlayerService();
 
-        void initialize();
-        void update();
-        void render();
+            void initialize();
+            void update();
+            void render();
     };
 }
-

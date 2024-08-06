@@ -3,7 +3,8 @@
 #include "../../public/graphic/GraphicService.h"
 #include "../../public/player/PlayerService.h"
 #include "../../public/time/TimeService.h"
-#include "../../public/ui/UIService.h";
+#include "../../public/ui/UIService.h"
+#include "../../public/enemy/EnemyService.h"
 
 namespace Global
 {
@@ -12,6 +13,7 @@ namespace Global
     using namespace Player;
     using namespace Time;
     using namespace UI;
+    using namespace Enemy;
 
     #pragma region Life Cycle Functions
 
@@ -25,29 +27,32 @@ namespace Global
     void ServiceLocator::initialize()
     {
         // initialize service locator
-        graphicService->initialize();
-        eventService->initialize();
-        playerService->initialize();
-        timeService->initialize();
-        uiService->initialize();
+        m_graphic_service->initialize();
+        m_event_service->initialize();
+        m_player_service->initialize();
+        m_time_service->initialize();
+        m_ui_service->initialize();
+        m_enemy_service->initialize();
     }
 
     void ServiceLocator::update()
     {
         // update all the services
-        graphicService->update();
-        eventService->update();
-        playerService->update();
-        timeService->update();
-        uiService->update();
+        m_graphic_service->update();
+        m_event_service->update();
+        m_player_service->update();
+        m_time_service->update();
+        m_ui_service->update();
+        m_enemy_service->update();
     }
 
     void ServiceLocator::render()
     {
         // render using the services
-        playerService->render();
-        uiService->render();
-        graphicService->render();
+        m_player_service->render();
+        m_enemy_service->render();
+        m_ui_service->render();
+        m_graphic_service->render();
     }
 
     // destructor
@@ -63,21 +68,23 @@ namespace Global
     void ServiceLocator::createServices()
     {
         // creating services required for the game
-        graphicService = new GraphicService();
-        eventService = new EventService();
-        playerService = new PlayerService();
-        timeService = new TimeService();
-        uiService = new UIService();
+        m_graphic_service = new GraphicService();
+        m_event_service = new EventService();
+        m_player_service = new PlayerService();
+        m_time_service = new TimeService();
+        m_ui_service = new UIService();
+        m_enemy_service = new EnemyService();
     }
 
     void ServiceLocator::clearAllServices()
     {
         // deallocate all the services and cleanup resources used by the services
-        delete graphicService;
-        delete eventService;
-        delete playerService;
-        delete timeService;
-        delete uiService;
+        delete m_graphic_service;
+        delete m_event_service;
+        delete m_player_service;
+        delete m_time_service;
+        delete m_ui_service;
+        delete m_enemy_service;
     }
     #pragma endregion
 
@@ -91,18 +98,18 @@ namespace Global
     }
 
     // return GraphicService ptr
-    GraphicService* ServiceLocator::getGraphicService() { return graphicService; }
-    
-    EventService* ServiceLocator::getEventService() { return eventService; }
-    
-    PlayerService* ServiceLocator::getPlayerService() { return playerService; }
+    GraphicService* ServiceLocator::getGraphicService() { return m_graphic_service; }
 
-    TimeService* ServiceLocator::getTimeService() { return timeService; }
+    EventService* ServiceLocator::getEventService() { return m_event_service; }
 
-    UIService* ServiceLocator::getUIService() {
-        return uiService;
-    }
+    PlayerService* ServiceLocator::getPlayerService() { return m_player_service; }
+
+    TimeService* ServiceLocator::getTimeService() { return m_time_service; }
+
+    UIService* ServiceLocator::getUIService() { return m_ui_service; }
+
+    Enemy::EnemyService* ServiceLocator::getEnemyService() { return m_enemy_service; }
+
 
     #pragma endregion
-
 }

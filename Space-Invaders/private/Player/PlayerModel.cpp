@@ -2,55 +2,41 @@
 
 namespace Player
 {
-	PlayerModel::PlayerModel() {
-		playerScore = 0;
-		playerState = PlayerState::LIMBO;
-	}
+    PlayerModel::PlayerModel()
+    {
+        m_player_score = 0;
+        m_player_state = PlayerState::LIMBO;
+    }
 
-	PlayerModel::~PlayerModel() = default;
+    PlayerModel::~PlayerModel() = default;
 
-	void PlayerModel::initialize() {
-		reset(); // setting up initial variables
-	}
+    void PlayerModel::initialize()
+    {
+        reset(); // setting up initial variables
+    }
 
-	void PlayerModel::update() {
+    void PlayerModel::update() { }
 
-	}
+    void PlayerModel::render() { }
 
-	void PlayerModel::render() { }
+    void PlayerModel::reset()
+    {
+        m_current_player_position = m_initial_player_position;
+        m_player_state = PlayerState::ALIVE;
+        m_player_score = 0;
+    }
 
-	void PlayerModel::reset() {
-		currentPlayerPosition = initialPlayerPosition;
-		playerState = PlayerState::ALIVE;
-		playerScore = 0;
-	}
+    sf::Vector2f PlayerModel::getPlayerPosition() { return m_current_player_position; }
 
-	sf::Vector2f PlayerModel::getPlayerPosition() {
-		return currentPlayerPosition;
-	}
+    bool PlayerModel::isPlayerAlive() { return m_player_state == PlayerState::ALIVE; }
 
-	bool PlayerModel::isPlayerAlive() {
-		return playerState == PlayerState::ALIVE;
-	}
+    PlayerState PlayerModel::getPlayerState() { return m_player_state; }
 
-	PlayerState PlayerModel::getPlayerState() {
-		return playerState;
-	}
+    int PlayerModel::getPlayerScore() { return m_player_score; }
 
-	int PlayerModel::getPlayerScore() {
-		return playerScore;
-	}
+    void PlayerModel::setPlayerState(PlayerState newPlayerState) { m_player_state = newPlayerState; }
 
-	void PlayerModel::setPlayerState(PlayerState newPlayerState) {
-		playerState = newPlayerState;
-	}
+    void PlayerModel::setPlayerScore(int score) { m_player_score = score; }
 
-	void PlayerModel::setPlayerScore(int score) {
-		playerScore = score;
-	}
-
-	void PlayerModel::setPlayerPosition(sf::Vector2f position) {
-		currentPlayerPosition = position;
-	}
-
+    void PlayerModel::setPlayerPosition(sf::Vector2f position) { m_current_player_position = position; }
 }
