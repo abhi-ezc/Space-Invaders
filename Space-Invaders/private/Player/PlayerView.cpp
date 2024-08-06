@@ -5,45 +5,48 @@
 
 namespace Player
 {
-	using namespace Global;
-	PlayerView::PlayerView() {
-		gameWindow = nullptr;
-		playerController = nullptr;
-	}
+    using namespace Global;
 
-	PlayerView::~PlayerView() = default;
+    PlayerView::PlayerView()
+    {
+        m_game_window = nullptr;
+        m_player_controller = nullptr;
+    }
 
-	void PlayerView::initialize(PlayerController* controller) {
-		playerController = controller;
-		gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-		createPlayerSprite();
-	}
+    PlayerView::~PlayerView() = default;
 
-	void PlayerView::update() {
-		// setting the updated sprite position from playercontroller
-		sprite.setPosition(playerController->getPlayerPosition());
-	}
+    void PlayerView::initialize(PlayerController* controller)
+    {
+        m_player_controller = controller;
+        m_game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+        createPlayerSprite();
+    }
 
-	void PlayerView::render() {
-		ServiceLocator::getInstance()->getGraphicService()->draw(sprite);
-	}
+    void PlayerView::update()
+    {
+        // setting the updated sprite position from playercontroller
+        m_sprite.setPosition(m_player_controller->getPlayerPosition());
+    }
 
-	void PlayerView::setPlayerScale() {
-		float x = static_cast<float>( spriteWidth / sprite.getTexture()->getSize().x );
-		float y = static_cast<float>( spriteHeight / sprite.getTexture()->getSize().y );
+    void PlayerView::render() { ServiceLocator::getInstance()->getGraphicService()->draw(m_sprite); }
 
-		//sprite.setScale(x, y);
-	}
+    void PlayerView::setPlayerScale()
+    {
+        float x = static_cast<float>(m_sprite_width / m_sprite.getTexture()->getSize().x);
+        float y = static_cast<float>(m_sprite_height / m_sprite.getTexture()->getSize().y);
 
-	void PlayerView::createPlayerSprite() {
-		if( texture.loadFromFile(texturePath) )
-		{
-			sprite.setTexture(texture);
-			setPlayerScale();
-		}
-	}
+        //sprite.setScale(x, y);
+    }
 
-	sf::Sprite PlayerView::getPlayerSprite() {
-		return sprite;
-	}
+    void PlayerView::createPlayerSprite()
+    {
+        if (m_texture.loadFromFile(m_texture_path))
+        {
+            m_sprite.setTexture(m_texture);
+            setPlayerScale();
+            m_sprite.setPosition(m_player_controller->getPlayerPosition());
+        }
+    }
+
+    sf::Sprite PlayerView::getPlayerSprite() { return m_sprite; }
 }

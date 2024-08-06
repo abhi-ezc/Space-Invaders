@@ -3,47 +3,49 @@
 
 namespace Player
 {
-	// player state enum
-	enum class PlayerState {
-		ALIVE,
-		DEAD,
-		LIMBO
-	};
+    // player state enum
+    enum class PlayerState
+    {
+        ALIVE,
+        DEAD,
+        LIMBO
+    };
 
-	// player model class
-	class PlayerModel {
-		private:
-		const sf::Vector2f initialPlayerPosition = sf::Vector2f(950.f, 950.f);
-		sf::Vector2f currentPlayerPosition;
-		PlayerState playerState;
-		int playerScore;
+    // player model class
+    class PlayerModel
+    {
+        private:
+            const sf::Vector2f m_initial_player_position = sf::Vector2f(950.f, 950.f);
+            sf::Vector2f m_current_player_position;
+            PlayerState m_player_state;
+            int m_player_score;
 
-		public:
-		const float movementSpeed = 350.0f;
-		const float leftMostPosition = 50.f;
-		const float rightMostPosition = 1800.f;
+        public:
+            const float m_movement_speed = 350.0f;
+            const float m_left_most_position = 50.f;
+            const float m_right_most_position = 1800.f;
 
-		// constructor & destructor
-		PlayerModel();
-		~PlayerModel();
+            // constructor & destructor
+            PlayerModel();
+            ~PlayerModel();
 
-		// lifecycle methods
-		void initialize();
-		void update();
-		void render();
+            // lifecycle methods
+            void initialize();
+            void update();
+            void render();
 
-		// operator functions
-		void reset();
+            // operator functions
+            void reset();
 
-		// getters
-		sf::Vector2f getPlayerPosition();
-		bool isPlayerAlive();
-		PlayerState getPlayerState();
-		int getPlayerScore();
+            // getters
+            sf::Vector2f getPlayerPosition();
+            bool isPlayerAlive();
+            PlayerState getPlayerState();
+            int getPlayerScore();
 
-		// setters
-		void setPlayerState(PlayerState newPlayerState);
-		void setPlayerScore(int score);
-		void setPlayerPosition(sf::Vector2f position);
-	};
+            // setters
+            void setPlayerState(PlayerState newPlayerState);
+            void setPlayerScore(int score);
+            void setPlayerPosition(sf::Vector2f position);
+    };
 }

@@ -4,73 +4,61 @@
 
 namespace Main
 {
-	using namespace Global;
+    using namespace Global;
 
-	GameState GameService::gameState = GameState::BOOT;
+    GameState GameService::m_game_state = GameState::BOOT;
 
-#pragma region Life Cycle Functions
+    #pragma region Life Cycle Functions
 
-	// constructors initializing pointers
-	GameService::GameService() {
-		serviceLocator = nullptr;
-		gameWindow = nullptr;
-	}
+    // constructors initializing pointers
+    GameService::GameService()
+    {
+        m_service_locator = nullptr;
+        m_game_window = nullptr;
+    }
 
-	// destructors calls the destroy function for cleaning up the resources
-	GameService::~GameService() {
-		destroy();
-	}
+    // destructors calls the destroy function for cleaning up the resources
+    GameService::~GameService() { destroy(); }
 
-	void GameService::initialize() {
-		serviceLocator->initialize();
-		initializeVariables();
-		setGameState(GameState::MAIN_MENU); // show mainmenu
-	}
+    void GameService::initialize()
+    {
+        m_service_locator->initialize();
+        initializeVariables();
+        setGameState(GameState::MAIN_MENU); // show mainmenu
+    }
 
-	void GameService::initializeVariables() {
-		gameWindow = serviceLocator->getGraphicService()->getGameWindow();
-	}
+    void GameService::initializeVariables() { m_game_window = m_service_locator->getGraphicService()->getGameWindow(); }
 
-	void GameService::ignite() {
-		serviceLocator = ServiceLocator::getInstance();
-		initialize();
-	}
+    void GameService::ignite()
+    {
+        m_service_locator = ServiceLocator::getInstance();
+        initialize();
+    }
 
-	void GameService::update() {
-		serviceLocator->update();
-	}
+    void GameService::update() { m_service_locator->update(); }
 
-	void GameService::render() {
-		serviceLocator->render();
-	}
+    void GameService::render() { m_service_locator->render(); }
 
-#pragma endregion
+    #pragma endregion
 
 
-#pragma region Operations
-	void GameService::destroy() { }
-	void GameService::setGameState(GameState state) { 
-		gameState = state;
-	}
-#pragma endregion
+    #pragma region Operations
+    void GameService::destroy() { }
+    void GameService::setGameState(GameState state) { m_game_state = state; }
+    #pragma endregion
 
 
-#pragma region Getters
-	bool GameService::isRunning() {
-		if( gameWindow != nullptr )
-		{
-			return gameWindow->isOpen();
-		}
-		return false;
-	}
-	GameState GameService::getGameState() {
-		return gameState;
-	}
-#pragma endregion
+    #pragma region Getters
+    bool GameService::isRunning()
+    {
+        if (m_game_window != nullptr) { return m_game_window->isOpen(); }
+        return false;
+    }
 
-#pragma region TestCodes
+    GameState GameService::getGameState() { return m_game_state; }
+    #pragma endregion
 
-#pragma endregion
+    #pragma region TestCodes
 
+    #pragma endregion
 }
-

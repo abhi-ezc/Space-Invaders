@@ -1,27 +1,27 @@
 #pragma once
 namespace UI
 {
-	namespace MainMenu
-	{
-		class MainmenuUIController;
-	}
+    namespace MainMenu
+    {
+        class MainMenuUIController;
+    }
 
-	class UIService {
-		private:
-		MainMenu::MainmenuUIController* mainmenuUIController;
+    class UIService
+    {
+        private:
+            MainMenu::MainMenuUIController* m_main_menu_ui_controller;
 
-		void createContollers();
-		void cleanUpControllers();
+            void createControllers();
+            void cleanUpControllers();
 
-		public:
-		UIService();
-		~UIService();
-		
-		void initialize();
-		void update();
-		void render();
+        public:
+            UIService();
+            ~UIService();
 
-		MainMenu::MainmenuUIController* getMainmenuController();
-		
-	};
+            void initialize();
+            void update();
+            void render();
+
+            MainMenu::MainMenuUIController* getMainMenuController();
+    };
 }

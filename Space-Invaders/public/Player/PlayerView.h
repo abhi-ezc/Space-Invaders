@@ -6,39 +6,39 @@
 
 namespace Player
 {
-	class PlayerController;
+    class PlayerController;
 
-	class PlayerView {
-		private:
-		const sf::String texturePath = "assets/textures/player_ship.png";
-		sf::Texture texture;
-		sf::Sprite sprite;
+    class PlayerView
+    {
+        private:
+            const sf::String m_texture_path = "assets/textures/player_ship.png";
+            sf::Texture m_texture;
+            sf::Sprite m_sprite;
 
-		const int spriteHeight = 60;
-		const int spriteWidth = 60;
+            const int m_sprite_height = 60;
+            const int m_sprite_width = 60;
 
-		sf::RenderWindow* gameWindow;
-		PlayerController* playerController;
+            sf::RenderWindow* m_game_window;
+            PlayerController* m_player_controller;
 
-		void setPlayerScale();
+            void setPlayerScale();
 
-		public:
+        public:
+            // Constructors and Destructors
+            PlayerView();
+            ~PlayerView();
 
-		// Constructors and Destructors
-		PlayerView();
-		~PlayerView();
+            // Lifecycle methods
+            void initialize(PlayerController* controller);
+            void update();
+            void render();
 
-		// Lifecycle methods
-		void initialize(PlayerController* controller);
-		void update();
-		void render();
+            // Operations
+            void createPlayerSprite();
 
-		// Operations
-		void createPlayerSprite();
+            // Getters
+            sf::Sprite getPlayerSprite();
 
-		// Getters
-		sf::Sprite getPlayerSprite();
-
-		// Setters
-	};
+            // Setters
+    };
 }

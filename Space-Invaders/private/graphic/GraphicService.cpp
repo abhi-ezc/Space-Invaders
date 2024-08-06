@@ -3,75 +3,68 @@
 
 namespace Graphic
 {
-#pragma region Life Cycle Functions
+    #pragma region Life Cycle Functions
 
-    GraphicService::GraphicService() {
-        videoMode = nullptr; // initialize videoMode ptr with nullptr
-        gameWindow = nullptr; // initialize gameWindow ptr with nullptr
+    GraphicService::GraphicService()
+    {
+        m_video_mode = nullptr; // initialize videoMode ptr with nullptr
+        m_game_window = nullptr; // initialize gameWindow ptr with nullptr
     }
 
-    void GraphicService::initialize() {
-        createGameWindow();
-    }
+    void GraphicService::initialize() { createGameWindow(); }
 
-    void GraphicService::update() {
-        gameWindow->clear(windowColor);
-    }
+    void GraphicService::update() { m_game_window->clear(m_window_color); }
 
-    void GraphicService::render() {
-        gameWindow->display();
-    }
+    void GraphicService::render() { m_game_window->display(); }
 
     // Destructor and OnDestroy
-    GraphicService::~GraphicService() {
+    GraphicService::~GraphicService()
+    {
         onDestroy(); // invoking onDestroy when Object destructor invoked
     }
 
-#pragma endregion
+    #pragma endregion
 
-#pragma region Operations
+    #pragma region Operations
 
-    void GraphicService::setVideoMode() {
+    void GraphicService::setVideoMode()
+    {
         // creating video mode and assigns the address to videoMode ptr
-        videoMode = new sf::VideoMode(gameWindowWidth, gameWindowHeight, sf::VideoMode::getDesktopMode().bitsPerPixel);
+        m_video_mode = new sf::VideoMode(m_game_window_width, m_game_window_height,
+            sf::VideoMode::getDesktopMode().bitsPerPixel);
     }
 
-    void GraphicService::createGameWindow() {
+    void GraphicService::createGameWindow()
+    {
         setVideoMode();
 
         // create a RenderWindow Object and assigns the address to gameWindow ptr
-        gameWindow = new sf::RenderWindow(*videoMode, windowTitle, sf::Style::Fullscreen);
+        m_game_window = new sf::RenderWindow(*m_video_mode, m_window_title, sf::Style::Fullscreen);
 
         // setting up frame limit for the window
-        gameWindow->setFramerateLimit(frameLimit);
+        m_game_window->setFramerateLimit(m_frame_limit);
     }
 
-    void GraphicService::onDestroy() {
-        delete videoMode; // freeing memory assigned to videoMode ptr
-        delete gameWindow; // freeing memory assigned to gameWindow ptr
+    void GraphicService::onDestroy()
+    {
+        delete m_video_mode; // freeing memory assigned to videoMode ptr
+        delete m_game_window; // freeing memory assigned to gameWindow ptr
     }
 
-    void GraphicService::draw(sf::Drawable& drawable) {
-        gameWindow->draw(drawable);
+    void GraphicService::draw(sf::Drawable& drawable) { m_game_window->draw(drawable); }
+
+    #pragma endregion
+
+    #pragma region Getter Functions
+
+    sf::RenderWindow* GraphicService::getGameWindow() { return m_game_window; }
+
+    void GraphicService::closeGameWindow() { m_game_window->close(); }
+
+    bool GraphicService::isGameWindowOpen()
+    {
+        return m_game_window->isOpen(); // return true if the game window is still open
     }
 
-#pragma endregion
-
-#pragma region Getter Functions
-
-    sf::RenderWindow* GraphicService::getGameWindow() {
-        return gameWindow;
-    }
-
-    void GraphicService::closeGameWindow() {
-        gameWindow->close();
-    }
-
-    bool GraphicService::isGameWindowOpen() {
-        return gameWindow->isOpen(); // return true if the game window is still open
-    }
-
-#pragma endregion
+    #pragma endregion
 }
-
-
