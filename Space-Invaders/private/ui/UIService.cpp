@@ -6,24 +6,48 @@ using namespace UI;
 using namespace MainMenu;
 using namespace Main;
 
-UIService::UIService() { createControllers(); }
+UIService::UIService()
+{
+    createControllers();
+}
 
-UIService::~UIService() { cleanUpControllers(); }
+UIService::~UIService()
+{
+    cleanUpControllers();
+}
 
-void UIService::initialize() { m_main_menu_ui_controller->initialize(); }
+void UIService::initialize()
+{
+    m_main_menu_ui_controller->initialize();
+}
 
 void UIService::update()
 {
-    if (GameService::getGameState() == GameState::MAIN_MENU) { m_main_menu_ui_controller->update(); }
+    if (Main::GameService::getGameState() == GameState::MAIN_MENU)
+    {
+        m_main_menu_ui_controller->update();
+    }
 }
 
 void UIService::render()
 {
-    if (GameService::getGameState() == GameState::MAIN_MENU) { m_main_menu_ui_controller->render(); }
+    if (Main::GameService::getGameState() == GameState::MAIN_MENU)
+    {
+        m_main_menu_ui_controller->render();
+    }
 }
 
-void UIService::createControllers() { m_main_menu_ui_controller = new MainMenuUIController(); }
+void UIService::createControllers()
+{
+    m_main_menu_ui_controller = new MainMenuUIController();
+}
 
-void UIService::cleanUpControllers() { delete m_main_menu_ui_controller; }
+void UIService::cleanUpControllers()
+{
+    delete m_main_menu_ui_controller;
+}
 
-MainMenuUIController* UIService::getMainMenuController() { return m_main_menu_ui_controller; }
+MainMenuUIController* UIService::getMainMenuController()
+{
+    return m_main_menu_ui_controller;
+}

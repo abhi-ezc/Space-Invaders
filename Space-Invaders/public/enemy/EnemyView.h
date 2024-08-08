@@ -11,8 +11,8 @@ namespace Enemy
             sf::Texture m_tex_enemy;
             sf::Sprite m_spr_enemy;
             sf::String m_str_texture_path = "assets/textures/zapper.png";
-            const float c_sprite_width = 100.f;
-            const float c_sprite_height = 80.f;
+            const float c_sprite_width = 60.f;
+            const float c_sprite_height = 40.f;
 
             EnemyController* m_enemy_controller;
 

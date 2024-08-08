@@ -1,15 +1,91 @@
 ﻿#include "./../../public/enemy/EnemyService.h"
+
+#include "../../public/time/TimeService.h"
 #include "./../../public/enemy/EnemyController.h"
+#include "./../../public/global/ServiceLocator.h"
 
 namespace Enemy
 {
-    EnemyService::EnemyService() { m_enemy_controller = new EnemyController(); }
+    using namespace Global;
 
-    EnemyService::~EnemyService() { delete m_enemy_controller; };
+    EnemyService::EnemyService()
+    {
+        m_remaining_spawn_delay = 0;
+    };
 
-    void EnemyService::initialize() { m_enemy_controller->initialize(); }
+    EnemyService::~EnemyService()
+    {
+        triggerLifeCycleFunction(EnemyLifeCycle::DELETE);
+    };
 
-    void EnemyService::update() { m_enemy_controller->update(); }
+    void EnemyService::initialize()
+    {
+        spawnEnemy();
+    }
 
-    void EnemyService::render() { m_enemy_controller->render(); }
+    void EnemyService::update()
+    {
+        updateRemainingSpawnDelay();
+        processEnemySpawn();
+        triggerLifeCycleFunction(EnemyLifeCycle::UPDATE);
+    }
+
+    void EnemyService::render()
+    {
+        triggerLifeCycleFunction(EnemyLifeCycle::RENDER);
+    }
+
+    void EnemyService::spawnEnemy()
+    {
+        const auto enemyController = new EnemyController();
+        enemyController->initialize();
+        m_enemy_controllers.push_back(enemyController);
+    }
+
+    void EnemyService::triggerLifeCycleFunction(EnemyLifeCycle lifeCycle)
+    {
+        for (const auto enemy : m_enemy_controllers)
+        {
+            if (enemy == nullptr)
+            {
+                continue;
+            }
+
+            switch (lifeCycle)
+            {
+                case EnemyLifeCycle::INITIALIZE:
+                    enemy->initialize();
+                    break;
+                case EnemyLifeCycle::DELETE:
+                    delete enemy;
+                    break;
+                case EnemyLifeCycle::RENDER:
+                    enemy->render();
+                    break;
+                case EnemyLifeCycle::UPDATE:
+                    enemy->update();
+                    break;
+            }
+        }
+    }
+
+    void EnemyService::updateRemainingSpawnDelay()
+    {
+        if (m_remaining_spawn_delay <= 0)
+        {
+            m_remaining_spawn_delay = m_spawn_delay;
+        }
+        else
+        {
+            m_remaining_spawn_delay -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+        }
+    }
+
+    void EnemyService::processEnemySpawn()
+    {
+        if (m_remaining_spawn_delay >= m_spawn_delay)
+        {
+            spawnEnemy();
+        }
+    }
 }

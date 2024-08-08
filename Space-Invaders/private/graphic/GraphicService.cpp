@@ -11,11 +11,20 @@ namespace Graphic
         m_game_window = nullptr; // initialize gameWindow ptr with nullptr
     }
 
-    void GraphicService::initialize() { createGameWindow(); }
+    void GraphicService::initialize()
+    {
+        createGameWindow();
+    }
 
-    void GraphicService::update() { m_game_window->clear(m_window_color); }
+    void GraphicService::update()
+    {
+        m_game_window->clear(m_window_color);
+    }
 
-    void GraphicService::render() { m_game_window->display(); }
+    void GraphicService::render()
+    {
+        m_game_window->display();
+    }
 
     // Destructor and OnDestroy
     GraphicService::~GraphicService()
@@ -51,15 +60,24 @@ namespace Graphic
         delete m_game_window; // freeing memory assigned to gameWindow ptr
     }
 
-    void GraphicService::draw(sf::Drawable& drawable) { m_game_window->draw(drawable); }
+    void GraphicService::draw(sf::Drawable& drawable)
+    {
+        m_game_window->draw(drawable);
+    }
 
     #pragma endregion
 
     #pragma region Getter Functions
 
-    sf::RenderWindow* GraphicService::getGameWindow() { return m_game_window; }
+    sf::RenderWindow* GraphicService::getGameWindow()
+    {
+        return m_game_window;
+    }
 
-    void GraphicService::closeGameWindow() { m_game_window->close(); }
+    void GraphicService::closeGameWindow()
+    {
+        m_game_window->close();
+    }
 
     bool GraphicService::isGameWindowOpen()
     {
