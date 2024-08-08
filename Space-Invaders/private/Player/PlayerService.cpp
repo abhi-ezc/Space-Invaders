@@ -14,15 +14,9 @@ namespace Player
     void PlayerService::initialize() { m_player_controller->initialize(); }
 
 
-    void PlayerService::update()
-    {
-        if (Main::GameService::getGameState() == Main::GameState::GAMEPLAY) { m_player_controller->update(); }
-    }
+    void PlayerService::update() { m_player_controller->update(); }
 
-    void PlayerService::render()
-    {
-        if (Main::GameService::getGameState() == Main::GameState::GAMEPLAY) { m_player_controller->render(); }
-    }
+    void PlayerService::render() { m_player_controller->render(); }
 
     #pragma endregion
 }
