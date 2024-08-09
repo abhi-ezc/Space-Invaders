@@ -20,7 +20,7 @@ namespace Enemy
             MovementDirection m_movement_direction = MovementDirection::RIGHT;
             MovementDirection m_previous_direction = MovementDirection::RIGHT;
 
-            int m_movement_speed = 200.f;
+            float m_movement_speed = 200.f;
             const float m_vertical_travel_distance = 30.f;
 
             const sf::Vector2f m_left_most_position = sf::Vector2f(50.f, 950.f);
@@ -44,7 +44,7 @@ namespace Enemy
 
             float getVerticalTravelDistance();
 
-            int getMovementSpeed();
+            float getMovementSpeed();
 
             sf::Vector2f getLeftMostPosition();
             sf::Vector2f getRightMostPosition();
