@@ -4,6 +4,7 @@
 #include "./../../public/enemy/EnemyModel.h"
 #include "./../../public/enemy/EnemyView.h"
 #include "./../../public/global/ServiceLocator.h"
+#include "./../../public/enemy/EnemyConfig.h"
 
 namespace Enemy
 {
@@ -11,7 +12,7 @@ namespace Enemy
 
     EnemyController::EnemyController()
     {
-        m_enemy_model = new EnemyModel();
+        m_enemy_model = new EnemyModel(EnemyType::ZAPPER);
         m_enemy_view = new EnemyView();
     }
 
@@ -63,7 +64,10 @@ namespace Enemy
             -1;
 
         const sf::Vector2f newPosition = m_enemy_model->getCurrentPosition() + sf::Vector2f(x, 0);
-        if (newPosition.x >= m_enemy_model->getLeftMostPosition().x) { m_enemy_model->setCurrentPosition(newPosition); }
+        if (newPosition.x >= m_enemy_model->getLeftMostPosition().x)
+        {
+            m_enemy_model->setCurrentPosition(newPosition);
+        }
         else
         {
             m_enemy_model->setReferencePosition(m_enemy_model->getCurrentPosition());
@@ -105,10 +109,19 @@ namespace Enemy
             {
                 m_enemy_model->setMovementDirection(MovementDirection::LEFT);
             }
-            else { m_enemy_model->setMovementDirection(MovementDirection::RIGHT); }
+            else
+            {
+                m_enemy_model->setMovementDirection(MovementDirection::RIGHT);
+            }
         }
-        else { m_enemy_model->setCurrentPosition(newPosition); }
+        else
+        {
+            m_enemy_model->setCurrentPosition(newPosition);
+        }
     }
 
-    sf::Vector2f EnemyController::getPosition() { return m_enemy_model->getCurrentPosition(); }
+    sf::Vector2f EnemyController::getPosition()
+    {
+        return m_enemy_model->getCurrentPosition();
+    }
 }
