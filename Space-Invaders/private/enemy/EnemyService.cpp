@@ -2,6 +2,8 @@
 
 #include "../../public/time/TimeService.h"
 #include "./../../public/enemy/EnemyController.h"
+#include "../../public/enemy/controllers/ZapperController.h"
+#include "../../public/enemy/controllers/SubZeroController.h"
 #include "./../../public/global/ServiceLocator.h"
 
 namespace Enemy
@@ -37,7 +39,7 @@ namespace Enemy
 
     void EnemyService::spawnEnemy()
     {
-        const auto enemyController = new EnemyController();
+        const auto enemyController = new Controllers::ZapperController();
         enemyController->initialize();
         m_enemy_controllers.push_back(enemyController);
     }
