@@ -10,9 +10,9 @@ namespace Enemy
 {
     using namespace Global;
 
-    EnemyController::EnemyController()
+    EnemyController::EnemyController(EnemyType type)
     {
-        m_enemy_model = new EnemyModel(EnemyType::ZAPPER);
+        m_enemy_model = new EnemyModel(type);
         m_enemy_view = new EnemyView();
     }
 
@@ -123,5 +123,10 @@ namespace Enemy
     sf::Vector2f EnemyController::getPosition()
     {
         return m_enemy_model->getCurrentPosition();
+    }
+
+    EnemyType EnemyController::getEnemyType()
+    {
+        return m_enemy_model->getEnemyType();
     }
 }
