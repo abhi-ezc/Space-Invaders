@@ -41,21 +41,21 @@ namespace Enemy
         m_enemy_view->render();
     }
 
-    void EnemyController::move()
-    {
-        switch (m_enemy_model->getMovementDirection())
-        {
-            case MovementDirection::LEFT:
-                moveLeft();
-                break;
-
-            case MovementDirection::RIGHT:
-                moveRight();
-                break;
-            case MovementDirection::DOWN:
-                moveDown();
-        }
-    }
+    // void EnemyController::move()
+    // {
+    //     switch (m_enemy_model->getMovementDirection())
+    //     {
+    //         case MovementDirection::LEFT:
+    //             moveLeft();
+    //             break;
+    //
+    //         case MovementDirection::RIGHT:
+    //             moveRight();
+    //             break;
+    //         case MovementDirection::DOWN:
+    //             moveDown();
+    //     }
+    // }
 
     void EnemyController::moveLeft()
     {

@@ -19,10 +19,10 @@ namespace Enemy
             void update();
             void render();
 
-            virtual void move();
-            void moveLeft();
-            void moveRight();
-            void moveDown();
+            virtual void move() = 0;
+            virtual void moveLeft();
+            virtual void moveRight();
+            virtual void moveDown();
             sf::Vector2f getPosition();
     };
 }
