@@ -11,10 +11,11 @@ namespace Element
     class ElementService
     {
         private:
-            std::vector<Bunker::BunkerController> m_bunkers_list;
+            std::vector<Bunker::BunkerController*> m_bunkers_list;
         public:
             ElementService();
             ~ElementService();
+
             void initialize();
             void update();
             void render();

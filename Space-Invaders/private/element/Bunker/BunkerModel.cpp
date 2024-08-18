@@ -4,11 +4,11 @@ namespace Element
 {
     namespace Bunker
     {
-        BunkerModel::BunkerModel() {}
-        BunkerModel::~BunkerModel() {}
+        BunkerData::BunkerData() { }
 
-        void BunkerModel::initialize() {}
-        void BunkerModel::update() {}
-        void BunkerModel::render() {}
+        BunkerData::BunkerData(sf::Vector2f position)
+        {
+            m_position = position;
+        }
     }
 }
