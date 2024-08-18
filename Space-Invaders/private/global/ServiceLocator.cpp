@@ -50,19 +50,19 @@ namespace Global
         m_time_service->update();
         m_ui_service->update();
         m_enemy_service->update();
-        m_gameplay_service->update();
         m_element_service->update();
+        m_gameplay_service->update();
     }
 
     void ServiceLocator::render()
     {
         // render using the services
         m_gameplay_service->render();
+        m_element_service->render();
         m_player_service->render();
         m_enemy_service->render();
         m_ui_service->render();
         m_graphic_service->render();
-        m_element_service->render();
     }
 
     // destructor
@@ -137,14 +137,19 @@ namespace Global
         return m_ui_service;
     }
 
-    Enemy::EnemyService* ServiceLocator::getEnemyService()
+    EnemyService* ServiceLocator::getEnemyService()
     {
         return m_enemy_service;
     }
 
-    Gameplay::GameplayService* ServiceLocator::getGameplayService()
+    GameplayService* ServiceLocator::getGameplayService()
     {
         return m_gameplay_service;
+    }
+
+    ElementService* ServiceLocator::getElementService()
+    {
+        return m_element_service;
     }
 
 
