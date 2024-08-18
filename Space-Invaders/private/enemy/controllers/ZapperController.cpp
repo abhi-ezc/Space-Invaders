@@ -75,7 +75,7 @@ namespace Enemy
             sf::Vector2f position = m_enemy_model->getCurrentPosition();
             position.y += m_enemy_model->getMovementSpeed() * ServiceLocator::getInstance()->getTimeService()->
                                                                                              getDeltaTime();
-            if (position.y > m_enemy_model->getReferencePosition().y + m_vertical_travel_distance)
+            if (position.y >= m_enemy_model->getReferencePosition().y + m_vertical_travel_distance)
             {
                 m_enemy_model->setMovementDirection(m_enemy_model->getPreviousDirection() ==
                                                     MovementDirection::RIGHT

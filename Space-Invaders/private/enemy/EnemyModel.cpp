@@ -1,4 +1,6 @@
 ﻿#include "./../../public/enemy/EnemyModel.h"
+
+#include "../../public/enemy/EnemyController.h"
 #include "./../../public/enemy/EnemyConfig.h"
 
 namespace Enemy
@@ -10,9 +12,9 @@ namespace Enemy
 
     EnemyModel::~EnemyModel() = default;
 
-    void EnemyModel::initialize()
+    void EnemyModel::initialize(EnemyController* controller)
     {
-        m_current_position = m_spawn_position;
+        m_current_position = controller->getRandomInitialPosition();
         m_enemy_state = EnemyState::PATROLLING;
         m_movement_direction = MovementDirection::RIGHT;
     }
@@ -69,11 +71,6 @@ namespace Enemy
     sf::Vector2f EnemyModel::getRightMostPosition()
     {
         return m_right_most_position;
-    }
-
-    float EnemyModel::getDownMostPositionY()
-    {
-        return m_ref_position.y + m_vertical_travel_distance;
     }
 
     sf::Vector2f EnemyModel::getReferencePosition()
