@@ -749,6 +749,14 @@
     <ItemGroup>
         <ClCompile Include="private\gameplay\GameplayService.cpp" />
         <ClCompile Include="private\gameplay\GameplayView.cpp" />
+        <ClCompile Include="private\element\Bunker\BunkerController.cpp" />
+        <ClCompile Include="private\element\Bunker\BunkerModel.cpp" />
+        <ClCompile Include="private\element\Bunker\BunkerView.cpp" />
+        <ClCompile Include="private\element\ElementService.cpp" />
+        <ClInclude Include="public\element\Bunker\BunkerController.h" />
+        <ClInclude Include="public\element\Bunker\BunkerModel.h" />
+        <ClInclude Include="public\element\Bunker\BunkerView.h" />
+        <ClInclude Include="public\element\ElementService.h" />
         <ClInclude Include="public\enemy\controllers\SubZeroController.h" />
         <ClInclude Include="public\enemy\controllers\ThunderSnakeController.h" />
         <ClInclude Include="public\enemy\controllers\UFOController.h" />

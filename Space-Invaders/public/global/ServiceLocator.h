@@ -35,6 +35,11 @@ namespace Gameplay
     class GameplayService;
 }
 
+namespace Element
+{
+    class ElementService;
+}
+
 namespace Global
 {
     // ServiceLocator Class Summary: This class manages access to various services in the application.
@@ -48,6 +53,7 @@ namespace Global
             UI::UIService* m_ui_service;
             Enemy::EnemyService* m_enemy_service;
             Gameplay::GameplayService* m_gameplay_service;
+            Element::ElementService* m_element_service;
 
             // Constructor for initializing the ServiceLocator.
             ServiceLocator();
@@ -76,5 +82,6 @@ namespace Global
             UI::UIService* getUIService();
             Enemy::EnemyService* getEnemyService();
             Gameplay::GameplayService* getGameplayService();
+            Element::ElementService* getElementService();
     };
 }

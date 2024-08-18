@@ -6,6 +6,7 @@
 #include "../../public/ui/UIService.h"
 #include "../../public/enemy/EnemyService.h"
 #include "../../public/gameplay/GameplayService.h"
+#include "../../public/element/ElementService.h"
 
 namespace Global
 {
@@ -16,6 +17,7 @@ namespace Global
     using namespace UI;
     using namespace Enemy;
     using namespace Gameplay;
+    using namespace Element;
 
     #pragma region Life Cycle Functions
 
@@ -36,6 +38,7 @@ namespace Global
         m_ui_service->initialize();
         m_enemy_service->initialize();
         m_gameplay_service->initialize();
+        m_element_service->initialize();
     }
 
     void ServiceLocator::update()
@@ -48,6 +51,7 @@ namespace Global
         m_ui_service->update();
         m_enemy_service->update();
         m_gameplay_service->update();
+        m_element_service->update();
     }
 
     void ServiceLocator::render()
@@ -58,6 +62,7 @@ namespace Global
         m_enemy_service->render();
         m_ui_service->render();
         m_graphic_service->render();
+        m_element_service->render();
     }
 
     // destructor
@@ -80,6 +85,7 @@ namespace Global
         m_ui_service = new UIService();
         m_enemy_service = new EnemyService();
         m_gameplay_service = new GameplayService();
+        m_element_service = new ElementService();
     }
 
     void ServiceLocator::clearAllServices()
@@ -92,6 +98,7 @@ namespace Global
         delete m_ui_service;
         delete m_enemy_service;
         delete m_gameplay_service;
+        delete m_element_service;
     }
     #pragma endregion
 
