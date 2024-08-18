@@ -10,9 +10,9 @@ namespace Enemy
             private:
                 float m_vertical_travel_distance = 100.f;
                 void move() override;
-                void moveLeft() override;
-                void moveRight() override;
-                void moveDown() override;
+                void moveLeft();
+                void moveRight();
+                void moveDown();
             public:
                 ZapperController();
                 ~ZapperController() override;

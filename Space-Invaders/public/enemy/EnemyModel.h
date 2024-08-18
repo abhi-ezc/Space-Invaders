@@ -6,11 +6,11 @@ namespace Enemy
     enum class EnemyType;
     enum class EnemyState;
     enum class MovementDirection;
+    class EnemyController;
 
     class EnemyModel
     {
         private:
-            sf::Vector2f m_spawn_position = sf::Vector2f(0, 0);
             sf::Vector2f m_current_position;
             sf::Vector2f m_ref_position;
 
@@ -24,14 +24,14 @@ namespace Enemy
             const float m_movement_speed = 200.f;
             const float m_vertical_travel_distance = 30.f;
 
-            const sf::Vector2f m_left_most_position = sf::Vector2f(50.f, 950.f);
-            const sf::Vector2f m_right_most_position = sf::Vector2f(1800.f, 950.f);
+            const sf::Vector2f m_left_most_position = sf::Vector2f(50.f, 50.f);
+            const sf::Vector2f m_right_most_position = sf::Vector2f(1800.f, 50.f);
 
         public:
             EnemyModel(EnemyType enemyType);
             ~EnemyModel();
 
-            void initialize();
+            void initialize(EnemyController* controller);
             void update();
             void render();
 
@@ -49,7 +49,6 @@ namespace Enemy
 
             sf::Vector2f getLeftMostPosition();
             sf::Vector2f getRightMostPosition();
-            float getDownMostPositionY();
 
             sf::Vector2f getReferencePosition();
             void setReferencePosition(sf::Vector2f refPosition);

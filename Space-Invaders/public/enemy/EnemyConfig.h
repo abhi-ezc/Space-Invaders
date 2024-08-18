@@ -4,7 +4,7 @@ namespace Enemy
 {
     enum class EnemyType
     {
-        ZAPPER,
+        ZAPPER = 0,
         SUBZERO,
         UFO,
         THUNDER_SNAKE,
@@ -22,5 +22,13 @@ namespace Enemy
         LEFT,
         RIGHT,
         DOWN,
+    };
+
+    enum class EnemyLifeCycle
+    {
+        INITIALIZE,
+        UPDATE,
+        RENDER,
+        DELETE
     };
 }

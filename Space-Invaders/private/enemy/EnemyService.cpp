@@ -1,10 +1,14 @@
 ﻿#include "./../../public/enemy/EnemyService.h"
-
 #include "../../public/time/TimeService.h"
 #include "./../../public/enemy/EnemyController.h"
+#include "./../../public/global/ServiceLocator.h"
+#include "./../../public/enemy/EnemyConfig.h"
+
+// Different Enemy Controllers
 #include "../../public/enemy/controllers/ZapperController.h"
 #include "../../public/enemy/controllers/SubZeroController.h"
-#include "./../../public/global/ServiceLocator.h"
+#include "../../public/enemy/controllers/ThunderSnakeController.h"
+#include "../../public/enemy/controllers/UFOController.h"
 
 namespace Enemy
 {
@@ -37,9 +41,17 @@ namespace Enemy
         triggerLifeCycleFunction(EnemyLifeCycle::RENDER);
     }
 
+    void EnemyService::destroyEnemy(EnemyController* controller)
+    {
+        m_enemy_controllers.erase(std::remove(m_enemy_controllers.begin(), m_enemy_controllers.end(), controller),
+            m_enemy_controllers.end());
+
+        delete controller;
+    }
+
     void EnemyService::spawnEnemy()
     {
-        const auto enemyController = new Controllers::ZapperController();
+        const auto enemyController = createEnemy(getRandomEnemyType());
         enemyController->initialize();
         m_enemy_controllers.push_back(enemyController);
     }
@@ -88,6 +100,26 @@ namespace Enemy
         if (m_remaining_spawn_delay >= m_spawn_delay)
         {
             spawnEnemy();
+        }
+    }
+
+    EnemyType EnemyService::getRandomEnemyType()
+    {
+        return static_cast<EnemyType>(rand() % 4);
+    }
+
+    EnemyController* EnemyService::createEnemy(EnemyType type)
+    {
+        switch (type)
+        {
+            case EnemyType::ZAPPER:
+                return new Controllers::ZapperController();
+            case EnemyType::SUBZERO:
+                return new Controllers::SubZeroController();
+            case EnemyType::THUNDER_SNAKE:
+                return new Controllers::ThunderSnakeController();
+            case EnemyType::UFO:
+                return new Controllers::UFOController();
         }
     }
 }

@@ -3,14 +3,8 @@
 
 namespace Enemy
 {
-    enum class EnemyLifeCycle
-    {
-        INITIALIZE,
-        UPDATE,
-        RENDER,
-        DELETE
-    };
-
+    enum class EnemyLifeCycle;
+    enum class EnemyType;
     class EnemyController;
 
     class EnemyService
@@ -24,6 +18,9 @@ namespace Enemy
             void triggerLifeCycleFunction(EnemyLifeCycle lifeCycle);
             void updateRemainingSpawnDelay();
             void processEnemySpawn();
+            EnemyType getRandomEnemyType();
+            EnemyController* createEnemy(EnemyType type);
+
         public:
             EnemyService();
             ~EnemyService();
@@ -31,5 +28,6 @@ namespace Enemy
             void initialize();
             void update();
             void render();
+            void destroyEnemy(EnemyController* controller);
     };
 }
