@@ -661,6 +661,7 @@
         <ClCompile Include="private\event\EventService.cpp" />
         <ClCompile Include="main.cpp" />
         <ClCompile Include="private\gameplay\GameplayController.cpp" />
+        <ClCompile Include="private\global\Config.cpp" />
         <ClCompile Include="private\main\GameService.cpp" />
         <ClCompile Include="private\graphic\GraphicService.cpp" />
         <ClCompile Include="private\player\PlayerService.cpp" />
@@ -769,6 +770,7 @@
         <ClInclude Include="public\event\EventService.h" />
         <ClInclude Include="public\gameplay\GameplayController.h" />
         <ClInclude Include="public\gameplay\GameplayService.h" />
+        <ClInclude Include="public\global\Config.h" />
         <ClInclude Include="public\graphic\GraphicService.h" />
         <ClInclude Include="public\player\PlayerService.h" />
         <ClInclude Include="public\player\PlayerController.h" />

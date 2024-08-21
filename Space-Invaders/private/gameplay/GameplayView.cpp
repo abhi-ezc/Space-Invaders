@@ -1,9 +1,13 @@
 #include "./../../public/gameplay/GameplayView.h"
 #include "../../public/graphic/GraphicService.h"
 #include "./../../public/global/ServiceLocator.h"
+#include "./../../public/global/Config.h"
+
 
 namespace Gameplay
 {
+    using namespace Global;
+
     GameplayView::GameplayView() = default;
 
     GameplayView::~GameplayView() = default;
@@ -22,7 +26,7 @@ namespace Gameplay
 
     void GameplayView::initializeBackgroundImage()
     {
-        if (m_background_texture.loadFromFile(m_background_texture_path))
+        if (m_background_texture.loadFromFile(Config::background_texture_path))
         {
             m_background_sprite.setTexture(m_background_texture);
             const sf::RenderWindow* gameWindow = Global::ServiceLocator::getInstance()->getGraphicService()->

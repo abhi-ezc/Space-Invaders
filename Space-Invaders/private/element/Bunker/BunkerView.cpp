@@ -1,7 +1,7 @@
 #include "./../../../public/element/Bunker/BunkerView.h"
-
 #include "../../../public/graphic/GraphicService.h"
 #include "./../../../public/global/ServiceLocator.h"
+#include "./../../../public/global/Config.h"
 #include "./../../../public/element/Bunker/BunkerController.h"
 
 namespace Element
@@ -29,7 +29,7 @@ namespace Element
 
         void BunkerView::initializeSprite()
         {
-            if (m_bunker_texture.loadFromFile(m_bunker_texture_path))
+            if (m_bunker_texture.loadFromFile(Config::bunker_texture_path))
             {
                 m_bunker_sprite.setTexture(m_bunker_texture);
                 sf::Vector2u textureSize = m_bunker_sprite.getTexture()->getSize();

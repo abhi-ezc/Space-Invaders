@@ -3,6 +3,7 @@
 #include "./../../../public/graphic/GraphicService.h"
 #include "./../../../public/event/EventService.h"
 #include "./../../../public/main/GameService.h"
+#include "./../../public/global/Config.h"
 
 
 namespace UI
@@ -14,7 +15,10 @@ namespace UI
         using namespace Event;
         using namespace Main;
 
-        MainMenuUIController::MainMenuUIController() { m_game_window = nullptr; }
+        MainMenuUIController::MainMenuUIController()
+        {
+            m_game_window = nullptr;
+        }
 
         MainMenuUIController::~MainMenuUIController() = default;
 
@@ -27,7 +31,7 @@ namespace UI
 
         void MainMenuUIController::initializeBackgroundImage()
         {
-            m_tex_background_image.loadFromFile(m_str_background_image_path);
+            m_tex_background_image.loadFromFile(Config::background_texture_path);
             m_spr_background_image.setTexture(m_tex_background_image);
 
             float sizeX = m_game_window->getView().getSize().x / static_cast<float>(m_spr_background_image.getTexture()
@@ -53,8 +57,9 @@ namespace UI
 
         bool MainMenuUIController::loadButtonTextures()
         {
-            return m_tex_play_button.loadFromFile(m_str_play_button_path) && m_tex_instruction_button.
-                loadFromFile(m_str_instruction_button_path) && m_tex_quit_button.loadFromFile(m_str_quit_button_path);
+            return m_tex_play_button.loadFromFile(Config::play_button_texture_path) && m_tex_instruction_button.
+                loadFromFile(Config::instructions_button_texture_path) && m_tex_quit_button.loadFromFile(
+                    Config::quit_button_texture_path);
         }
 
         void MainMenuUIController::createButtonSprites()
@@ -99,7 +104,10 @@ namespace UI
             spr_button->setPosition(x, y);
         }
 
-        void MainMenuUIController::update() { processButtonInteractions(); }
+        void MainMenuUIController::update()
+        {
+            processButtonInteractions();
+        }
 
         void MainMenuUIController::render()
         {
@@ -113,12 +121,18 @@ namespace UI
         {
             if (ServiceLocator::getInstance()->getEventService()->isLeftMouseButtonPressed())
             {
-                if (isButtonClick(&m_spr_play_button, sf::Mouse::getPosition())) { onPlayButtonClick(); }
+                if (isButtonClick(&m_spr_play_button, sf::Mouse::getPosition()))
+                {
+                    onPlayButtonClick();
+                }
                 else if (isButtonClick(&m_spr_instruction_button, sf::Mouse::getPosition()))
                 {
                     onInstructionButtonClick();
                 }
-                else if (isButtonClick(&m_spr_quit_button, sf::Mouse::getPosition())) { onQuitButtonClick(); }
+                else if (isButtonClick(&m_spr_quit_button, sf::Mouse::getPosition()))
+                {
+                    onQuitButtonClick();
+                }
                 else { }
             }
         }
@@ -129,7 +143,10 @@ namespace UI
                 static_cast<float>(sf::Mouse::getPosition().y));
         }
 
-        void MainMenuUIController::onPlayButtonClick() { GameService::setGameState(GameState::GAMEPLAY); }
+        void MainMenuUIController::onPlayButtonClick()
+        {
+            GameService::setGameState(GameState::GAMEPLAY);
+        }
 
         void MainMenuUIController::onInstructionButtonClick() { }
 

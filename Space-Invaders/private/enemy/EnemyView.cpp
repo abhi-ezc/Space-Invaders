@@ -3,6 +3,7 @@
 #include "./../../public/global/ServiceLocator.h"
 #include "./../../public/enemy/EnemyController.h"
 #include "./../../public/enemy/EnemyConfig.h"
+#include "./../../public/global/Config.h"
 
 namespace Enemy
 {
@@ -35,16 +36,16 @@ namespace Enemy
         switch (m_enemy_controller->getEnemyType())
         {
             case EnemyType::ZAPPER:
-                m_str_texture_path = m_zapper_texture_path;
+                m_str_texture_path = Global::Config::zapper_texture_path;
                 break;
             case EnemyType::SUBZERO:
-                m_str_texture_path = m_subzero_texture_path;
+                m_str_texture_path = Global::Config::subzero_texture_path;
                 break;
             case EnemyType::THUNDER_SNAKE:
-                m_str_texture_path = m_thunder_snake_texture_path;
+                m_str_texture_path = Global::Config::thunder_snake_texture_path;
                 break;
             case EnemyType::UFO:
-                m_str_texture_path = m_ufo_texture_path;
+                m_str_texture_path = Global::Config::ufo_texture_path;
                 break;
         }
     }
