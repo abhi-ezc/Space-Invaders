@@ -1,3 +1,4 @@
+#include "../../../public/sound/SoundService.h"
 #include "./../../../public/ui/MainMenuUIController/MainMenuUIController.h"
 #include "./../../../public/global/ServiceLocator.h"
 #include "./../../../public/graphic/GraphicService.h"
@@ -123,14 +124,17 @@ namespace UI
             {
                 if (isButtonClick(&m_spr_play_button, sf::Mouse::getPosition()))
                 {
+                    ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
                     onPlayButtonClick();
                 }
                 else if (isButtonClick(&m_spr_instruction_button, sf::Mouse::getPosition()))
                 {
+                    ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
                     onInstructionButtonClick();
                 }
                 else if (isButtonClick(&m_spr_quit_button, sf::Mouse::getPosition()))
                 {
+                    ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
                     onQuitButtonClick();
                 }
                 else { }
