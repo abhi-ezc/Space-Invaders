@@ -1,4 +1,6 @@
 #include "./../../public/player/PlayerView.h"
+
+#include "../../public/global/Config.h"
 #include "./../../public/global/ServiceLocator.h"
 #include "./../../public/player/PlayerController.h"
 #include "./../../public/graphic/GraphicService.h"
@@ -28,7 +30,10 @@ namespace Player
         m_sprite.setPosition(m_player_controller->getPlayerPosition());
     }
 
-    void PlayerView::render() { ServiceLocator::getInstance()->getGraphicService()->draw(m_sprite); }
+    void PlayerView::render()
+    {
+        ServiceLocator::getInstance()->getGraphicService()->draw(m_sprite);
+    }
 
     void PlayerView::setPlayerScale()
     {
@@ -40,7 +45,7 @@ namespace Player
 
     void PlayerView::createPlayerSprite()
     {
-        if (m_texture.loadFromFile(m_texture_path))
+        if (m_texture.loadFromFile(Config::player_texture_path))
         {
             m_sprite.setTexture(m_texture);
             setPlayerScale();
@@ -48,5 +53,8 @@ namespace Player
         }
     }
 
-    sf::Sprite PlayerView::getPlayerSprite() { return m_sprite; }
+    sf::Sprite PlayerView::getPlayerSprite()
+    {
+        return m_sprite;
+    }
 }

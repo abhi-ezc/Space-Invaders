@@ -26,12 +26,6 @@ namespace UI
                 const float m_f_button_height = 140.f;
                 const float m_f_button_width = 400.f;
 
-                // texture paths where image to loaded
-                const sf::String m_str_background_image_path = "assets/textures/space_invaders_bg.png";
-                const sf::String m_str_play_button_path = "assets/textures/play_button.png";
-                const sf::String m_str_instruction_button_path = "assets/textures/instructions_button.png";
-                const sf::String m_str_quit_button_path = "assets/textures/quit_button.png";
-
                 void initializeBackgroundImage();
                 void initializeButtons();
 

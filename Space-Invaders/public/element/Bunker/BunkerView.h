@@ -10,7 +10,6 @@ namespace Element
         class BunkerView
         {
             private:
-                sf::String m_bunker_texture_path = "assets/textures/bunker.png";
                 sf::Texture m_bunker_texture;
                 sf::Sprite m_bunker_sprite;
                 float m_sprite_height = 80.f;
