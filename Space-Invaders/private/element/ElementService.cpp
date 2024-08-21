@@ -11,10 +11,12 @@ namespace Element
 
     void ElementService::initialize()
     {
-        auto position = sf::Vector2f(100, 500);
-        auto bunkerController = new BunkerController(position);
-        bunkerController->initialize();
-        m_bunkers_list.push_back(bunkerController);
+        for (const sf::Vector2f position : m_bunker_positions)
+        {
+            auto bunkerController = new BunkerController(position);
+            bunkerController->initialize();
+            m_bunkers_list.push_back(bunkerController);
+        }
     }
 
     void ElementService::update()
@@ -31,5 +33,14 @@ namespace Element
         {
             bunker->render();
         }
+    }
+
+    void ElementService::destroyAllBunkers()
+    {
+        for (auto bunker : m_bunkers_list)
+        {
+            delete bunker;
+        }
+        m_bunkers_list.clear();
     }
 }
