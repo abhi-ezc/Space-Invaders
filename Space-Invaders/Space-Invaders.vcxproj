@@ -669,6 +669,7 @@
         <ClCompile Include="private\player\PlayerModel.cpp" />
         <ClCompile Include="private\player\PlayerView.cpp" />
         <ClCompile Include="private\global\ServiceLocator.cpp" />
+        <ClCompile Include="private\sound\SoundService.cpp" />
         <ClCompile Include="private\time\TimeService.cpp">
             <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
             <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -778,6 +779,7 @@
         <ClInclude Include="public\player\PlayerView.h" />
         <ClInclude Include="public\global\ServiceLocator.h" />
         <ClInclude Include="public\main\GameService.h" />
+        <ClInclude Include="public\sound\SoundService.h" />
         <ClInclude Include="public\time\TimeService.h" />
         <ClInclude Include="public\ui\MainMenuUIController\MainMenuUIController.h" />
         <ClInclude Include="public\ui\UIService.h" />

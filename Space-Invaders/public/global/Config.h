@@ -1,3 +1,4 @@
+#pragma once
 #include <SFML/System/String.hpp>
 
 namespace Global
