@@ -7,6 +7,7 @@
 #include "../../public/enemy/EnemyService.h"
 #include "../../public/gameplay/GameplayService.h"
 #include "../../public/element/ElementService.h"
+#include "../../public/sound/SoundService.h"
 
 namespace Global
 {
@@ -18,6 +19,7 @@ namespace Global
     using namespace Enemy;
     using namespace Gameplay;
     using namespace Element;
+    using namespace Sound;
 
     #pragma region Life Cycle Functions
 
@@ -31,6 +33,7 @@ namespace Global
     void ServiceLocator::initialize()
     {
         // initialize service locator
+        m_sound_service->initialize();
         m_graphic_service->initialize();
         m_event_service->initialize();
         m_player_service->initialize();
@@ -78,6 +81,7 @@ namespace Global
     void ServiceLocator::createServices()
     {
         // creating services required for the game
+        m_sound_service = new SoundService();
         m_graphic_service = new GraphicService();
         m_event_service = new EventService();
         m_player_service = new PlayerService();
@@ -99,6 +103,7 @@ namespace Global
         delete m_enemy_service;
         delete m_gameplay_service;
         delete m_element_service;
+        delete m_sound_service;
     }
     #pragma endregion
 
@@ -150,6 +155,11 @@ namespace Global
     ElementService* ServiceLocator::getElementService()
     {
         return m_element_service;
+    }
+
+    SoundService* ServiceLocator::getSoundService()
+    {
+        return m_sound_service;
     }
 
 

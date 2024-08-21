@@ -120,6 +120,8 @@ namespace Enemy
                 return new Controllers::ThunderSnakeController();
             case EnemyType::UFO:
                 return new Controllers::UFOController();
+            default:
+                return nullptr;
         }
     }
 }

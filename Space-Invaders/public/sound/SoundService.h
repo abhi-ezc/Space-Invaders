@@ -11,10 +11,10 @@ namespace Sound
     class SoundService
     {
         private:
-            const float m_background_volume = 100.f;
+            const float m_background_volume = 50.f;
             sf::Music m_background_music;
             sf::Sound m_sfx;
-            sf::SoundBuffer m_sound_buffer;
+            sf::SoundBuffer m_buffer_button_click;
 
             void loadBackgroundMusic();
             void loadOtherSFX();
