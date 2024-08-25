@@ -51,6 +51,78 @@
     <ClCompile Include="private\ui\MainmenuUIController\MainmenuUIController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="private\bullet\BulletService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\enemy\controllers\SubZeroController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\enemy\controllers\ThunderSnakeController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\enemy\controllers\UFOController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\enemy\controllers\ZapperController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\enemy\EnemyController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\enemy\EnemyModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\enemy\EnemyService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\enemy\EnemyView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\gameplay\GameplayController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\global\Config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\sound\SoundService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\gameplay\GameplayService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\gameplay\GameplayView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\element\Bunker\BunkerController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\element\Bunker\BunkerModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\element\Bunker\BunkerView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\element\ElementService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\bullet\BulletController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\bullet\BulletModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\bullet\BulletView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\bullet\controllers\LaserBulletController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\bullet\controllers\TorpedoController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\bullet\controllers\FrostBulletController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\main\GameService.h">
@@ -84,6 +156,90 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="public\ui\MainmenuUIController\MainmenuUIController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\bullet\BulletConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\bullet\BulletController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\bullet\BulletModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\bullet\BulletService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\bullet\BulletView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\bullet\controllers\LaserBulletController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\element\Bunker\BunkerController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\element\Bunker\BunkerModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\element\Bunker\BunkerView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\element\ElementService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\enemy\controllers\SubZeroController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\enemy\controllers\ThunderSnakeController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\enemy\controllers\UFOController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\enemy\controllers\ZapperController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\enemy\EnemyConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\enemy\EnemyController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\enemy\EnemyModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\enemy\EnemyService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\enemy\EnemyView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\gameplay\GameplayController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\gameplay\GameplayService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\global\Config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\projectile\ProjectileConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\projectile\IProjectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\sound\SoundService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\gameplay\GameplayView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\bullet\controllers\TorpedoController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\bullet\controllers\FrostBulletController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
