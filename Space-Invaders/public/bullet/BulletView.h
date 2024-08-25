@@ -15,7 +15,11 @@ namespace Bullet
             sf::Sprite m_bullet_sprite;
             BulletController* m_bullet_controller;
 
+            float m_sprite_height = 18.f;
+            float m_sprite_width = 18.f;
+
             void loadTexture();
+            void scaleSprite();
             void initializeSprite();
 
         public:

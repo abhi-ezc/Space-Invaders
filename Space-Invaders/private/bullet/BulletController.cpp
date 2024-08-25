@@ -5,6 +5,7 @@
 #include  "./../../public/bullet/BulletModel.h"
 #include  "./../../public/bullet/BulletView.h"
 #include "./../../public/bullet/BulletConfig.h"
+#include "./../../public/projectile/ProjectileConfig.h"
 
 namespace Bullet
 {
@@ -28,6 +29,7 @@ namespace Bullet
 
     void BulletController::update()
     {
+        handleOutOfBounds();
         m_bullet_model->update();
         m_bullet_view->update();
     }

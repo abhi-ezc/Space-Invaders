@@ -1,5 +1,4 @@
 #include "./../../public/bullet/BulletView.h"
-
 #include "../../public/bullet/BulletController.h"
 #include "../../public/global/ServiceLocator.h"
 #include "../../public/graphic/GraphicService.h"
@@ -47,11 +46,22 @@ namespace Bullet
         }
     }
 
+    void BulletView::scaleSprite()
+    {
+        const auto size = static_cast<sf::Vector2f>(m_bullet_sprite.getTexture()->getSize());
+
+        const float scaleX = m_sprite_width / size.x;
+        const float scaleY = m_sprite_height / size.y;
+
+        m_bullet_sprite.setScale(scaleX, scaleY);
+    }
+
     void BulletView::initializeSprite()
     {
         if (m_bullet_texture.loadFromFile(m_bullet_texture_path))
         {
             m_bullet_sprite.setTexture(m_bullet_texture);
+            scaleSprite();
         }
     }
 }

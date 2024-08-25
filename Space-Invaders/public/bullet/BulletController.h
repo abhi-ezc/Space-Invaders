@@ -1,6 +1,10 @@
 #pragma once
 #include "./../projectile/IProjectile.h"
-#include "./../../public/projectile/ProjectileConfig.h"
+
+namespace Projectile
+{
+    enum class ProjectileDirection;
+}
 
 namespace Bullet
 {

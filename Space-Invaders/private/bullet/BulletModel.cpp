@@ -1,5 +1,6 @@
 #include "./../../public/bullet/BulletModel.h"
 #include "./../../public/bullet/BulletConfig.h"
+#include "./../../public/projectile/ProjectileConfig.h"
 
 namespace Bullet
 {
@@ -31,11 +32,6 @@ namespace Bullet
         return m_bullet_speed;
     }
 
-    void BulletModel::setBulletPosition(sf::Vector2f position)
-    {
-        m_bullet_position = position;
-    }
-
     Projectile::ProjectileDirection BulletModel::getBulletDirection()
     {
         return m_bullet_direction;
@@ -44,5 +40,15 @@ namespace Bullet
     BulletType BulletModel::getBulletType()
     {
         return m_bullet_type;
+    }
+
+    void BulletModel::setBulletPosition(sf::Vector2f position)
+    {
+        m_bullet_position = position;
+    }
+
+    void BulletModel::setBulletSpeed(float speed)
+    {
+        m_bullet_speed = speed;
     }
 }
