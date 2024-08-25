@@ -1,4 +1,6 @@
 #include "../../public/global/ServiceLocator.h"
+
+#include "../../public/bullet/BulletService.h"
 #include "../../public/event/EventService.h"
 #include "../../public/graphic/GraphicService.h"
 #include "../../public/player/PlayerService.h"
@@ -8,6 +10,7 @@
 #include "../../public/gameplay/GameplayService.h"
 #include "../../public/element/ElementService.h"
 #include "../../public/sound/SoundService.h"
+#include "../../public/bullet/BulletService.h"
 
 namespace Global
 {
@@ -20,6 +23,7 @@ namespace Global
     using namespace Gameplay;
     using namespace Element;
     using namespace Sound;
+    using namespace Bullet;
 
     #pragma region Life Cycle Functions
 
@@ -42,6 +46,7 @@ namespace Global
         m_enemy_service->initialize();
         m_gameplay_service->initialize();
         m_element_service->initialize();
+        // m_bullet_service->initialize();
     }
 
     void ServiceLocator::update()

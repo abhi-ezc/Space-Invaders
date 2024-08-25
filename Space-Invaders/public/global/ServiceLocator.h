@@ -45,6 +45,11 @@ namespace Sound
     class SoundService;
 }
 
+namespace Bullet
+{
+    class BulletService;
+}
+
 namespace Global
 {
     // ServiceLocator Class Summary: This class manages access to various services in the application.
@@ -60,6 +65,7 @@ namespace Global
             Gameplay::GameplayService* m_gameplay_service;
             Element::ElementService* m_element_service;
             Sound::SoundService* m_sound_service;
+            // Bullet::BulletService* m_bullet_service;
 
             // Constructor for initializing the ServiceLocator.
             ServiceLocator();
@@ -90,5 +96,6 @@ namespace Global
             Gameplay::GameplayService* getGameplayService();
             Element::ElementService* getElementService();
             Sound::SoundService* getSoundService();
+            // Bullet::BulletService* getBulletService();
     };
 }

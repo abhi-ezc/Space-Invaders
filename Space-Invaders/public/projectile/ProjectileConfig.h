@@ -1,4 +1,9 @@
+#pragma once
 namespace Projectile
 {
-    enum class MovementDirection { };
+    enum class ProjectileDirection
+    {
+        UP,
+        DOWN
+    };
 }
