@@ -26,9 +26,10 @@ namespace Bullet {
 	}
 
 	void BulletController::update() {
-		handleOutOfBounds();
+		updateProjectilePosition();
 		m_bullet_model->update();
 		m_bullet_view->update();
+		handleOutOfBounds();
 	}
 
 	void BulletController::render() {
@@ -65,21 +66,25 @@ namespace Bullet {
 	}
 
 	void BulletController::moveUp() {
+		auto position = m_bullet_model->getBulletPosition();
+
 		const auto speed = m_bullet_model->getBulletSpeed() * Global::ServiceLocator::getInstance()->getTimeService()->
 			getDeltaTime();
 
-		const auto y = m_bullet_model->getBulletPosition().y + speed;
+		position.y = position.y - speed;
 
-		m_bullet_model->setBulletPosition(sf::Vector2f(m_bullet_model->getBulletPosition().x, y));
+		m_bullet_model->setBulletPosition(position);
 	}
 
 	void BulletController::moveDown() {
+		auto position = m_bullet_model->getBulletPosition();
+
 		const auto speed = m_bullet_model->getBulletSpeed() * Global::ServiceLocator::getInstance()->getTimeService()->
 			getDeltaTime();
 
-		const auto y = m_bullet_model->getBulletPosition().y - speed;
+		position.y = position.y + speed;
 
-		m_bullet_model->setBulletPosition(sf::Vector2f(m_bullet_model->getBulletPosition().x, y));
+		m_bullet_model->setBulletPosition(position);
 	}
 
 	void BulletController::setBulletSpeed(float speed) {
