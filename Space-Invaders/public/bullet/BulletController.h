@@ -1,40 +1,41 @@
 #pragma once
 #include "./../projectile/IProjectile.h"
 
-namespace Projectile
-{
-    enum class ProjectileDirection;
+namespace Projectile {
+	enum class ProjectileDirection;
 }
 
-namespace Bullet
-{
-    class BulletModel;
-    class BulletView;
+namespace Bullet {
+	class BulletModel;
+	class BulletView;
 
-    enum class BulletType;
+	enum class BulletType;
 
-    class BulletController : public Projectile::IProjectile
+	class BulletController : public Projectile::IProjectile
 
-    {
-        private:
-            BulletModel* m_bullet_model;
-            BulletView* m_bullet_view;
+	{
+	private:
+		BulletModel* m_bullet_model;
+		BulletView* m_bullet_view;
 
-            void moveUp();
-            void moveDown();
+		void moveUp();
+		void moveDown();
 
-        public:
-            BulletController(BulletType type);
-            ~BulletController() override;
+	protected:
+		void setBulletSpeed(float speed);
 
-            void initialize(sf::Vector2f position, Projectile::ProjectileDirection direction) override;
-            void update() override;
-            void render() override;
+	public:
+		BulletController(BulletType type);
+		~BulletController() override;
 
-            sf::Vector2f getProjectilePosition() override;
-            BulletType getBulletType();
+		void initialize(sf::Vector2f position, Projectile::ProjectileDirection direction) override;
+		void update() override;
+		void render() override;
 
-            void updateProjectilePosition() override;
-            void handleOutOfBounds();
-    };
+		sf::Vector2f getProjectilePosition() override;
+		BulletType getBulletType();
+
+		void updateProjectilePosition() override;
+		void handleOutOfBounds();
+	};
 }
