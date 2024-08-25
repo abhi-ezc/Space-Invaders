@@ -132,6 +132,7 @@
         </Link>
     </ItemDefinitionGroup>
     <ItemGroup>
+        <ClCompile Include="private\bullet\BulletService.cpp" />
         <ClCompile Include="private\enemy\controllers\SubZeroController.cpp">
           <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
           <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -755,6 +756,7 @@
         <ClCompile Include="private\element\Bunker\BunkerModel.cpp" />
         <ClCompile Include="private\element\Bunker\BunkerView.cpp" />
         <ClCompile Include="private\element\ElementService.cpp" />
+        <ClInclude Include="public\bullet\BulletService.h" />
         <ClInclude Include="public\element\Bunker\BunkerController.h" />
         <ClInclude Include="public\element\Bunker\BunkerModel.h" />
         <ClInclude Include="public\element\Bunker\BunkerView.h" />
@@ -779,6 +781,8 @@
         <ClInclude Include="public\player\PlayerView.h" />
         <ClInclude Include="public\global\ServiceLocator.h" />
         <ClInclude Include="public\main\GameService.h" />
+        <ClInclude Include="public\projectile\ProjectileConfig.h" />
+        <ClInclude Include="public\projectile\IProjectile.h" />
         <ClInclude Include="public\sound\SoundService.h" />
         <ClInclude Include="public\time\TimeService.h" />
         <ClInclude Include="public\ui\MainMenuUIController\MainMenuUIController.h" />
