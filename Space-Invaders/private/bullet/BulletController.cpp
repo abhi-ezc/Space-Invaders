@@ -6,6 +6,8 @@
 #include  "./../../public/bullet/BulletView.h"
 #include "./../../public/bullet/BulletConfig.h"
 #include "./../../public/projectile/ProjectileConfig.h"
+#include "./../../public/global/ServiceLocator.h"
+#include "./../../public/bullet/BulletService.h"
 
 namespace Bullet {
 	BulletController::BulletController(BulletType type) {
@@ -47,7 +49,7 @@ namespace Bullet {
 		auto windowSize = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow()->getSize();
 
 		if (position.x < 0 || position.x > windowSize.x || position.y < 0 || position.y > windowSize.y) {
-			// destroy bullet
+			Global::ServiceLocator::getInstance()->getBulletService()->destroyBullet(this);
 		}
 	}
 
