@@ -756,7 +756,14 @@
         <ClCompile Include="private\element\Bunker\BunkerModel.cpp" />
         <ClCompile Include="private\element\Bunker\BunkerView.cpp" />
         <ClCompile Include="private\element\ElementService.cpp" />
+        <ClCompile Include="private\bullet\BulletController.cpp" />
+        <ClCompile Include="private\bullet\BulletModel.cpp" />
+        <ClCompile Include="private\bullet\BulletView.cpp" />
+        <ClInclude Include="public\bullet\BulletConfig.h" />
+        <ClInclude Include="public\bullet\BulletController.h" />
+        <ClInclude Include="public\bullet\BulletModel.h" />
         <ClInclude Include="public\bullet\BulletService.h" />
+        <ClInclude Include="public\bullet\BulletView.h" />
         <ClInclude Include="public\element\Bunker\BunkerController.h" />
         <ClInclude Include="public\element\Bunker\BunkerModel.h" />
         <ClInclude Include="public\element\Bunker\BunkerView.h" />
