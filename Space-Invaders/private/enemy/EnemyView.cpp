@@ -5,69 +5,62 @@
 #include "./../../public/enemy/EnemyConfig.h"
 #include "./../../public/global/Config.h"
 
-namespace Enemy
-{
-    EnemyView::EnemyView()
-    {
-        m_enemy_controller = nullptr;
-    };
+namespace Enemy {
+	EnemyView::EnemyView() {
+		m_enemy_controller = nullptr;
+	};
 
-    EnemyView::~EnemyView() = default;
+	EnemyView::~EnemyView() = default;
 
-    void EnemyView::initialize(EnemyController* enemyController)
-    {
-        m_enemy_controller = enemyController;
-        initializeEnemySprite();
-        createEnemySprite();
-    }
+	void EnemyView::initialize(EnemyController* enemyController) {
+		m_enemy_controller = enemyController;
+		initializeEnemySprite();
+		createEnemySprite();
+	}
 
-    void EnemyView::update()
-    {
-        updateSpritePosition();
-    }
+	void EnemyView::update() {
+		updateSpritePosition();
+	}
 
-    void EnemyView::render()
-    {
-        Global::ServiceLocator::getInstance()->getGraphicService()->draw(m_spr_enemy);
-    }
+	void EnemyView::render() {
+		Global::ServiceLocator::getInstance()->getGraphicService()->draw(m_spr_enemy);
+	}
 
-    void EnemyView::initializeEnemySprite()
-    {
-        switch (m_enemy_controller->getEnemyType())
-        {
-            case EnemyType::ZAPPER:
-                m_str_texture_path = Global::Config::zapper_texture_path;
-                break;
-            case EnemyType::SUBZERO:
-                m_str_texture_path = Global::Config::subzero_texture_path;
-                break;
-            case EnemyType::THUNDER_SNAKE:
-                m_str_texture_path = Global::Config::thunder_snake_texture_path;
-                break;
-            case EnemyType::UFO:
-                m_str_texture_path = Global::Config::ufo_texture_path;
-                break;
-        }
-    }
+	sf::Vector2f EnemyView::getSpriteSize() {
+		return sf::Vector2f(c_sprite_width, c_sprite_height);
+	}
 
-    void EnemyView::createEnemySprite()
-    {
-        if (m_tex_enemy.loadFromFile(m_str_texture_path))
-        {
-            m_spr_enemy.setTexture(m_tex_enemy);
-            scaleSprite();
-        }
-    }
+	void EnemyView::initializeEnemySprite() {
+		switch (m_enemy_controller->getEnemyType()) {
+		case EnemyType::ZAPPER:
+			m_str_texture_path = Global::Config::zapper_texture_path;
+			break;
+		case EnemyType::SUBZERO:
+			m_str_texture_path = Global::Config::subzero_texture_path;
+			break;
+		case EnemyType::THUNDER_SNAKE:
+			m_str_texture_path = Global::Config::thunder_snake_texture_path;
+			break;
+		case EnemyType::UFO:
+			m_str_texture_path = Global::Config::ufo_texture_path;
+			break;
+		}
+	}
 
-    void EnemyView::scaleSprite()
-    {
-        float x = c_sprite_width / m_spr_enemy.getTexture()->getSize().x;
-        float y = c_sprite_height / m_spr_enemy.getTexture()->getSize().y;
-        m_spr_enemy.setScale(x, y);
-    }
+	void EnemyView::createEnemySprite() {
+		if (m_tex_enemy.loadFromFile(m_str_texture_path)) {
+			m_spr_enemy.setTexture(m_tex_enemy);
+			scaleSprite();
+		}
+	}
 
-    void EnemyView::updateSpritePosition()
-    {
-        m_spr_enemy.setPosition(m_enemy_controller->getPosition());
-    }
+	void EnemyView::scaleSprite() {
+		float x = c_sprite_width / m_spr_enemy.getTexture()->getSize().x;
+		float y = c_sprite_height / m_spr_enemy.getTexture()->getSize().y;
+		m_spr_enemy.setScale(x, y);
+	}
+
+	void EnemyView::updateSpritePosition() {
+		m_spr_enemy.setPosition(m_enemy_controller->getPosition());
+	}
 }

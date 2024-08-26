@@ -18,23 +18,41 @@ namespace Bullet {
 	void BulletService::initialize() {}
 
 	void BulletService::update() {
-		for (auto bulletController : m_projectiles_list) {
-			bulletController->update();
-		}
+		invokeLifecycle(Projectile::ProjectileLifecycle::UPDATE);
 	}
 
 	void BulletService::render() {
-		for (auto bulletController : m_projectiles_list) {
-			bulletController->render();
-		}
+		invokeLifecycle(Projectile::ProjectileLifecycle::RENDER);
 	}
 
 	void BulletService::destroy() {
-		for (auto bulletController : m_projectiles_list) {
-			delete bulletController;
-		}
-
+		invokeLifecycle(Projectile::ProjectileLifecycle::DESTROY);
 		m_projectiles_list.clear();
+	}
+
+	void BulletService::invokeLifecycle(Projectile::ProjectileLifecycle lifecycle) {
+
+		for (int i = 0; i < m_projectiles_list.size(); i++) {
+			auto bulletController = m_projectiles_list[i];
+
+			if (bulletController == nullptr) {
+				continue;
+			}
+
+			switch (lifecycle) {
+			case Projectile::ProjectileLifecycle::INIT:
+				break;
+			case Projectile::ProjectileLifecycle::UPDATE:
+				bulletController->update();
+				break;
+			case Projectile::ProjectileLifecycle::RENDER:
+				bulletController->render();
+				break;
+			case Projectile::ProjectileLifecycle::DESTROY:
+				delete bulletController;
+				break;
+			}
+		}
 	}
 
 	void BulletService::spawnBullet(BulletType type, sf::Vector2f position, Projectile::ProjectileDirection direction) {

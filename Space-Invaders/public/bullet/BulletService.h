@@ -4,6 +4,8 @@
 
 namespace Projectile {
 	enum class ProjectileDirection;
+	enum class ProjectileLifecycle;
+
 	class IProjectile;
 }
 
@@ -17,6 +19,8 @@ namespace Bullet {
 
 		Projectile::IProjectile* createBullet(BulletType type);
 		void destroy();
+
+		void invokeLifecycle(Projectile::ProjectileLifecycle lifecycle);
 
 	public:
 
