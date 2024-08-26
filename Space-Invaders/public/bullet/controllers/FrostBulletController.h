@@ -9,7 +9,7 @@ namespace Bullet {
 	namespace Controllers {
 		class FrostBulletController : public BulletController {
 		private:
-			const float m_movement_speed = 10.f;
+			const float m_movement_speed = 500.f;
 		public:
 			FrostBulletController();
 			~FrostBulletController() override;

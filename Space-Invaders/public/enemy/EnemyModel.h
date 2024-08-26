@@ -1,62 +1,84 @@
 ﻿#pragma once
 #include <SFML/System/Vector2.hpp>
 
-namespace Enemy
-{
-    enum class EnemyType;
-    enum class EnemyState;
-    enum class MovementDirection;
-    class EnemyController;
+namespace Bullet {
+	enum class BulletType;
+}
 
-    class EnemyModel
-    {
-        private:
-            sf::Vector2f m_current_position;
-            sf::Vector2f m_ref_position;
+namespace Enemy {
+	enum class EnemyType;
+	enum class EnemyState;
+	enum class MovementDirection;
+	class EnemyController;
 
-            MovementDirection m_movement_direction;
-            MovementDirection m_previous_direction;
+	class EnemyModel {
+	private:
+		sf::Vector2f m_current_position;
+		sf::Vector2f m_ref_position;
 
-            EnemyType m_enemy_type;
-            EnemyState m_enemy_state;
+		MovementDirection m_movement_direction;
+		MovementDirection m_previous_direction;
+
+		EnemyType m_enemy_type;
+		EnemyState m_enemy_state;
+
+		const float m_movement_speed = 200.f;
+		const float m_vertical_travel_distance = 30.f;
+
+		const sf::Vector2f m_left_most_position = sf::Vector2f(50.f, 50.f);
+		const sf::Vector2f m_right_most_position = sf::Vector2f(1800.f, 50.f);
+
+		const sf::Vector2f m_muzzle_offset = sf::Vector2f(0.f, 40.f);
+
+	protected:
+		float m_rate_of_fire = 0.5f;
+		float m_elapsed_fire_time = 0.f;
+		bool m_can_fire_bullet = false;
+		Bullet::BulletType m_bullet_type;
 
 
-            const float m_movement_speed = 200.f;
-            const float m_vertical_travel_distance = 30.f;
+	public:
+		EnemyModel(EnemyType enemyType);
+		~EnemyModel();
 
-            const sf::Vector2f m_left_most_position = sf::Vector2f(50.f, 50.f);
-            const sf::Vector2f m_right_most_position = sf::Vector2f(1800.f, 50.f);
+		void initialize(EnemyController* controller);
+		void update();
+		void render();
 
-        public:
-            EnemyModel(EnemyType enemyType);
-            ~EnemyModel();
+		sf::Vector2f getCurrentPosition();
+		void setCurrentPosition(sf::Vector2f current_position);
 
-            void initialize(EnemyController* controller);
-            void update();
-            void render();
+		MovementDirection getMovementDirection();
+		void setMovementDirection(MovementDirection movementDirection);
+		MovementDirection getPreviousDirection();
+		void setPreviousDirection(MovementDirection direction);
 
-            sf::Vector2f getCurrentPosition();
-            void setCurrentPosition(sf::Vector2f current_position);
+		float getVerticalTravelDistance();
 
-            MovementDirection getMovementDirection();
-            void setMovementDirection(MovementDirection movementDirection);
-            MovementDirection getPreviousDirection();
-            void setPreviousDirection(MovementDirection direction);
+		float getMovementSpeed();
 
-            float getVerticalTravelDistance();
+		sf::Vector2f getLeftMostPosition();
+		sf::Vector2f getRightMostPosition();
 
-            float getMovementSpeed();
+		sf::Vector2f getReferencePosition();
+		void setReferencePosition(sf::Vector2f refPosition);
 
-            sf::Vector2f getLeftMostPosition();
-            sf::Vector2f getRightMostPosition();
+		EnemyState getEnemyState();
+		void setEnemyState(EnemyState state);
 
-            sf::Vector2f getReferencePosition();
-            void setReferencePosition(sf::Vector2f refPosition);
+		EnemyType getEnemyType();
+		void setEnemyType(EnemyType type);
 
-            EnemyState getEnemyState();
-            void setEnemyState(EnemyState state);
+		void setRateOfFire(float rate);
+		float getFireDelay();
 
-            EnemyType getEnemyType();
-            void setEnemyType(EnemyType type);
-    };
+		void setElapsedFireTime(float elapsedTime);
+		float getElapsedFireTime();
+
+		void setBulletType(EnemyType type);
+		Bullet::BulletType getBulletType();
+
+		bool getCanFire();
+		sf::Vector2f getMuzzleOffset();
+	};
 }

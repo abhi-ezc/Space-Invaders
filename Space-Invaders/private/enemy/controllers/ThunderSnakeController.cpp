@@ -3,81 +3,71 @@
 #include "../../../public/global/ServiceLocator.h"
 #include "../../../public/time/TimeService.h"
 #include "./../../public/enemy/EnemyConfig.h"
+#include "../../../public/bullet/BulletService.h"
+#include "../../../public/bullet/BulletConfig.h"
+#include "../../../public/projectile/ProjectileConfig.h"
+#include "./../../public/enemy/EnemyView.h"
 
-namespace Enemy
-{
-    namespace Controllers
-    {
-        using namespace Global;
+namespace Enemy {
+	namespace Controllers {
+		using namespace Global;
 
-        ThunderSnakeController::ThunderSnakeController(): EnemyController(EnemyType::THUNDER_SNAKE) { }
+		ThunderSnakeController::ThunderSnakeController() : EnemyController(EnemyType::THUNDER_SNAKE) {}
 
-        ThunderSnakeController::~ThunderSnakeController() { }
+		ThunderSnakeController::~ThunderSnakeController() {}
 
-        void ThunderSnakeController::initialize()
-        {
-            EnemyController::initialize();
-            m_enemy_model->setMovementDirection(getRandomSideDirection());
-        }
+		void ThunderSnakeController::initialize() {
+			EnemyController::initialize();
+			m_enemy_model->setMovementDirection(getRandomSideDirection());
+		}
 
-        void ThunderSnakeController::move()
-        {
-            switch (m_enemy_model->getMovementDirection())
-            {
-                case MovementDirection::LEFT:
-                    moveLeft();
-                    break;
-                case MovementDirection::RIGHT:
-                    moveRight();
-                    break;
-                default:
-                    break;
-            }
-        }
+		void ThunderSnakeController::move() {
+			switch (m_enemy_model->getMovementDirection()) {
+			case MovementDirection::LEFT:
+				moveLeft();
+				break;
+			case MovementDirection::RIGHT:
+				moveRight();
+				break;
+			default:
+				break;
+			}
+		}
 
-        void ThunderSnakeController::moveLeft()
-        {
-            sf::Vector2f position = getPosition();
+		void ThunderSnakeController::moveLeft() {
+			sf::Vector2f position = getPosition();
 
-            position.x -= m_enemy_model->getMovementSpeed() * ServiceLocator::getInstance()
-                                                              ->getTimeService()
-                                                              ->getDeltaTime();
-            if (position.x < m_enemy_model->getLeftMostPosition().x)
-            {
-                m_enemy_model->setMovementDirection(MovementDirection::RIGHT);
-            }
-            else
-            {
-                position.y += m_vertical_travel_speed * ServiceLocator::getInstance()
-                                                        ->getTimeService()
-                                                        ->getDeltaTime();
-                m_enemy_model->setCurrentPosition(position);
-            }
-        }
+			position.x -= m_enemy_model->getMovementSpeed() * ServiceLocator::getInstance()
+				->getTimeService()
+				->getDeltaTime();
+			if (position.x < m_enemy_model->getLeftMostPosition().x) {
+				m_enemy_model->setMovementDirection(MovementDirection::RIGHT);
+			} else {
+				position.y += m_vertical_travel_speed * ServiceLocator::getInstance()
+					->getTimeService()
+					->getDeltaTime();
+				m_enemy_model->setCurrentPosition(position);
+			}
+		}
 
-        void ThunderSnakeController::moveRight()
-        {
-            sf::Vector2f position = getPosition();
+		void ThunderSnakeController::moveRight() {
+			sf::Vector2f position = getPosition();
 
-            position.x += m_enemy_model->getMovementSpeed() * ServiceLocator::getInstance()
-                                                              ->getTimeService()
-                                                              ->getDeltaTime();
-            if (position.x > m_enemy_model->getRightMostPosition().x)
-            {
-                m_enemy_model->setMovementDirection(MovementDirection::LEFT);
-            }
-            else
-            {
-                position.y += m_vertical_travel_speed * ServiceLocator::getInstance()
-                                                        ->getTimeService()
-                                                        ->getDeltaTime();
-                m_enemy_model->setCurrentPosition(position);
-            }
-        }
+			position.x += m_enemy_model->getMovementSpeed() * ServiceLocator::getInstance()
+				->getTimeService()
+				->getDeltaTime();
+			if (position.x > m_enemy_model->getRightMostPosition().x) {
+				m_enemy_model->setMovementDirection(MovementDirection::LEFT);
+			} else {
+				position.y += m_vertical_travel_speed * ServiceLocator::getInstance()
+					->getTimeService()
+					->getDeltaTime();
+				m_enemy_model->setCurrentPosition(position);
+			}
+		}
 
-        MovementDirection ThunderSnakeController::getRandomSideDirection()
-        {
-            return static_cast<MovementDirection>(rand() % 2);
-        }
-    }
+		MovementDirection ThunderSnakeController::getRandomSideDirection() {
+			return static_cast<MovementDirection>(rand() % 2);
+		}
+	}
 }

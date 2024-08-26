@@ -11,7 +11,6 @@ namespace Bullet {
 		void TorpedoController::initialize(sf::Vector2f position, Projectile::ProjectileDirection direction) {
 			BulletController::initialize(position, direction);
 			setBulletSpeed(m_movement_speed);
-
 		}
 	}
 }
