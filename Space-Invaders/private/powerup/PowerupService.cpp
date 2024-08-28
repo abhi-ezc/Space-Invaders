@@ -2,6 +2,10 @@
 #include "./../../public/global/Config.h"
 #include "./../../public/collectible/ICollectible.h"
 #include "./../../public/powerup/PowerupConfig.h"
+#include "./../../public/powerup/controllers/OutscalBombController.h"
+#include "./../../public/powerup/controllers/RapidFireController.h"
+#include "./../../public/powerup/controllers/ShieldController.h"
+#include "./../../public/powerup/controllers/TrippleLaserController.h"
 
 
 namespace Powerup {
@@ -48,12 +52,33 @@ namespace Powerup {
 		}
 	}
 
-	void PowerupService::spawnPowerup(PowerupType type, sf::Vector2f position) {}
+	void PowerupService::spawnPowerup(PowerupType type, sf::Vector2f position) {
+		auto controller = createPowerup(type);
+		controller->initialize(position);
+	}
 
-	void PowerupService::destroyPowerup(Collectible::ICollectible* powerup) {}
+	void PowerupService::destroyPowerup(Collectible::ICollectible* powerup) {
+		m_collectibles_list.erase(
+			std::remove(m_collectibles_list.begin(), m_collectibles_list.end(), powerup),
+			m_collectibles_list.end());
+
+		delete powerup;
+	}
 
 	Collectible::ICollectible* PowerupService::createPowerup(PowerupType type) {
-		return nullptr;
+		switch (type) {
+		case PowerupType::SHIELD:
+			return new Controller::ShieldController();
+
+		case PowerupType::RAPID_FIRE:
+			return new Controller::RapidFireController();
+
+		case PowerupType::OUTSCAL_BOMB:
+			return new Controller::OutscalBombController();
+
+		case PowerupType::TRIPPLE_LASER:
+			return new Controller::ShieldController();
+		}
 	}
 
 }

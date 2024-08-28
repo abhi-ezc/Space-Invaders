@@ -1,5 +1,4 @@
 #include "../../../public/enemy/controllers/UFOController.h"
-
 #include "../../../public/enemy/EnemyConfig.h"
 #include "../../../public/enemy/EnemyModel.h"
 #include "../../../public/global/ServiceLocator.h"
@@ -7,13 +6,17 @@
 #include "../../../public/bullet/BulletService.h"
 #include "../../../public/bullet/BulletConfig.h"
 #include "../../../public/projectile/ProjectileConfig.h"
+#include "../../../public/powerup/PowerupConfig.h"
+#include "../../../public/powerup/PowerupService.h"
 
 namespace Enemy {
 	namespace Controllers {
 		using namespace Global;
 
 		UFOController::UFOController() : EnemyController(EnemyType::UFO) {}
-		UFOController::~UFOController() {}
+		UFOController::~UFOController() {
+			spawnRandomPowerup();
+		}
 
 		void UFOController::initialize() {
 			EnemyController::initialize();
@@ -31,6 +34,11 @@ namespace Enemy {
 			default:
 				break;
 			}
+		}
+
+		void UFOController::spawnRandomPowerup() {
+			auto randomPowerType = static_cast<Powerup::PowerupType>(rand() % 4);
+			Global::ServiceLocator::getInstance()->getPowerupService()->spawnPowerup(randomPowerType, getPosition());
 		}
 
 		void UFOController::moveLeft() {

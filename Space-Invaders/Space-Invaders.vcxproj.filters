@@ -135,6 +135,18 @@
     <ClCompile Include="private\powerup\PowerupController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="private\powerup\controllers\OutscalBombController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\powerup\controllers\ShieldController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\powerup\controllers\TrippleLaser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\powerup\controllers\RapidFire.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\main\GameService.h">
@@ -270,6 +282,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="public\powerup\PowerupView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\powerup\controllers\OutscalBombController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\powerup\controllers\ShieldController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\powerup\controllers\TrippleLaserController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\powerup\controllers\RapidFireController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
