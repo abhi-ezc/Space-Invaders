@@ -123,6 +123,18 @@
     <ClCompile Include="private\bullet\controllers\FrostBulletController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="private\powerup\PowerupService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\powerup\PowerupView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\powerup\PowerupModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="private\powerup\PowerupController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\main\GameService.h">
@@ -240,6 +252,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="public\bullet\controllers\FrostBulletController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\collectible\ICollectible.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\powerup\PowerupController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\powerup\PowerupModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\powerup\PowerupConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\powerup\PowerupService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\powerup\PowerupView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

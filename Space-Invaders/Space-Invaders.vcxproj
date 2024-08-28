@@ -750,6 +750,10 @@
     </ClCompile>
     <ClCompile Include="private\ui\MainmenuUIController\MainmenuUIController.cpp" />
     <ClCompile Include="private\ui\UIService.cpp" />
+    <ClCompile Include="private\powerup\PowerupService.cpp" />
+    <ClCompile Include="private\powerup\PowerupView.cpp" />
+    <ClCompile Include="private\powerup\PowerupModel.cpp" />
+    <ClCompile Include="private\powerup\PowerupController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="private\gameplay\GameplayService.cpp" />
@@ -770,6 +774,7 @@
     <ClInclude Include="public\bullet\BulletService.h" />
     <ClInclude Include="public\bullet\BulletView.h" />
     <ClInclude Include="public\bullet\controllers\LaserBulletController.h" />
+    <ClInclude Include="public\collectible\ICollectible.h" />
     <ClInclude Include="public\element\Bunker\BunkerController.h" />
     <ClInclude Include="public\element\Bunker\BunkerModel.h" />
     <ClInclude Include="public\element\Bunker\BunkerView.h" />
@@ -794,6 +799,11 @@
     <ClInclude Include="public\player\PlayerView.h" />
     <ClInclude Include="public\global\ServiceLocator.h" />
     <ClInclude Include="public\main\GameService.h" />
+    <ClInclude Include="public\powerup\PowerupController.h" />
+    <ClInclude Include="public\powerup\PowerupModel.h" />
+    <ClInclude Include="public\powerup\PowerupConfig.h" />
+    <ClInclude Include="public\powerup\PowerupService.h" />
+    <ClInclude Include="public\powerup\PowerupView.h" />
     <ClInclude Include="public\projectile\ProjectileConfig.h" />
     <ClInclude Include="public\projectile\IProjectile.h" />
     <ClInclude Include="public\sound\SoundService.h" />
