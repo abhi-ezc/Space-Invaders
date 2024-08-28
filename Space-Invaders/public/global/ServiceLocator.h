@@ -40,6 +40,10 @@ namespace Bullet {
 	class BulletService;
 }
 
+namespace Powerup {
+	class PowerupService;
+}
+
 namespace Global {
 	// ServiceLocator Class Summary: This class manages access to various services in the application.
 	class ServiceLocator {
@@ -54,6 +58,7 @@ namespace Global {
 		Element::ElementService* m_element_service;
 		Sound::SoundService* m_sound_service;
 		Bullet::BulletService* m_bullet_service;
+		Powerup::PowerupService* m_powerup_service;
 
 		// Constructor for initializing the ServiceLocator.
 		ServiceLocator();
@@ -85,5 +90,6 @@ namespace Global {
 		Element::ElementService* getElementService();
 		Sound::SoundService* getSoundService();
 		Bullet::BulletService* getBulletService();
+		Powerup::PowerupService* getPowerupService();
 	};
 }

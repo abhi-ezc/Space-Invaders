@@ -1,5 +1,4 @@
 #include "../../public/global/ServiceLocator.h"
-
 #include "../../public/bullet/BulletService.h"
 #include "../../public/event/EventService.h"
 #include "../../public/graphic/GraphicService.h"
@@ -11,6 +10,7 @@
 #include "../../public/element/ElementService.h"
 #include "../../public/sound/SoundService.h"
 #include "../../public/bullet/BulletService.h"
+#include "../../public/powerup/PowerupService.h"
 
 namespace Global {
 	using namespace Graphic;
@@ -23,6 +23,7 @@ namespace Global {
 	using namespace Element;
 	using namespace Sound;
 	using namespace Bullet;
+	using namespace Powerup;
 
 #pragma region Life Cycle Functions
 
@@ -44,6 +45,7 @@ namespace Global {
 		m_gameplay_service->initialize();
 		m_element_service->initialize();
 		m_bullet_service->initialize();
+		m_powerup_service->initialize();
 	}
 
 	void ServiceLocator::update() {
@@ -57,6 +59,7 @@ namespace Global {
 		m_bullet_service->update();
 		m_element_service->update();
 		m_gameplay_service->update();
+		m_powerup_service->update();
 	}
 
 	void ServiceLocator::render() {
@@ -66,8 +69,10 @@ namespace Global {
 		m_player_service->render();
 		m_enemy_service->render();
 		m_bullet_service->render();
+		m_powerup_service->render();
 		m_ui_service->render();
 		m_graphic_service->render();
+
 	}
 
 	// destructor
@@ -91,6 +96,7 @@ namespace Global {
 		m_gameplay_service = new GameplayService();
 		m_element_service = new ElementService();
 		m_bullet_service = new BulletService();
+		m_powerup_service = new PowerupService();
 	}
 
 	void ServiceLocator::clearAllServices() {
@@ -105,6 +111,7 @@ namespace Global {
 		delete m_element_service;
 		delete m_sound_service;
 		delete m_bullet_service;
+		delete m_powerup_service;
 	}
 #pragma endregion
 
@@ -157,8 +164,8 @@ namespace Global {
 		return m_bullet_service;
 	}
 
-
-
-
+	Powerup::PowerupService* ServiceLocator::getPowerupService() {
+		return m_powerup_service;
+	}
 #pragma endregion
 }
