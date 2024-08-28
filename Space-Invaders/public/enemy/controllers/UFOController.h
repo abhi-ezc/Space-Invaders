@@ -1,6 +1,10 @@
 #pragma once
 #include "../EnemyController.h"
 
+namespace Collectible {
+	class ICollectible;
+}
+
 namespace Enemy {
 	namespace Controllers {
 		class UFOController : public EnemyController {
@@ -12,6 +16,9 @@ namespace Enemy {
 			~UFOController() override;
 			void initialize() override;
 			void move() override;
+
+			void spawnRandomPowerup();
+
 		};
 	}
 }
