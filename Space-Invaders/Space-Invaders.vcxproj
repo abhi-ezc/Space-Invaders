@@ -814,6 +814,7 @@
     <ClInclude Include="public\projectile\IProjectile.h" />
     <ClInclude Include="public\sound\SoundService.h" />
     <ClInclude Include="public\time\TimeService.h" />
+    <ClInclude Include="public\ui\interface\IUIController.h" />
     <ClInclude Include="public\ui\MainMenuUIController\MainMenuUIController.h" />
     <ClInclude Include="public\ui\UIService.h" />
     <ClInclude Include="public\powerup\controllers\TrippleLaserController.h" />
