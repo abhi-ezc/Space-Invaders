@@ -6,6 +6,11 @@ namespace UI
         class MainMenuUIController;
     }
 
+    namespace Interface
+    {
+        class IUIController;
+    }
+
     class UIService
     {
         private:
@@ -21,6 +26,8 @@ namespace UI
             void initialize();
             void update();
             void render();
+
+            Interface::IUIController* getCurrentUIController();
 
             MainMenu::MainMenuUIController* getMainMenuController();
     };

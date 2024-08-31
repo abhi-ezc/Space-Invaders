@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "./../interface/IUIController.h"
 
 namespace UI
 {
     namespace MainMenu
     {
-        class MainMenuUIController
+        class MainMenuUIController : public Interface::IUIController
         {
             private:
                 sf::RenderWindow* m_game_window;
@@ -38,11 +39,12 @@ namespace UI
 
             public:
                 MainMenuUIController();
-                ~MainMenuUIController();
+                ~MainMenuUIController() override;
 
-                void initialize();
-                void update();
-                void render();
+                void initialize() override;
+                void update() override;
+                void render() override;
+                void show() override;
 
                 void processButtonInteractions();
                 bool isButtonClick(sf::Sprite* spr_button, sf::Vector2i mousePosition);

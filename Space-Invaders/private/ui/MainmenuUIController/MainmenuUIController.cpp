@@ -118,6 +118,9 @@ namespace UI
             ServiceLocator::getInstance()->getGraphicService()->draw(m_spr_quit_button);
         }
 
+        // need to implement
+        void MainMenuUIController::show() {}
+
         void MainMenuUIController::processButtonInteractions()
         {
             if (ServiceLocator::getInstance()->getEventService()->isLeftMouseButtonPressed())
