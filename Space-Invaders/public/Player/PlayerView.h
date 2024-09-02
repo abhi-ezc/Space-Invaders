@@ -4,21 +4,25 @@
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 
+namespace UI {
+	namespace UIElement {
+		class ImageView;
+	}
+}
+
 namespace Player {
 	class PlayerController;
 
 	class PlayerView {
 	private:
-		sf::Texture m_texture;
-		sf::Sprite m_sprite;
+
+		UI::UIElement::ImageView* m_player_image;
 
 		const int m_sprite_height = 60;
 		const int m_sprite_width = 60;
 
 		sf::RenderWindow* m_game_window;
 		PlayerController* m_player_controller;
-
-		void setPlayerScale();
 
 	public:
 		// Constructors and Destructors
@@ -34,7 +38,7 @@ namespace Player {
 		void createPlayerSprite();
 
 		// Getters
-		sf::Sprite getPlayerSprite();
+		sf::FloatRect getLocalBounds();
 
 		// Setters
 	};

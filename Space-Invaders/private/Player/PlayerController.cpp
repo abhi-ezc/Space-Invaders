@@ -75,12 +75,12 @@ namespace Player {
 
 	void PlayerController::fireBullet() {
 		auto bulletPos = getPlayerPosition();
-		auto playerSpriteBounds = m_player_view->getPlayerSprite().getLocalBounds();
+		auto playerSpriteBounds = m_player_view->getLocalBounds();
 
 		auto muzzleOffset = m_player_model->getMuzzleOffset();
 
-		bulletPos.x += (playerSpriteBounds.width / 2) + muzzleOffset.x;
-		bulletPos.y += (playerSpriteBounds.height / 2) + muzzleOffset.y;
+		bulletPos.x += muzzleOffset.x;
+		bulletPos.y += muzzleOffset.y;
 
 		ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::LASER, bulletPos, Projectile::ProjectileDirection::UP);
 	}

@@ -3,23 +3,25 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/System/String.hpp>
 
-namespace Gameplay
-{
-    class GameplayView
-    {
-        private:
-            sf::Texture m_background_texture;
-            sf::Sprite m_background_sprite;
+namespace UI {
+	namespace UIElement {
+		class ImageView;
+	}
+}
 
+namespace Gameplay {
+	class GameplayView {
+	private:
+		UI::UIElement::ImageView* m_background_image;
 
-        public:
-            GameplayView();
-            ~GameplayView();
+	public:
+		GameplayView();
+		~GameplayView();
 
-            void initialize();
-            void update();
-            void render();
+		void initialize();
+		void update();
+		void render();
 
-            void initializeBackgroundImage();
-    };
+		void initializeBackgroundImage();
+	};
 }

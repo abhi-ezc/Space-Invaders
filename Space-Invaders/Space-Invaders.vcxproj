@@ -751,6 +751,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="private\ui\MainmenuUIController\MainmenuUIController.cpp" />
+    <ClCompile Include="private\ui\UIElement\ImageView.cpp" />
     <ClCompile Include="private\ui\UIService.cpp" />
     <ClCompile Include="private\powerup\PowerupService.cpp" />
     <ClCompile Include="private\powerup\PowerupView.cpp" />
@@ -758,6 +759,7 @@
     <ClCompile Include="private\powerup\PowerupController.cpp" />
     <ClCompile Include="private\powerup\controllers\TrippleLaser.cpp" />
     <ClCompile Include="private\powerup\controllers\RapidFire.cpp" />
+    <ClCompile Include="private\ui\UIElement\UIView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="private\gameplay\GameplayService.cpp" />
@@ -816,9 +818,11 @@
     <ClInclude Include="public\time\TimeService.h" />
     <ClInclude Include="public\ui\interface\IUIController.h" />
     <ClInclude Include="public\ui\MainMenuUIController\MainMenuUIController.h" />
+    <ClInclude Include="public\ui\UIElement\ImageView.h" />
     <ClInclude Include="public\ui\UIService.h" />
     <ClInclude Include="public\powerup\controllers\TrippleLaserController.h" />
     <ClInclude Include="public\powerup\controllers\RapidFireController.h" />
+    <ClInclude Include="public\ui\UIElement\UIView.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\gameplay\GameplayView.h" />

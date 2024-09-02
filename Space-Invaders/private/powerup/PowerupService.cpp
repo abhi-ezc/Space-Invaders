@@ -10,9 +10,11 @@
 
 namespace Powerup {
 
-	PowerupService::PowerupService() {}
+	PowerupService::PowerupService() = default;
 
-	PowerupService::~PowerupService() {}
+	PowerupService::~PowerupService() {
+		destroy();
+	}
 
 	void PowerupService::initialize() {}
 

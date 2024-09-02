@@ -4,13 +4,17 @@
 #include "../../public/graphic/GraphicService.h"
 #include "../../public/bullet/BulletConfig.h"
 #include "../../public/global/Config.h"
+#include "../../public/ui/UIElement/ImageView.h"
 
 namespace Bullet {
 	BulletView::BulletView(BulletController* controller) {
 		m_bullet_controller = controller;
+		m_bullet_image = nullptr;
 	}
 
-	BulletView::~BulletView() = default;
+	BulletView::~BulletView() {
+		delete m_bullet_image;
+	}
 
 	void BulletView::initialize() {
 		loadTexture();
@@ -18,11 +22,12 @@ namespace Bullet {
 	}
 
 	void BulletView::update() {
-		m_bullet_sprite.setPosition(m_bullet_controller->getProjectilePosition());
+		m_bullet_image->update();
+		m_bullet_image->setPosition(m_bullet_controller->getProjectilePosition());
 	}
 
 	void BulletView::render() {
-		Global::ServiceLocator::getInstance()->getGraphicService()->draw(m_bullet_sprite);
+		m_bullet_image->render();
 	}
 
 	void BulletView::loadTexture() {
@@ -39,22 +44,9 @@ namespace Bullet {
 		}
 	}
 
-	void BulletView::scaleSprite() {
-		const auto size = static_cast<sf::Vector2f>(m_bullet_sprite.getTexture()->getSize());
-
-		const float scaleX = m_sprite_width / size.x;
-		const float scaleY = m_sprite_height / size.y;
-
-		m_bullet_sprite.setScale(scaleX, scaleY);
-	}
-
 	void BulletView::initializeSprite() {
-		if (m_bullet_texture.loadFromFile(m_bullet_texture_path)) {
-			m_bullet_sprite.setTexture(m_bullet_texture);
-			scaleSprite();
-			auto boundingBoxWidth = m_bullet_sprite.getLocalBounds();
-			m_bullet_sprite.setOrigin(boundingBoxWidth.width / 2, boundingBoxWidth.height / 2);
-
-		}
+		m_bullet_image = new UI::UIElement::ImageView();
+		m_bullet_image->initialize(m_bullet_texture_path, m_sprite_width, m_sprite_height, m_bullet_controller->getProjectilePosition());
+		m_bullet_image->setOriginAtCentre();
 	}
 }
