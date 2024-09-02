@@ -3,31 +3,35 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/System/String.hpp>
 
-namespace Bullet
-{
-    class BulletController;
+namespace UI {
+	namespace UIElement {
+		class ImageView;
+	}
+}
 
-    class BulletView
-    {
-        private:
-            sf::String m_bullet_texture_path;
-            sf::Texture m_bullet_texture;
-            sf::Sprite m_bullet_sprite;
-            BulletController* m_bullet_controller;
 
-            float m_sprite_height = 18.f;
-            float m_sprite_width = 18.f;
+namespace Bullet {
+	class BulletController;
 
-            void loadTexture();
-            void scaleSprite();
-            void initializeSprite();
+	class BulletView {
+	private:
+		sf::String m_bullet_texture_path;
+		UI::UIElement::ImageView* m_bullet_image;
 
-        public:
-            BulletView(BulletController* controller);
-            ~BulletView();
+		BulletController* m_bullet_controller;
 
-            void initialize();
-            void update();
-            void render();
-    };
+		float m_sprite_height = 18.f;
+		float m_sprite_width = 18.f;
+
+		void loadTexture();
+		void initializeSprite();
+
+	public:
+		BulletView(BulletController* controller);
+		~BulletView();
+
+		void initialize();
+		void update();
+		void render();
+	};
 }

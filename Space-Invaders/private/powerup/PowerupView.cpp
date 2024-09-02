@@ -4,26 +4,30 @@
 #include "./../../public/global/Config.h"
 #include "./../../public/global/ServiceLocator.h"
 #include "./../../public/graphic/GraphicService.h"
+#include "./../../public/ui/UIElement/ImageView.h"
 
 namespace Powerup {
 
 	PowerupView::PowerupView(PowerupController* controller) {
 		m_controller = controller;
+		m_powerup_image = new UI::UIElement::ImageView();
 	}
 
-	PowerupView::~PowerupView() = default;
+	PowerupView::~PowerupView() {
+		delete(m_powerup_image);
+	};
 
 	void PowerupView::initialize() {
 		loadTexture(m_controller->getPowerupType());
-		initSprite();
+		m_powerup_image->initialize(m_powerup_texture_path, width, height, m_controller->getCollectiblePosition());
 	}
 
 	void PowerupView::update() {
-		m_powerup_sprite.setPosition(m_controller->getCollectiblePosition());
+		m_powerup_image->setPosition(m_controller->getCollectiblePosition());
 	}
 
 	void PowerupView::render() {
-		Global::ServiceLocator::getInstance()->getGraphicService()->draw(m_powerup_sprite);
+		m_powerup_image->render();
 	}
 
 	void PowerupView::loadTexture(PowerupType type) {
@@ -43,18 +47,4 @@ namespace Powerup {
 			break;
 		}
 	}
-
-	void PowerupView::initSprite() {
-		if (m_powerup_texture.loadFromFile(m_powerup_texture_path)) {
-			m_powerup_sprite.setTexture(m_powerup_texture);
-			scaleSprite();
-		}
-	}
-
-	void PowerupView::scaleSprite() {
-		float spriteWidth = width / m_powerup_sprite.getTexture()->getSize().x;
-		float spriteHeight = height / m_powerup_sprite.getTexture()->getSize().y;
-		m_powerup_sprite.setScale(sf::Vector2f(spriteWidth, spriteHeight));
-	}
-
 }

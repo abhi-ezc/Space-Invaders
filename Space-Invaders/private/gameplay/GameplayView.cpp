@@ -2,40 +2,34 @@
 #include "../../public/graphic/GraphicService.h"
 #include "./../../public/global/ServiceLocator.h"
 #include "./../../public/global/Config.h"
+#include "./../../public/ui/UIElement/ImageView.h"
 
 
-namespace Gameplay
-{
-    using namespace Global;
+namespace Gameplay {
+	using namespace Global;
 
-    GameplayView::GameplayView() = default;
+	GameplayView::GameplayView() = default;
 
-    GameplayView::~GameplayView() = default;
+	GameplayView::~GameplayView() = default;
 
-    void GameplayView::initialize()
-    {
-        initializeBackgroundImage();
-    }
+	void GameplayView::initialize() {
+		initializeBackgroundImage();
+	}
 
-    void GameplayView::update() { }
+	void GameplayView::update() {
+		m_background_image->update();
+	}
 
-    void GameplayView::render()
-    {
-        Global::ServiceLocator::getInstance()->getGraphicService()->draw(m_background_sprite);
-    }
+	void GameplayView::render() {
+		m_background_image->render();
+	}
 
-    void GameplayView::initializeBackgroundImage()
-    {
-        if (m_background_texture.loadFromFile(Config::background_texture_path))
-        {
-            m_background_sprite.setTexture(m_background_texture);
-            const sf::RenderWindow* gameWindow = Global::ServiceLocator::getInstance()->getGraphicService()->
-                                                                                        getGameWindow();
-            const sf::Vector2f windowSize = gameWindow->getView().getSize();
-            const sf::Vector2u spriteSize = m_background_sprite.getTexture()->getSize();
+	void GameplayView::initializeBackgroundImage() {
+		const sf::RenderWindow* gameWindow = Global::ServiceLocator::getInstance()->getGraphicService()->
+			getGameWindow();
 
-            m_background_sprite.setScale(windowSize.x / static_cast<float>(spriteSize.x),
-                windowSize.y / static_cast<float>(spriteSize.y));
-        }
-    }
+		m_background_image = new UI::UIElement::ImageView();
+
+		m_background_image->initialize(Config::background_texture_path, gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0, 0));
+	}
 }

@@ -3,6 +3,12 @@
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/Graphics/Sprite.hpp"
 
+namespace UI {
+	namespace UIElement {
+		class ImageView;
+	}
+}
+
 namespace Powerup {
 	class PowerupController;
 	enum class PowerupType;
@@ -10,17 +16,14 @@ namespace Powerup {
 	class PowerupView {
 	private:
 		sf::String m_powerup_texture_path;
-		sf::Texture m_powerup_texture;
-		sf::Sprite m_powerup_sprite;
 
+		UI::UIElement::ImageView* m_powerup_image;
 		float width = 30.f;
 		float height = 30.f;
 
 		PowerupController* m_controller;
 
 		void loadTexture(PowerupType type);
-		void initSprite();
-		void scaleSprite();
 	public:
 		PowerupView(PowerupController* controller);
 		~PowerupView();

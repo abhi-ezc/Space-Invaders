@@ -4,6 +4,8 @@
 #include "./../../public/global/ServiceLocator.h"
 #include "./../../public/player/PlayerController.h"
 #include "./../../public/graphic/GraphicService.h"
+#include "./../../public/ui/UIElement/ImageView.h"
+
 
 namespace Player {
 	using namespace Global;
@@ -11,9 +13,12 @@ namespace Player {
 	PlayerView::PlayerView() {
 		m_game_window = nullptr;
 		m_player_controller = nullptr;
+		m_player_image = nullptr;
 	}
 
-	PlayerView::~PlayerView() = default;
+	PlayerView::~PlayerView() {
+		delete m_player_image;
+	}
 
 	void PlayerView::initialize(PlayerController* controller) {
 		m_player_controller = controller;
@@ -23,29 +28,20 @@ namespace Player {
 
 	void PlayerView::update() {
 		// setting the updated sprite position from playercontroller
-		m_sprite.setPosition(m_player_controller->getPlayerPosition());
+		m_player_image->setPosition(m_player_controller->getPlayerPosition());
 	}
 
 	void PlayerView::render() {
-		ServiceLocator::getInstance()->getGraphicService()->draw(m_sprite);
-	}
-
-	void PlayerView::setPlayerScale() {
-		float x = static_cast<float>(m_sprite_width / m_sprite.getTexture()->getSize().x);
-		float y = static_cast<float>(m_sprite_height / m_sprite.getTexture()->getSize().y);
-
-		//sprite.setScale(x, y);
+		m_player_image->render();
 	}
 
 	void PlayerView::createPlayerSprite() {
-		if (m_texture.loadFromFile(Config::player_texture_path)) {
-			m_sprite.setTexture(m_texture);
-			setPlayerScale();
-			m_sprite.setPosition(m_player_controller->getPlayerPosition());
-		}
+		m_player_image = new UI::UIElement::ImageView();
+		m_player_image->initialize(Config::player_texture_path, m_sprite_width, m_sprite_height, m_player_controller->getPlayerPosition());
+		m_player_image->setOriginAtCentre();
 	}
 
-	sf::Sprite PlayerView::getPlayerSprite() {
-		return m_sprite;
+	sf::FloatRect PlayerView::getLocalBounds() {
+		return m_player_image->getLocalBounds();
 	}
 }

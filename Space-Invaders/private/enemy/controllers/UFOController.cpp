@@ -8,6 +8,7 @@
 #include "../../../public/projectile/ProjectileConfig.h"
 #include "../../../public/powerup/PowerupConfig.h"
 #include "../../../public/powerup/PowerupService.h"
+#include "../../../public/main/GameService.h"
 
 namespace Enemy {
 	namespace Controllers {
@@ -15,7 +16,9 @@ namespace Enemy {
 
 		UFOController::UFOController() : EnemyController(EnemyType::UFO) {}
 		UFOController::~UFOController() {
-			spawnRandomPowerup();
+			if (Main::GameService::getGameState() != Main::GameState::QUIT) {
+				spawnRandomPowerup();
+			}
 		}
 
 		void UFOController::initialize() {
