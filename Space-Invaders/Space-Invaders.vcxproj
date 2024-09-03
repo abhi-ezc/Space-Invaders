@@ -752,6 +752,7 @@
     </ClCompile>
     <ClCompile Include="private\ui\MainmenuUIController\MainmenuUIController.cpp" />
     <ClCompile Include="private\ui\UIElement\ImageView.cpp" />
+    <ClCompile Include="private\ui\UIElement\TextView.cpp" />
     <ClCompile Include="private\ui\UIService.cpp" />
     <ClCompile Include="private\powerup\PowerupService.cpp" />
     <ClCompile Include="private\powerup\PowerupView.cpp" />
@@ -772,6 +773,7 @@
     <ClCompile Include="private\bullet\BulletModel.cpp" />
     <ClCompile Include="private\bullet\BulletView.cpp" />
     <ClCompile Include="private\bullet\controllers\LaserBulletController.cpp" />
+    <ClInclude Include="public\ui\UIElement\TextView.h" />
     <ClInclude Include="public\bullet\controllers\FrostBulletController.h" />
     <ClInclude Include="public\bullet\controllers\TorpedoController.h" />
     <ClInclude Include="public\bullet\BulletConfig.h" />

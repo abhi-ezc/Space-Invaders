@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML/System/String.hpp>
+#include <SFML/Graphics/Font.hpp>
+#include <SFML/Audio/Sound.hpp>
 
 namespace Global {
 	enum class LifeCycle {

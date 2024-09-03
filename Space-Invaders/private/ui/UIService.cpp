@@ -2,6 +2,7 @@
 #include "./../../public/ui/MainMenuUIController/MainMenuUIController.h"
 #include "./../../public/main/GameService.h"
 #include "./../../public/ui/interface/IUIController.h"
+#include "./../../public/ui/UIElement/TextView.h"
 
 using namespace UI;
 using namespace MainMenu;
@@ -16,6 +17,7 @@ UIService::~UIService() {
 }
 
 void UIService::initialize() {
+	UIElement::TextView::loadFonts();
 	m_main_menu_ui_controller->initialize();
 }
 

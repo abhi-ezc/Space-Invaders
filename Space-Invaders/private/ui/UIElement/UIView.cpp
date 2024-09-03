@@ -15,7 +15,9 @@ namespace UI {
 		void UIView::update() {}
 
 		void UIView::render() {
-			Global::ServiceLocator::getInstance()->getGraphicService()->draw(getDrawable());
+			if (m_ui_state == UIState::VISIBLE) {
+				Global::ServiceLocator::getInstance()->getGraphicService()->draw(getDrawable());
+			}
 		}
 
 		void UIView::show() {
