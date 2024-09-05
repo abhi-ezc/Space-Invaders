@@ -7,159 +7,130 @@
 #include "./../../public/global/Config.h"
 
 
-namespace UI
-{
-    namespace MainMenu
-    {
-        using namespace Global;
-        using namespace Graphic;
-        using namespace Event;
-        using namespace Main;
+namespace UI {
+	namespace MainMenu {
+		using namespace Global;
+		using namespace Graphic;
+		using namespace Event;
+		using namespace Main;
 
-        MainMenuUIController::MainMenuUIController()
-        {
-            m_game_window = nullptr;
-        }
+		MainMenuUIController::MainMenuUIController() {
+			m_game_window = nullptr;
+			m_play_button = nullptr;
+			m_instruction_button = nullptr;
+			m_quit_button = nullptr;
+			m_background_image = nullptr;
+		}
 
-        MainMenuUIController::~MainMenuUIController() = default;
+		MainMenuUIController::~MainMenuUIController() {
+			delete m_background_image;
+			delete m_play_button;
+			delete m_instruction_button;
+			delete m_quit_button;
+		}
 
-        void MainMenuUIController::initialize()
-        {
-            m_game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-            initializeBackgroundImage();
-            initializeButtons();
-        }
+		void MainMenuUIController::initialize() {
+			m_game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+			initializeBackgroundImage();
+			createButtons();
+			initializeButtons();
+			setAllButtonsPosition();
+			registerButtonCallback();
+		}
 
-        void MainMenuUIController::initializeBackgroundImage()
-        {
-            m_tex_background_image.loadFromFile(Config::background_texture_path);
-            m_spr_background_image.setTexture(m_tex_background_image);
+		void MainMenuUIController::initializeBackgroundImage() {
+			m_background_image = new UI::UIElement::ImageView();
+			sf::Vector2u size = m_game_window->getSize();
 
-            float sizeX = m_game_window->getView().getSize().x / static_cast<float>(m_spr_background_image.getTexture()
-                                                                                                          ->getSize()
-                                                                                                          .x);
+			m_background_image->initialize(Config::background_texture_path, size.x, size.y, sf::Vector2f(0, 0));
+			m_background_image->setImageAlpha(m_background_alpha);
+		}
 
-            float sizeY = m_game_window->getView().getSize().y / static_cast<float>(m_spr_background_image.getTexture()
-                                                                                                          ->getSize().
-                                                                                                          y);
+		void MainMenuUIController::initializeButtons() {
+			m_play_button->initialize("Play",
+				Config::play_button_texture_path,
+				m_button_width,
+				m_button_height,
+				sf::Vector2f(0, m_play_button_y_position));
 
-            m_spr_background_image.setScale(sizeX, sizeY);
-        }
+			m_instruction_button->initialize("Instruction",
+				Config::instructions_button_texture_path,
+				m_button_width,
+				m_button_height,
+				sf::Vector2f(0, m_instruction_button_y_position));
 
-        void MainMenuUIController::initializeButtons()
-        {
-            if (loadButtonTextures())
-            {
-                createButtonSprites();
-                scaleAllButtons();
-                setAllButtonsPosition();
-            }
-        }
+			m_quit_button->initialize("Quit",
+				Config::quit_button_texture_path,
+				m_button_width,
+				m_button_height,
+				sf::Vector2f(0, m_quit_button_y_position));
+		}
 
-        bool MainMenuUIController::loadButtonTextures()
-        {
-            return m_tex_play_button.loadFromFile(Config::play_button_texture_path) && m_tex_instruction_button.
-                loadFromFile(Config::instructions_button_texture_path) && m_tex_quit_button.loadFromFile(
-                    Config::quit_button_texture_path);
-        }
+		void MainMenuUIController::createButtons() {
+			m_play_button = new UI::UIElement::ButtonView();
+			m_instruction_button = new UI::UIElement::ButtonView();
+			m_quit_button = new UI::UIElement::ButtonView();
+		}
 
-        void MainMenuUIController::createButtonSprites()
-        {
-            m_spr_play_button.setTexture(m_tex_play_button);
-            m_spr_instruction_button.setTexture(m_tex_instruction_button);
-            m_spr_quit_button.setTexture(m_tex_quit_button);
-        }
 
-        void MainMenuUIController::scaleAllButtons()
-        {
-            scaleButton(&m_spr_play_button);
-            scaleButton(&m_spr_instruction_button);
-            scaleButton(&m_spr_quit_button);
-        }
+		void MainMenuUIController::setAllButtonsPosition() {
+			setButtonPosition(m_play_button);
+			setButtonPosition(m_instruction_button);
+			setButtonPosition(m_quit_button);
+		}
 
-        void MainMenuUIController::scaleButton(sf::Sprite* spr_button)
-        {
-            float x = m_f_button_width / static_cast<float>(spr_button->getTexture()->getSize().x);
-            float y = m_f_button_height / static_cast<float>(spr_button->getTexture()->getSize().y);
-            spr_button->setScale(x, y);
-        }
+		void MainMenuUIController::setButtonPosition(UI::UIElement::ButtonView* button) {
+			button->setOriginAtCentre();
+			button->setCentreAligned();
+		}
 
-        void MainMenuUIController::setAllButtonsPosition()
-        {
-            setButtonPosition(&m_spr_play_button, 250.f);
-            setButtonPosition(&m_spr_instruction_button, 500);
-            setButtonPosition(&m_spr_quit_button, 750.f);
-        }
+		void MainMenuUIController::update() {
+			m_background_image->update();
+			m_play_button->update();
+			m_instruction_button->update();
+			m_quit_button->update();
+		}
 
-        void MainMenuUIController::setButtonPosition(sf::Sprite* spr_button, float yOffset)
-        {
-            // calculate button sizes from the original size and the sprite scale
-            float buttonSizeX = static_cast<float>(spr_button->getTexture()->getSize().x) * spr_button->getScale().x;
-            float buttonSizeY = static_cast<float>(spr_button->getTexture()->getSize().y) * spr_button->getScale().y;
+		void MainMenuUIController::render() {
+			m_background_image->render();
+			m_play_button->render();
+			m_instruction_button->render();
+			m_quit_button->render();
+		}
 
-            // calculate positions based on the screen center and given yOffset
-            float x = m_game_window->getView().getCenter().x - (buttonSizeX / 2);
-            float y = yOffset - (buttonSizeY / 2);
+		// need to implement
+		void MainMenuUIController::show() {
+			m_background_image->show();
+			m_play_button->show();
+			m_instruction_button->show();
+			m_quit_button->show();
+		}
 
-            // apply calculated positions
-            spr_button->setPosition(x, y);
-        }
+		void MainMenuUIController::registerButtonCallback() {
 
-        void MainMenuUIController::update()
-        {
-            processButtonInteractions();
-        }
+			m_play_button->registerCallbackFunction(
+				std::bind(&UI::MainMenu::MainMenuUIController::onPlayButtonClick, this));
 
-        void MainMenuUIController::render()
-        {
-            ServiceLocator::getInstance()->getGraphicService()->draw(m_spr_background_image);
-            ServiceLocator::getInstance()->getGraphicService()->draw(m_spr_play_button);
-            ServiceLocator::getInstance()->getGraphicService()->draw(m_spr_instruction_button);
-            ServiceLocator::getInstance()->getGraphicService()->draw(m_spr_quit_button);
-        }
+			m_instruction_button->registerCallbackFunction(
+				std::bind(&UI::MainMenu::MainMenuUIController::onInstructionButtonClick, this));
 
-        // need to implement
-        void MainMenuUIController::show() {}
+			m_quit_button->registerCallbackFunction(
+				std::bind(&UI::MainMenu::MainMenuUIController::onQuitButtonClick, this));
 
-        void MainMenuUIController::processButtonInteractions()
-        {
-            if (ServiceLocator::getInstance()->getEventService()->isLeftMouseButtonPressed())
-            {
-                if (isButtonClick(&m_spr_play_button, sf::Mouse::getPosition()))
-                {
-                    ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
-                    onPlayButtonClick();
-                }
-                else if (isButtonClick(&m_spr_instruction_button, sf::Mouse::getPosition()))
-                {
-                    ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
-                    onInstructionButtonClick();
-                }
-                else if (isButtonClick(&m_spr_quit_button, sf::Mouse::getPosition()))
-                {
-                    ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
-                    onQuitButtonClick();
-                }
-                else { }
-            }
-        }
+		}
 
-        bool MainMenuUIController::isButtonClick(sf::Sprite* spr_button, sf::Vector2i mousePosition)
-        {
-            return spr_button->getGlobalBounds().contains(static_cast<float>(sf::Mouse::getPosition().x),
-                static_cast<float>(sf::Mouse::getPosition().y));
-        }
+		void MainMenuUIController::onPlayButtonClick() {
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+			GameService::setGameState(GameState::GAMEPLAY);
+		}
 
-        void MainMenuUIController::onPlayButtonClick()
-        {
-            GameService::setGameState(GameState::GAMEPLAY);
-        }
+		void MainMenuUIController::onInstructionButtonClick() {
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+		}
 
-        void MainMenuUIController::onInstructionButtonClick() { }
-
-        void MainMenuUIController::onQuitButtonClick()
-        {
-            ServiceLocator::getInstance()->getGraphicService()->closeGameWindow();
-        }
-    }
+		void MainMenuUIController::onQuitButtonClick() {
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+			ServiceLocator::getInstance()->getGraphicService()->closeGameWindow();
+		}
+	}
 }
