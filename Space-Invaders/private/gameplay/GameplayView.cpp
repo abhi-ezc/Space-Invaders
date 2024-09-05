@@ -8,7 +8,9 @@
 namespace Gameplay {
 	using namespace Global;
 
-	GameplayView::GameplayView() = default;
+	GameplayView::GameplayView() {
+		m_background_image = nullptr;
+	};
 
 	GameplayView::~GameplayView() = default;
 

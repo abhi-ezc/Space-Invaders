@@ -1,56 +1,51 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "./../interface/IUIController.h"
+#include "./../UIElement/ButtonView.h"
 
-namespace UI
-{
-    namespace MainMenu
-    {
-        class MainMenuUIController : public Interface::IUIController
-        {
-            private:
-                sf::RenderWindow* m_game_window;
+namespace UI {
+	namespace MainMenu {
+		class MainMenuUIController : public Interface::IUIController {
+		private:
+			sf::RenderWindow* m_game_window;
 
-                // textures for ui elements
-                sf::Texture m_tex_background_image;
-                sf::Texture m_tex_play_button;
-                sf::Texture m_tex_instruction_button;
-                sf::Texture m_tex_quit_button;
+			// buttons size
+			const float m_button_height = 140.f;
+			const float m_button_width = 400.f;
 
-                // sprites for drawing ui elements
-                sf::Sprite m_spr_background_image;
-                sf::Sprite m_spr_play_button;
-                sf::Sprite m_spr_instruction_button;
-                sf::Sprite m_spr_quit_button;
+			// button positions
+			const float m_play_button_y_position = 500.f;
+			const float m_instruction_button_y_position = 700.f;
+			const float m_quit_button_y_position = 900.f;
 
-                // buttons size
-                const float m_f_button_height = 140.f;
-                const float m_f_button_width = 400.f;
+			const float m_background_alpha = 255.f;
 
-                void initializeBackgroundImage();
-                void initializeButtons();
+			UI::UIElement::ButtonView* m_play_button;
+			UI::UIElement::ButtonView* m_instruction_button;
+			UI::UIElement::ButtonView* m_quit_button;
 
-                bool loadButtonTextures();
-                void createButtonSprites();
-                void scaleAllButtons();
-                void scaleButton(sf::Sprite* spr_button);
-                void setAllButtonsPosition();
-                void setButtonPosition(sf::Sprite* spr_button, float y);
+			UI::UIElement::ImageView* m_background_image;
 
-            public:
-                MainMenuUIController();
-                ~MainMenuUIController() override;
+			void initializeBackgroundImage();
+			void initializeButtons();
 
-                void initialize() override;
-                void update() override;
-                void render() override;
-                void show() override;
+			void createButtons();
+			void setAllButtonsPosition();
+			void setButtonPosition(UI::UIElement::ButtonView* button);
 
-                void processButtonInteractions();
-                bool isButtonClick(sf::Sprite* spr_button, sf::Vector2i mousePosition);
-                void onPlayButtonClick();
-                void onInstructionButtonClick();
-                void onQuitButtonClick();
-        };
-    }
+		public:
+			MainMenuUIController();
+			~MainMenuUIController() override;
+
+			void initialize() override;
+			void update() override;
+			void render() override;
+			void show() override;
+
+			void registerButtonCallback();
+			void onPlayButtonClick();
+			void onInstructionButtonClick();
+			void onQuitButtonClick();
+		};
+	}
 }

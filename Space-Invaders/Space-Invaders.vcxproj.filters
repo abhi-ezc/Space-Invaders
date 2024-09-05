@@ -156,6 +156,9 @@
     <ClCompile Include="private\ui\UIElement\TextView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="private\ui\UIElement\ButtonView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\main\GameService.h">
@@ -315,6 +318,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="public\ui\UIElement\TextView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\ui\UIElement\ButtonView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

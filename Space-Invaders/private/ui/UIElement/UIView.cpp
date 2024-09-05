@@ -3,7 +3,11 @@
 #include "./../../../public/graphic/GraphicService.h"
 namespace UI {
 	namespace UIElement {
-		UIView::UIView() = default;
+
+		UIView::UIView() {
+			m_game_window = nullptr;
+			m_ui_state = UIState::HIDDEN; // it will render only after initialize
+		}
 
 		UIView::~UIView() = default;
 
@@ -27,6 +31,5 @@ namespace UI {
 		void UIView::hide() {
 			m_ui_state = UIState::HIDDEN;
 		}
-
 	}
 }
