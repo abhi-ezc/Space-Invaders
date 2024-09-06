@@ -10,8 +10,8 @@
 #include "./../../public/bullet/BulletService.h"
 
 namespace Bullet {
-	BulletController::BulletController(BulletType type) {
-		m_bullet_model = new BulletModel(type);
+	BulletController::BulletController(BulletType type, Entity::EntityType ownerEntityType) {
+		m_bullet_model = new BulletModel(type, ownerEntityType);
 		m_bullet_view = new BulletView(this);
 	}
 
@@ -43,6 +43,10 @@ namespace Bullet {
 
 	BulletType BulletController::getBulletType() {
 		return m_bullet_model->getBulletType();
+	}
+
+	Entity::EntityType BulletController::getOwnerEntity() {
+		return m_bullet_model->getOwnerEntityType();
 	}
 
 	void BulletController::handleOutOfBounds() {

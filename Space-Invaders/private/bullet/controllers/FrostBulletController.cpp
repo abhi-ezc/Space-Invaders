@@ -4,7 +4,7 @@
 
 namespace Bullet {
 	namespace Controllers {
-		FrostBulletController::FrostBulletController() :BulletController(BulletType::FROST) {
+		FrostBulletController::FrostBulletController(Entity::EntityType ownerEntityType) :BulletController(BulletType::FROST, ownerEntityType) {
 
 		}
 

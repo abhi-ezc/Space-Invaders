@@ -10,6 +10,7 @@
 #include "SFML/System/Clock.hpp"
 #include "./../../public/projectile/ProjectileConfig.h"
 #include "./../../public/bullet/BulletService.h"
+#include "./../../public/entity/EntityConfig.h"
 
 namespace Enemy {
 	using namespace Global;
@@ -64,6 +65,10 @@ namespace Enemy {
 		return { randomX, m_enemy_model->getLeftMostPosition().y };
 	}
 
+	Entity::EntityType EnemyController::getEntityType() {
+		return m_enemy_model->getEntityType();
+	}
+
 	void EnemyController::handleOutOfBounds() {
 		const sf::Vector2u windowSize = ServiceLocator::getInstance()->getGraphicService()->getGameWindow()->getSize();
 		const sf::Vector2f position = getPosition();
@@ -96,6 +101,6 @@ namespace Enemy {
 
 		bulletSpawnPosition.x += (m_enemy_view->getSpriteSize().x / 2) + offset.x;
 		bulletSpawnPosition.y += (m_enemy_view->getSpriteSize().y / 2) + offset.y;
-		ServiceLocator::getInstance()->getBulletService()->spawnBullet(m_enemy_model->getBulletType(), bulletSpawnPosition, Projectile::ProjectileDirection::DOWN);
+		ServiceLocator::getInstance()->getBulletService()->spawnBullet(m_enemy_model->getBulletType(), bulletSpawnPosition, Projectile::ProjectileDirection::DOWN, Entity::EntityType::ENEMY);
 	}
 }

@@ -774,6 +774,7 @@
     <ClCompile Include="private\bullet\BulletModel.cpp" />
     <ClCompile Include="private\bullet\BulletView.cpp" />
     <ClCompile Include="private\bullet\controllers\LaserBulletController.cpp" />
+    <ClInclude Include="public\entity\EntityConfig.h" />
     <ClInclude Include="public\ui\UIElement\ButtonView.h" />
     <ClInclude Include="public\ui\UIElement\TextView.h" />
     <ClInclude Include="public\bullet\controllers\FrostBulletController.h" />

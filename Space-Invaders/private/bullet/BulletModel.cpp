@@ -1,54 +1,57 @@
 #include "./../../public/bullet/BulletModel.h"
 #include "./../../public/bullet/BulletConfig.h"
 #include "./../../public/projectile/ProjectileConfig.h"
+#include "./../../public/entity/EntityConfig.h"
 
-namespace Bullet
-{
-    BulletModel::BulletModel(BulletType type)
-    {
-        m_bullet_type = type;
-        m_bullet_direction = Projectile::ProjectileDirection::UP;
-    }
+namespace Bullet {
+	BulletModel::BulletModel(BulletType type, Entity::EntityType ownerEntityType) {
 
-    BulletModel::~BulletModel() = default;
+		m_entity_type = Entity::EntityType::BULLET;
+		m_owner_entity_type = ownerEntityType;
 
-    void BulletModel::initialize(sf::Vector2f position, Projectile::ProjectileDirection direction)
-    {
-        m_bullet_position = position;
-        m_bullet_direction = direction;
-    }
+		m_bullet_type = type;
+		m_bullet_direction = Projectile::ProjectileDirection::UP;
+	}
 
-    void BulletModel::update() { }
+	BulletModel::~BulletModel() = default;
 
-    void BulletModel::render() { }
+	void BulletModel::initialize(sf::Vector2f position, Projectile::ProjectileDirection direction) {
+		m_bullet_position = position;
+		m_bullet_direction = direction;
+	}
 
-    sf::Vector2f BulletModel::getBulletPosition()
-    {
-        return m_bullet_position;
-    }
+	void BulletModel::update() {}
 
-    float BulletModel::getBulletSpeed()
-    {
-        return m_bullet_speed;
-    }
+	void BulletModel::render() {}
 
-    Projectile::ProjectileDirection BulletModel::getBulletDirection()
-    {
-        return m_bullet_direction;
-    }
+	sf::Vector2f BulletModel::getBulletPosition() {
+		return m_bullet_position;
+	}
 
-    BulletType BulletModel::getBulletType()
-    {
-        return m_bullet_type;
-    }
+	float BulletModel::getBulletSpeed() {
+		return m_bullet_speed;
+	}
 
-    void BulletModel::setBulletPosition(sf::Vector2f position)
-    {
-        m_bullet_position = position;
-    }
+	Projectile::ProjectileDirection BulletModel::getBulletDirection() {
+		return m_bullet_direction;
+	}
 
-    void BulletModel::setBulletSpeed(float speed)
-    {
-        m_bullet_speed = speed;
-    }
+	BulletType BulletModel::getBulletType() {
+		return m_bullet_type;
+	}
+
+	void BulletModel::setBulletPosition(sf::Vector2f position) {
+		m_bullet_position = position;
+	}
+
+	void BulletModel::setBulletSpeed(float speed) {
+		m_bullet_speed = speed;
+	}
+
+	Entity::EntityType BulletModel::getEntityType() {
+		return m_entity_type;
+	}
+	Entity::EntityType BulletModel::getOwnerEntityType() {
+		return m_owner_entity_type;
+	}
 }

@@ -7,6 +7,7 @@
 #include "./../../public/bullet/BulletService.h"
 #include "./../../public/bullet/BulletConfig.h"
 #include "./../../public/projectile/ProjectileConfig.h"
+#include "./../../public/entity/EntityConfig.h"
 
 namespace Player {
 	using namespace Global;
@@ -82,11 +83,15 @@ namespace Player {
 		bulletPos.x += muzzleOffset.x;
 		bulletPos.y += muzzleOffset.y;
 
-		ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::LASER, bulletPos, Projectile::ProjectileDirection::UP);
+		ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::LASER, bulletPos, Projectile::ProjectileDirection::UP, Entity::EntityType::PLAYER);
 	}
 #pragma endregion
 
 #pragma region Getters
 	sf::Vector2f PlayerController::getPlayerPosition() { return m_player_model->getPlayerPosition(); }
+
+	Entity::EntityType PlayerController::getEntityType() {
+		return m_player_model->getEntityType();
+	}
 #pragma endregion
 }

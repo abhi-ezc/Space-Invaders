@@ -2,10 +2,12 @@
 #include "../../public/enemy/EnemyController.h"
 #include "./../../public/enemy/EnemyConfig.h"
 #include "./../../public/bullet/BulletConfig.h"
+#include "./../../public/entity/EntityConfig.h"
 
 namespace Enemy {
 	EnemyModel::EnemyModel(EnemyType enemyType) {
 		m_enemy_type = enemyType;
+		m_entity_type = Entity::EntityType::ENEMY;
 		setBulletType(enemyType);
 	}
 
@@ -134,6 +136,10 @@ namespace Enemy {
 
 	sf::Vector2f EnemyModel::getMuzzleOffset() {
 		return m_muzzle_offset;
+	}
+
+	Entity::EntityType EnemyModel::getEntityType() {
+		return m_entity_type;
 	}
 
 

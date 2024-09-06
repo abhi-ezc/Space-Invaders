@@ -31,6 +31,7 @@ namespace UI {
 			}
 
 			m_sprite.setTexture(m_texture);
+			return true;
 		}
 
 		void ImageView::setScale(float width, float height) {
