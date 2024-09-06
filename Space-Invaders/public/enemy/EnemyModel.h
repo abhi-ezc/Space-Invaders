@@ -5,6 +5,10 @@ namespace Bullet {
 	enum class BulletType;
 }
 
+namespace Entity {
+	enum class EntityType;
+}
+
 namespace Enemy {
 	enum class EnemyType;
 	enum class EnemyState;
@@ -13,6 +17,8 @@ namespace Enemy {
 
 	class EnemyModel {
 	private:
+		Entity::EntityType m_entity_type;
+
 		sf::Vector2f m_current_position;
 		sf::Vector2f m_ref_position;
 
@@ -80,5 +86,7 @@ namespace Enemy {
 
 		bool getCanFire();
 		sf::Vector2f getMuzzleOffset();
+
+		Entity::EntityType getEntityType();
 	};
 }

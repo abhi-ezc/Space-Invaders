@@ -1,6 +1,10 @@
 ﻿#pragma once
 #include <SFML/System/Vector2.hpp>
 
+namespace Entity {
+	enum class EntityType;
+}
+
 namespace Enemy {
 	class EnemyView;
 	class EnemyModel;
@@ -34,5 +38,7 @@ namespace Enemy {
 		EnemyType getEnemyType();
 		EnemyState getEnemyState();
 		sf::Vector2f getRandomInitialPosition();
+
+		Entity::EntityType getEntityType();
 	};
 }

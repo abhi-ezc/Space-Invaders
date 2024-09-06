@@ -9,6 +9,10 @@ namespace Projectile {
 	class IProjectile;
 }
 
+namespace Entity {
+	enum class EntityType;
+}
+
 namespace Bullet {
 	enum class BulletType;
 
@@ -17,7 +21,7 @@ namespace Bullet {
 
 		std::vector<Projectile::IProjectile*> m_projectiles_list;
 
-		Projectile::IProjectile* createBullet(BulletType type);
+		Projectile::IProjectile* createBullet(BulletType type, Entity::EntityType ownerEntityType);
 		void destroy();
 
 		void invokeLifecycle(Projectile::ProjectileLifecycle lifecycle);
@@ -31,7 +35,7 @@ namespace Bullet {
 		void update();
 		void render();
 
-		void spawnBullet(BulletType type, sf::Vector2f position, Projectile::ProjectileDirection direction);
+		void spawnBullet(BulletType type, sf::Vector2f position, Projectile::ProjectileDirection direction, Entity::EntityType ownerEntityType);
 
 		void destroyBullet(Projectile::IProjectile* bullet);
 

@@ -1,9 +1,11 @@
 #include "./../../public/player/PlayerModel.h"
+#include "./../../public/entity/EntityConfig.h"
 
 namespace Player {
 	PlayerModel::PlayerModel() {
 		m_player_score = 0;
 		m_player_state = PlayerState::LIMBO;
+		m_entity_type = Entity::EntityType::PLAYER;
 	}
 
 	PlayerModel::~PlayerModel() = default;
@@ -32,6 +34,10 @@ namespace Player {
 
 	sf::Vector2f PlayerModel::getMuzzleOffset() {
 		return m_muzzle_offset;
+	}
+
+	Entity::EntityType PlayerModel::getEntityType() {
+		return m_entity_type;
 	}
 
 	void PlayerModel::setPlayerState(PlayerState newPlayerState) { m_player_state = newPlayerState; }

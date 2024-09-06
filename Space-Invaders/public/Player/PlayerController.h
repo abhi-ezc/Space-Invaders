@@ -1,6 +1,10 @@
 #pragma once
 #include "SFML/System/Vector2.hpp"
 
+namespace Entity {
+	enum class EntityType;
+}
+
 namespace Player {
 	class PlayerModel;
 	class PlayerView;
@@ -9,6 +13,8 @@ namespace Player {
 	private:
 		PlayerModel* m_player_model;
 		PlayerView* m_player_view;
+
+		Entity::EntityType m_entity_type;
 
 		void processPlayerInputs();
 		void moveLeft();
@@ -27,5 +33,8 @@ namespace Player {
 
 		// getters
 		sf::Vector2f getPlayerPosition();
+
+		Entity::EntityType getEntityType();
+
 	};
 }

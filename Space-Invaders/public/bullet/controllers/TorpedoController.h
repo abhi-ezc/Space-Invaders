@@ -6,12 +6,16 @@ namespace Projectile {
 	enum class ProjectileDirection;
 }
 
+namespace Entity {
+	enum class EntityType;
+}
+
 namespace Bullet {
 	namespace Controllers {
 		class TorpedoController : public BulletController {
 		public:
 
-			TorpedoController();
+			TorpedoController(Entity::EntityType ownerEntityType);
 			~TorpedoController() override;
 
 			const float m_movement_speed = 200.f;

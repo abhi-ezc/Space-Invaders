@@ -55,20 +55,22 @@ namespace Bullet {
 		}
 	}
 
-	void BulletService::spawnBullet(BulletType type, sf::Vector2f position, Projectile::ProjectileDirection direction) {
-		auto bulletController = createBullet(type);
+	void BulletService::spawnBullet(BulletType type, sf::Vector2f position, Projectile::ProjectileDirection direction, Entity::EntityType ownerEntityType) {
+		auto bulletController = createBullet(type, ownerEntityType);
 		bulletController->initialize(position, direction);
 		m_projectiles_list.push_back(bulletController);
 	}
 
-	Projectile::IProjectile* BulletService::createBullet(BulletType type) {
+	Projectile::IProjectile* BulletService::createBullet(BulletType type, Entity::EntityType ownerEntityType) {
 		switch (type) {
 		case BulletType::LASER:
-			return new Controllers::LaserBulletController();
+			return new Controllers::LaserBulletController(ownerEntityType);
 		case BulletType::FROST:
-			return new Controllers::FrostBulletController();
+			return new Controllers::FrostBulletController(ownerEntityType);
 		case BulletType::TORPEDO:
-			return new Controllers::TorpedoController();
+			return new Controllers::TorpedoController(ownerEntityType);
+		default:
+			return nullptr;
 		}
 	}
 

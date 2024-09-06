@@ -6,7 +6,7 @@
 #include "../../../public/bullet/BulletService.h"
 #include "../../../public/bullet/BulletConfig.h"
 #include "../../../public/projectile/ProjectileConfig.h"
-#include "../../../public/enemy/EnemyView.h";
+#include "../../../public/enemy/EnemyView.h"
 
 
 namespace Enemy {

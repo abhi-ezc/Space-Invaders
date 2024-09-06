@@ -1,6 +1,10 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 
+namespace Entity {
+	enum class EntityType;
+}
+
 namespace Player {
 	// player state enum
 	enum class PlayerState {
@@ -18,6 +22,7 @@ namespace Player {
 		int m_player_score;
 
 		sf::Vector2f m_muzzle_offset = sf::Vector2f(0, -40.f);
+		Entity::EntityType m_entity_type;
 
 	public:
 		const float m_movement_speed = 350.0f;
@@ -42,6 +47,7 @@ namespace Player {
 		PlayerState getPlayerState();
 		int getPlayerScore();
 		sf::Vector2f getMuzzleOffset();
+		Entity::EntityType getEntityType();
 
 		// setters
 		void setPlayerState(PlayerState newPlayerState);

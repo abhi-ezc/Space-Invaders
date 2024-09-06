@@ -5,15 +5,17 @@ namespace Projectile {
 	enum class ProjectileDirection;
 }
 
+namespace Entity {
+	enum class EntityType;
+}
+
 namespace Bullet {
 	class BulletModel;
 	class BulletView;
 
 	enum class BulletType;
 
-	class BulletController : public Projectile::IProjectile
-
-	{
+	class BulletController : public Projectile::IProjectile {
 	private:
 		BulletModel* m_bullet_model;
 		BulletView* m_bullet_view;
@@ -25,7 +27,7 @@ namespace Bullet {
 		void setBulletSpeed(float speed);
 
 	public:
-		BulletController(BulletType type);
+		BulletController(BulletType type, Entity::EntityType ownerEntityType);
 		~BulletController() override;
 
 		void initialize(sf::Vector2f position, Projectile::ProjectileDirection direction) override;
@@ -34,6 +36,7 @@ namespace Bullet {
 
 		sf::Vector2f getProjectilePosition() override;
 		BulletType getBulletType();
+		Entity::EntityType getOwnerEntity();
 
 		void updateProjectilePosition() override;
 		void handleOutOfBounds();

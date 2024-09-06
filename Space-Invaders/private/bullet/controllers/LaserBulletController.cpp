@@ -3,7 +3,7 @@
 
 namespace Bullet {
 	namespace Controllers {
-		LaserBulletController::LaserBulletController() : BulletController(BulletType::LASER) {}
+		LaserBulletController::LaserBulletController(Entity::EntityType ownerEntityType) : BulletController(BulletType::LASER, ownerEntityType) {}
 		LaserBulletController::~LaserBulletController() = default;
 
 		void LaserBulletController::initialize(sf::Vector2f position, Projectile::ProjectileDirection direction) {
