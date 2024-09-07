@@ -15,6 +15,7 @@ namespace Player {
 
 #pragma region Life Cycle methods
 	PlayerController::PlayerController() {
+		m_entity_type = Entity::EntityType::PLAYER;
 		m_player_model = new PlayerModel();
 		m_player_view = new PlayerView();
 	}

@@ -159,6 +159,9 @@
     <ClCompile Include="private\ui\UIElement\ButtonView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="private\collision\CollisionService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\main\GameService.h">
@@ -321,6 +324,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="public\ui\UIElement\ButtonView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\entity\EntityConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\collision\ICollider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\collision\CollisionService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
