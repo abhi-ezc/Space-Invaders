@@ -39,7 +39,7 @@ namespace Player {
 
 		// Getters
 		sf::FloatRect getLocalBounds();
-
+		sf::Sprite& getSprite();
 		// Setters
 	};
 }

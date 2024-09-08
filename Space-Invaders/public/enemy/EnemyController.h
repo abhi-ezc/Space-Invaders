@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <SFML/System/Vector2.hpp>
+#include "./../collision/ColliderController.h"
 
 namespace Entity {
 	enum class EntityType;
@@ -11,7 +12,7 @@ namespace Enemy {
 	enum class EnemyState;
 	enum class EnemyType;
 
-	class EnemyController {
+	class EnemyController : public Collision::ColliderController {
 	private:
 		void handleOutOfBounds();
 
@@ -39,6 +40,8 @@ namespace Enemy {
 		EnemyState getEnemyState();
 		sf::Vector2f getRandomInitialPosition();
 
-		Entity::EntityType getEntityType();
+		const sf::Sprite& getColliderSprite()override;
+		Entity::EntityType getEntityType() override;
+		virtual void onCollision(ICollider* otherCollider) override;
 	};
 }

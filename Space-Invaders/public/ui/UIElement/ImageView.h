@@ -30,6 +30,7 @@ namespace UI {
 			void setCentreAligned();
 			void setImageAlpha(float alpha);
 			sf::FloatRect getLocalBounds();
+			sf::Sprite& getSprite();
 
 		};
 	}

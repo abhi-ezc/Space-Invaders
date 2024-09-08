@@ -135,6 +135,7 @@
     <ClCompile Include="private\bullet\BulletService.cpp" />
     <ClCompile Include="private\bullet\controllers\FrostBulletController.cpp" />
     <ClCompile Include="private\bullet\controllers\TorpedoController.cpp" />
+    <ClCompile Include="private\collision\ColliderController.cpp" />
     <ClCompile Include="private\collision\CollisionService.cpp" />
     <ClCompile Include="private\enemy\controllers\SubZeroController.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -775,6 +776,7 @@
     <ClCompile Include="private\bullet\BulletModel.cpp" />
     <ClCompile Include="private\bullet\BulletView.cpp" />
     <ClCompile Include="private\bullet\controllers\LaserBulletController.cpp" />
+    <ClInclude Include="public\collision\ColliderController.h" />
     <ClInclude Include="public\collision\CollisionService.h" />
     <ClInclude Include="public\collision\ICollider.h" />
     <ClInclude Include="public\entity\EntityConfig.h" />

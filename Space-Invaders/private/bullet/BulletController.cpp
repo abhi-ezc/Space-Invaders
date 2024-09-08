@@ -8,6 +8,8 @@
 #include "./../../public/projectile/ProjectileConfig.h"
 #include "./../../public/global/ServiceLocator.h"
 #include "./../../public/bullet/BulletService.h"
+#include "./../../public/entity/EntityConfig.h"
+#include "./../../public/collision/CollisionService.h"
 
 namespace Bullet {
 	BulletController::BulletController(BulletType type, Entity::EntityType ownerEntityType) {
@@ -18,11 +20,13 @@ namespace Bullet {
 	BulletController::~BulletController() {
 		delete m_bullet_model;
 		delete m_bullet_view;
+		Global::ServiceLocator::getInstance()->getCollisionService()->removeCollider(this);
 	}
 
 	void BulletController::initialize(sf::Vector2f position, Projectile::ProjectileDirection direction) {
 		m_bullet_model->initialize(position, direction);
 		m_bullet_view->initialize();
+		Global::ServiceLocator::getInstance()->getCollisionService()->addCollider(this);
 	}
 
 	void BulletController::update() {
@@ -56,6 +60,18 @@ namespace Bullet {
 		if (position.x < 0 || position.x > windowSize.x || position.y < 0 || position.y > windowSize.y) {
 			Global::ServiceLocator::getInstance()->getBulletService()->destroyBullet(this);
 		}
+	}
+
+	const sf::Sprite& BulletController::getColliderSprite() {
+		return m_bullet_view->getBulletSprite();
+	}
+
+	Entity::EntityType BulletController::getEntityType() {
+		return Entity::EntityType::BULLET;
+	}
+
+	void BulletController::onCollision(ICollider* otherCollider) {
+		Global::ServiceLocator::getInstance()->getBulletService()->destroyBullet(this);
 	}
 
 	void BulletController::updateProjectilePosition() {

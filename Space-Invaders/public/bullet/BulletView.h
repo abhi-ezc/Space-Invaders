@@ -33,5 +33,7 @@ namespace Bullet {
 		void initialize();
 		void update();
 		void render();
+
+		sf::Sprite& getBulletSprite();
 	};
 }

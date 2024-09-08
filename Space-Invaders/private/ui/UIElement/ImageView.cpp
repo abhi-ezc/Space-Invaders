@@ -68,5 +68,8 @@ namespace UI {
 		sf::FloatRect ImageView::getLocalBounds() {
 			return m_sprite.getLocalBounds();
 		}
+		sf::Sprite& ImageView::getSprite() {
+			return m_sprite;
+		}
 	}
 }
