@@ -162,6 +162,9 @@
     <ClCompile Include="private\collision\CollisionService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="private\collision\ColliderController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="public\main\GameService.h">
@@ -333,6 +336,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="public\collision\CollisionService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="public\collision\ColliderController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

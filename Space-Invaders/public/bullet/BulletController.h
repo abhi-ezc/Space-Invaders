@@ -1,5 +1,6 @@
 #pragma once
 #include "./../projectile/IProjectile.h"
+#include "./../collision/ColliderController.h"
 
 namespace Projectile {
 	enum class ProjectileDirection;
@@ -15,7 +16,7 @@ namespace Bullet {
 
 	enum class BulletType;
 
-	class BulletController : public Projectile::IProjectile {
+	class BulletController : public Projectile::IProjectile, public Collision::ColliderController {
 	private:
 		BulletModel* m_bullet_model;
 		BulletView* m_bullet_view;
@@ -40,5 +41,9 @@ namespace Bullet {
 
 		void updateProjectilePosition() override;
 		void handleOutOfBounds();
+
+		const sf::Sprite& getColliderSprite()override;
+		Entity::EntityType getEntityType() override;
+		void onCollision(ICollider* otherCollider) override;
 	};
 }

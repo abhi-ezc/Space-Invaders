@@ -34,6 +34,10 @@ namespace Enemy {
 		return sf::Vector2f(c_sprite_width, c_sprite_height);
 	}
 
+	sf::Sprite& EnemyView::getSprite() {
+		return m_enemy_image->getSprite();
+	}
+
 	void EnemyView::initializeEnemySprite() {
 		switch (m_enemy_controller->getEnemyType()) {
 		case EnemyType::ZAPPER:

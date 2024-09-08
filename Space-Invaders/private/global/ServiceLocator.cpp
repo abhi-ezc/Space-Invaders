@@ -11,6 +11,7 @@
 #include "../../public/sound/SoundService.h"
 #include "../../public/bullet/BulletService.h"
 #include "../../public/powerup/PowerupService.h"
+#include "../../public/collision/CollisionService.h"
 
 namespace Global {
 	using namespace Graphic;
@@ -24,6 +25,7 @@ namespace Global {
 	using namespace Sound;
 	using namespace Bullet;
 	using namespace Powerup;
+	using namespace Collision;
 
 #pragma region Life Cycle Functions
 
@@ -46,13 +48,13 @@ namespace Global {
 		m_element_service->initialize();
 		m_bullet_service->initialize();
 		m_powerup_service->initialize();
+		m_collision_service->initialize();
 	}
 
 	void ServiceLocator::update() {
 		// update all the services
 		m_graphic_service->update();
 		m_event_service->update();
-		m_player_service->update();
 		m_time_service->update();
 		m_ui_service->update();
 		m_enemy_service->update();
@@ -60,16 +62,19 @@ namespace Global {
 		m_element_service->update();
 		m_gameplay_service->update();
 		m_powerup_service->update();
+		m_collision_service->update();
+		m_player_service->update();
 	}
 
 	void ServiceLocator::render() {
 		// render using the services
 		m_gameplay_service->render();
 		m_element_service->render();
-		m_player_service->render();
 		m_enemy_service->render();
 		m_bullet_service->render();
 		m_powerup_service->render();
+		m_player_service->render();
+		m_collision_service->render();
 		m_ui_service->render();
 		m_graphic_service->render();
 
@@ -87,9 +92,9 @@ namespace Global {
 	void ServiceLocator::createServices() {
 		// creating services required for the game
 		m_sound_service = new SoundService();
+		m_collision_service = new CollisionService();
 		m_graphic_service = new GraphicService();
 		m_event_service = new EventService();
-		m_player_service = new PlayerService();
 		m_time_service = new TimeService();
 		m_ui_service = new UIService();
 		m_enemy_service = new EnemyService();
@@ -97,6 +102,7 @@ namespace Global {
 		m_element_service = new ElementService();
 		m_bullet_service = new BulletService();
 		m_powerup_service = new PowerupService();
+		m_player_service = new PlayerService();
 	}
 
 	void ServiceLocator::clearAllServices() {
@@ -112,6 +118,7 @@ namespace Global {
 		delete m_sound_service;
 		delete m_bullet_service;
 		delete m_powerup_service;
+		delete m_collision_service;
 	}
 #pragma endregion
 
@@ -164,8 +171,12 @@ namespace Global {
 		return m_bullet_service;
 	}
 
-	Powerup::PowerupService* ServiceLocator::getPowerupService() {
+	PowerupService* ServiceLocator::getPowerupService() {
 		return m_powerup_service;
+	}
+
+	CollisionService* ServiceLocator::getCollisionService() {
+		return m_collision_service;
 	}
 #pragma endregion
 }

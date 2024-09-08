@@ -44,6 +44,10 @@ namespace Powerup {
 	class PowerupService;
 }
 
+namespace Collision {
+	class CollisionService;
+}
+
 namespace Global {
 	// ServiceLocator Class Summary: This class manages access to various services in the application.
 	class ServiceLocator {
@@ -59,6 +63,7 @@ namespace Global {
 		Sound::SoundService* m_sound_service;
 		Bullet::BulletService* m_bullet_service;
 		Powerup::PowerupService* m_powerup_service;
+		Collision::CollisionService* m_collision_service;
 
 		// Constructor for initializing the ServiceLocator.
 		ServiceLocator();
@@ -84,6 +89,7 @@ namespace Global {
 		Graphic::GraphicService* getGraphicService(); // Retrieve the GraphicService instance
 		Player::PlayerService* getPlayerService(); // Retrieve the PlayerService instance
 		Time::TimeService* getTimeService();
+		Collision::CollisionService* getCollisionService();
 		UI::UIService* getUIService();
 		Enemy::EnemyService* getEnemyService();
 		Gameplay::GameplayService* getGameplayService();

@@ -1,5 +1,4 @@
 ﻿#include "./../../public/enemy/EnemyController.h"
-
 #include "../../public/enemy/EnemyService.h"
 #include "../../public/graphic/GraphicService.h"
 #include "../../public/time/TimeService.h"
@@ -11,6 +10,8 @@
 #include "./../../public/projectile/ProjectileConfig.h"
 #include "./../../public/bullet/BulletService.h"
 #include "./../../public/entity/EntityConfig.h"
+#include "./../../public/collision/CollisionService.h"
+#include "./../../public/bullet/BulletController.h"
 
 namespace Enemy {
 	using namespace Global;
@@ -22,6 +23,7 @@ namespace Enemy {
 	}
 
 	EnemyController::~EnemyController() {
+		ServiceLocator::getInstance()->getCollisionService()->removeCollider(this);
 		delete m_enemy_model;
 		delete m_enemy_view;
 	};
@@ -29,6 +31,7 @@ namespace Enemy {
 	void EnemyController::initialize() {
 		m_enemy_model->initialize(this);
 		m_enemy_view->initialize(this);
+		ServiceLocator::getInstance()->getCollisionService()->addCollider(this);
 	}
 
 	void EnemyController::update() {
@@ -65,8 +68,21 @@ namespace Enemy {
 		return { randomX, m_enemy_model->getLeftMostPosition().y };
 	}
 
+	const sf::Sprite& EnemyController::getColliderSprite() {
+		return m_enemy_view->getSprite();
+	}
+
 	Entity::EntityType EnemyController::getEntityType() {
 		return m_enemy_model->getEntityType();
+	}
+
+	void EnemyController::onCollision(ICollider* otherCollider) {
+		if (otherCollider->getEntityType() == Entity::EntityType::BULLET) {
+			auto bullet = static_cast<Bullet::BulletController*>(otherCollider);
+			if (bullet->getOwnerEntity() == Entity::EntityType::PLAYER) {
+				ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+			}
+		}
 	}
 
 	void EnemyController::handleOutOfBounds() {

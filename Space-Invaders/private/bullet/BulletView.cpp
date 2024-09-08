@@ -30,6 +30,10 @@ namespace Bullet {
 		m_bullet_image->render();
 	}
 
+	sf::Sprite& BulletView::getBulletSprite() {
+		return m_bullet_image->getSprite();
+	}
+
 	void BulletView::loadTexture() {
 		switch (m_bullet_controller->getBulletType()) {
 		case BulletType::LASER:

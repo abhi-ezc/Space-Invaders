@@ -9,6 +9,7 @@ namespace Collision {
 	void CollisionService::initialize() {}
 
 	void CollisionService::update() {
+		printf("\rvector size: %d\n", m_colliders.size());
 		processCollision();
 	}
 
@@ -54,9 +55,19 @@ namespace Collision {
 
 		// if collided and both colliders are valid
 		// invoke on collision
-		if (hasCollisionOccurred(indexI, indexJ) && areValidColliders(indexI, indexJ)) {
-			m_colliders[indexI]->onCollision(m_colliders[indexJ]);
-			m_colliders[indexJ]->onCollision(m_colliders[indexI]);
+		if (hasCollisionOccurred(indexI, indexJ)) {
+
+			// After the invocation of onCollision at indexI, the object might get destroyed,
+			// which can lead to invalid references or undefined behavior in subsequent operations.
+			// Therefore, handle object validity or destruction properly to avoid potential issues.
+
+			if (areValidColliders(indexI, indexJ)) {
+				m_colliders[indexI]->onCollision(m_colliders[indexJ]);
+			}
+
+			if (areValidColliders(indexI, indexJ)) {
+				m_colliders[indexJ]->onCollision(m_colliders[indexI]);
+			}
 		}
 	}
 

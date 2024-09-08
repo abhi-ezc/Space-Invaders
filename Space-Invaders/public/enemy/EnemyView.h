@@ -31,5 +31,6 @@ namespace Enemy {
 		void render();
 
 		sf::Vector2f getSpriteSize();
+		sf::Sprite& getSprite();
 	};
 }

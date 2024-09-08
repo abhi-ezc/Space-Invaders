@@ -44,4 +44,7 @@ namespace Player {
 	sf::FloatRect PlayerView::getLocalBounds() {
 		return m_player_image->getLocalBounds();
 	}
+	sf::Sprite& PlayerView::getSprite() {
+		return m_player_image->getSprite();
+	}
 }
